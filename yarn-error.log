@@ -1,0 +1,63 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add eslint
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.16.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile '/Users/apple/Library/Caches/Yarn/v6/npm-regenerator-runtime-0.13.5-d878a1d094b4306d10b9096484b33ebd55e26697-integrity/node_modules/regenerator-runtime/README.md' -> '/Users/apple/Projects/awesome-lowcode/node_modules/umi/node_modules/regenerator-runtime/README.md'
+
+npm manifest: 
+  {
+    "private": true,
+    "scripts": {
+      "start": "umi dev",
+      "build": "umi build",
+      "postinstall": "umi generate tmp",
+      "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+      "test": "umi-test",
+      "test:coverage": "umi-test --coverage"
+    },
+    "gitHooks": {
+      "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+      "*.{js,jsx,less,md,json}": [
+        "prettier --write"
+      ],
+      "*.ts?(x)": [
+        "prettier --parser=typescript --write"
+      ]
+    },
+    "dependencies": {
+      "@ant-design/pro-layout": "^6.5.0",
+      "react": "17.x",
+      "react-dom": "17.x",
+      "umi": "^3.5.17"
+    },
+    "devDependencies": {
+      "@types/react": "^17.0.0",
+      "@types/react-dom": "^17.0.0",
+      "@umijs/preset-react": "1.x",
+      "@umijs/test": "^3.5.17",
+      "lint-staged": "^10.0.7",
+      "prettier": "^2.2.0",
+      "typescript": "^4.1.2",
+      "yorkie": "^2.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
