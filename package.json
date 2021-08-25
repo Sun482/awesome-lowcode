@@ -8,9 +8,6 @@
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
     "@umijs/fabric": "^2.6.4",
