@@ -1,6 +1,6 @@
 import type { ComponentProps } from "@/package/common";
 
-interface Button {
+interface ButtonProps {
   item: string;
 }
-export type DragItemType = ComponentProps<Button>;
+export type ButtonType = ComponentProps<ButtonProps>;

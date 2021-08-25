@@ -1,14 +1,17 @@
-import { useRef, useState } from "react";
+import type { Node } from "@/core/DSL/interface/node";
+import DynamicEngine from "@/core/Dynamic/Dynamic";
+
+import { useRef } from "react";
 
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import style from "./index.less";
-import type { DragItemType } from "./interface/type";
+import type { FlexItemType, FlexType } from "./interface/type";
 
-const DragItem: DragItemType = ({ index, setChildren, total, children }) => {
+const FlexItem: FlexItemType = ({ index, setChildren, children, dragID }) => {
   const ref = useRef(null);
   const [{ isHovering }, drop] = useDrop({
-    accept: "123",
+    accept: dragID,
     collect(monitor) {
       return {
         handlerId: monitor.getHandlerId(),
@@ -23,43 +26,62 @@ const DragItem: DragItemType = ({ index, setChildren, total, children }) => {
   });
 
   const [{ isDragging }, drag] = useDrag({
-    type: "123",
+    type: dragID,
     item: { index },
     collect: (monitor: any) => ({
       isDragging: monitor.isDragging()
     })
   });
   drag(drop(ref));
-  return total <= 5 ? (
+  return (
     <div ref={ref} className={isHovering ? style.hovered : null}>
       {children}
     </div>
-  ) : (
-    <div ref={ref}>null</div>
   );
 };
-export const Render = (props: any) => {
-  const [children, setChildren] = useState(props.data.children);
+export const Render: FlexType = ({
+  style: propStyle,
+  setChildren,
+  total,
+  dragID,
+  children
+}) => {
+  const processNode = (node: Node, index: number, _dragID: string) => {
+    const { name, type, val, ...config } = node;
+    return node ? (
+      <FlexItem
+        total={total}
+        index={index}
+        setChildren={setChildren}
+        dragID={_dragID}
+        key={index}
+      >
+        <DynamicEngine
+          componentType={type}
+          name={name}
+          item={val}
+          key={index}
+          {...config}
+        />
+      </FlexItem>
+    ) : null;
+  };
   return (
     <DndProvider backend={HTML5Backend}>
       <div
         style={{
           display: "flex",
           justifyContent: "center",
-          border: "1px solid red"
+          ...propStyle
         }}
       >
-        {children.map((item, index) => (
-          <DragItem
-            index={index}
-            width="200px"
-            total={children.length}
-            setChildren={setChildren}
-            key={index}
-          >
-            {item}
-          </DragItem>
-        ))}
+        {children.length <= total ? (
+          children.map((item: Node, index: number) => {
+            return processNode(item, index, dragID);
+          })
+        ) : (
+          <div>超过数量限制</div>
+        )}
       </div>
     </DndProvider>
   );

@@ -1,11 +1,13 @@
-export type NodeType = 'normal';
+import { componentType } from "@/constants/componentType";
+import { ReactNode } from "react";
+
+export type NodeType = "normal";
 
 export interface LNODE {
   name: string;
-  val: Object;
-  type: NodeType;
-  children: Array<Node>;
+  val: unknown;
+  type: componentType;
+  children: Node[] | ReactNode[];
 }
 
-export type Node = LNODE
-& Record<string, any>
+export type Node = LNODE & Record<string, any>;

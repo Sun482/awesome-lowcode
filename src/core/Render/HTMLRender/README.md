@@ -1,0 +1,3 @@
+# 说明
+HTMLRender用于把抽象NODE树转化成html网页
+组件库应该提供从NODE转化成HTML的方法

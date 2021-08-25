@@ -10,6 +10,7 @@ const DynamicFunc = (type: componentType, name: string, config: any) => {
   const path = getComponentPath(type, name);
   return dynamic({
     async loader() {
+      // 组件动态导入
       const { Render } = await import(`@/package/${path}`);
       return () => {
         return <Render {...config} />;
