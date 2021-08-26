@@ -1,5 +1,5 @@
-import { Node } from "@/core/DSL/interface/node";
-import { CSSProperties } from "react";
+import type { Node } from "@/core/DSL/interface/node";
+import type { CSSProperties } from "react";
 
 export interface ViewRenderProps {
   root: Node;

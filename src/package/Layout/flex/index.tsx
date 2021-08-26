@@ -1,6 +1,5 @@
 import type { Node } from "@/core/DSL/interface/node";
 import DynamicEngine from "@/core/Dynamic/Dynamic";
-import { useEffect } from "react";
 
 import { useMemo, useRef } from "react";
 
@@ -9,13 +8,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import style from "./index.less";
 import type { FlexItemType, FlexType } from "./interface/type";
 
-const FlexItem: FlexItemType = ({
-  index,
-  setChildren,
-  children,
-  dragID,
-  node
-}) => {
+const FlexItem: FlexItemType = ({ children, dragID, node, onDrop }) => {
   const ref = useRef(null);
   const [{ isHovering }, drop] = useDrop({
     accept: dragID,
@@ -25,8 +18,8 @@ const FlexItem: FlexItemType = ({
         isHovering: monitor.isOver()
       };
     },
-    drop(item: any) {
-      setChildren();
+    drop(item: Node) {
+      onDrop(item, node);
     }
   });
 
@@ -49,7 +42,8 @@ export const Render: FlexType = ({
   setChildren,
   total,
   dragID,
-  children
+  children,
+  onDrop
 }) => {
   const processNode = useMemo(() => {
     return (node: Node, index: number, _dragID: string) => {
@@ -62,6 +56,7 @@ export const Render: FlexType = ({
           dragID={_dragID}
           key={index}
           node={node}
+          onDrop={onDrop}
         >
           <DynamicEngine
             componentType={type}

@@ -10,14 +10,14 @@ import type { ViewRenderProps } from "./interface/type";
 export const ViewRender: FC<ViewRenderProps> = ({
   root,
   handleOnDrop,
-  style
+  style,
+  onClick
 }) => {
-  console.log("直接打印node", root);
   const getNodes = (node: Node) => {
     const { type, name, children, index, ...config } = node;
-    console.log("getNode里面", node);
+
     return (
-      <>
+      <div onClick={onClick}>
         <DragableItem
           index={index}
           style={{ marginBottom: "10px" }}
@@ -31,12 +31,12 @@ export const ViewRender: FC<ViewRenderProps> = ({
             {...config}
           />
         </DragableItem>
-      </>
+      </div>
     );
   };
-  return (
+  return root ? (
     <DndProvider backend={HTML5Backend}>
       <div style={style}> {getNodes(root)}</div>
     </DndProvider>
-  );
+  ) : null;
 };
