@@ -23,11 +23,10 @@ const useNode = <T extends Record<string, any>>(
   const [ref, setRef] = useState<Node>(node);
 
   const setter = (fn: (newNode: Node) => any) => {
-    console.log("setterPrev", ref);
     const newState = fn(ref);
 
     setRef((prev) => ({ ...newState }));
-    updateFn({ ...newState, ...config }); // 父组件刷新
+    if (typeof updateFn === "function") updateFn({ ...newState, ...config }); // 父组件刷新
   };
   const myUpdateFn = (newState: Node) => {
     setRef((prev) => {
