@@ -1,39 +1,47 @@
 import { componentType } from "@/constants/componentType";
-import type { DragableItemProps } from "@/core/DragableItem/interface/type";
+
 import type { Node } from "@/core/DSL/interface/node";
 import { ViewRender } from "@/core/Render/ViewRender/ViewRender";
+import { useMemo } from "react";
 import { useState } from "react";
 
 export default function IndexPage() {
-  const handleOnDrop = (source: Node, target: Node) => {
-    alert(`${source.name}拖动到了${target.name}上!`);
+  const button: Node = {
+    name: "Button",
+    type: componentType.Base,
+    val: "test",
+    children: [],
+    dragID: "12"
   };
-  const [children, setChildren] = useState<Node[]>([
-    {
-      name: "Button",
-      type: componentType.Base,
-      children: [],
-      val: null,
-      text: "123"
-    }
-  ]);
-  const root: Node = {
+  const [newFlex, setNewFlex] = useState<Node>({
     name: "flex",
+    val: "",
     type: componentType.Layout,
-    children,
-    setChildren,
-    val: "val",
+    children: [button],
     total: 5,
-    dragID: "sd",
-    index: 1,
-    style: { padding: "10px" }
-  };
+    dragID: "newFlex",
+    setChildren: () => {
+      setNewFlex((prev) => {
+        const { children, ...others } = prev;
+        return { ...others, children: [...children, ...children] };
+      });
+    },
+    style: { margin: "10px" }
+  });
+  const [children, setChildren] = useState<Node[]>([button, newFlex]);
+  const root: Node = useMemo(() => {
+    return {
+      name: "flex",
+      val: "",
+      type: componentType.Layout,
+      children,
+      total: 5,
+      dragID: "drag",
+      setChildren: () => {
+        setChildren((prev) => [...prev, ...prev]);
+      }
+    };
+  }, [newFlex, children]);
 
-  return (
-    <ViewRender
-      root={root}
-      handleOnDrop={handleOnDrop}
-      style={{ width: "80vw" }}
-    />
-  );
+  return <ViewRender root={root} style={{ width: "80vw" }} />;
 }

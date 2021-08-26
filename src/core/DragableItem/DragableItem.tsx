@@ -26,7 +26,7 @@ export const DragableItem: FC<DragableItemProps> = ({
       };
     },
     drop: (item, monitor) => {
-      onDrop(node, item.node);
+      if (typeof onDrop === "function") onDrop(node, item.node);
     }
   });
 

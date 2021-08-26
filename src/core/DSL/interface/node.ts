@@ -1,5 +1,5 @@
-import { componentType } from "@/constants/componentType";
-import { ReactNode } from "react";
+import type { componentType } from "@/constants/componentType";
+import type { ReactNode } from "react";
 
 export type NodeType = "normal";
 

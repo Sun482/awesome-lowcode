@@ -6,14 +6,16 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import type { ViewRenderProps } from "./interface/type";
 
+// 没有检测ViewRender是否根据子节点的不同更新了
 export const ViewRender: FC<ViewRenderProps> = ({
   root,
   handleOnDrop,
   style
 }) => {
+  console.log("直接打印node", root);
   const getNodes = (node: Node) => {
     const { type, name, children, index, ...config } = node;
-
+    console.log("getNode里面", node);
     return (
       <>
         <DragableItem

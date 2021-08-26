@@ -1,6 +1,8 @@
 import type { ComponentProps } from "@/package/common";
 
 interface ButtonProps {
-  item: string;
+  text: string;
+  onClick: any;
+  children: any[];
 }
 export type ButtonType = ComponentProps<ButtonProps>;

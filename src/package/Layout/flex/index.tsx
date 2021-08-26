@@ -1,14 +1,21 @@
 import type { Node } from "@/core/DSL/interface/node";
 import DynamicEngine from "@/core/Dynamic/Dynamic";
+import { useEffect } from "react";
 
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import style from "./index.less";
 import type { FlexItemType, FlexType } from "./interface/type";
 
-const FlexItem: FlexItemType = ({ index, setChildren, children, dragID }) => {
+const FlexItem: FlexItemType = ({
+  index,
+  setChildren,
+  children,
+  dragID,
+  node
+}) => {
   const ref = useRef(null);
   const [{ isHovering }, drop] = useDrop({
     accept: dragID,
@@ -19,15 +26,13 @@ const FlexItem: FlexItemType = ({ index, setChildren, children, dragID }) => {
       };
     },
     drop(item: any) {
-      setChildren((prev: any) => {
-        return [...prev, prev[item.index]];
-      });
+      setChildren();
     }
   });
 
   const [{ isDragging }, drag] = useDrag({
     type: dragID,
-    item: { index },
+    item: { node },
     collect: (monitor: any) => ({
       isDragging: monitor.isDragging()
     })
@@ -46,26 +51,30 @@ export const Render: FlexType = ({
   dragID,
   children
 }) => {
-  const processNode = (node: Node, index: number, _dragID: string) => {
-    const { name, type, val, ...config } = node;
-    return node ? (
-      <FlexItem
-        total={total}
-        index={index}
-        setChildren={setChildren}
-        dragID={_dragID}
-        key={index}
-      >
-        <DynamicEngine
-          componentType={type}
-          name={name}
-          item={val}
+  const processNode = useMemo(() => {
+    return (node: Node, index: number, _dragID: string) => {
+      const { name, type, val, ...config } = node;
+      return node ? (
+        <FlexItem
+          total={total}
+          index={index}
+          setChildren={setChildren}
+          dragID={_dragID}
           key={index}
-          {...config}
-        />
-      </FlexItem>
-    ) : null;
-  };
+          node={node}
+        >
+          <DynamicEngine
+            componentType={type}
+            name={name}
+            item={val}
+            key={index}
+            {...config}
+          />
+        </FlexItem>
+      ) : null;
+    };
+  }, [children, setChildren, total]);
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div

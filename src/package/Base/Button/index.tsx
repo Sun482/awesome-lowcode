@@ -1,9 +1,9 @@
 import { warn } from "@/utils/logger";
 import { Button } from "antd";
 import { useEffect } from "react";
+import { ButtonType } from "./interface/type";
 
-export const Render = (props: any) => {
-  const { text, onClick, children } = props;
+export const Render: ButtonType = ({ text, onClick, children }) => {
   useEffect(() => {
     if (children.length) {
       warn("Lowcode:Button组件不支持子组件！");

@@ -1,5 +1,5 @@
-import { Node } from './node';
-import { ScreenInfo } from './screen';
+import type { Node } from "./node";
+import type { ScreenInfo } from "./screen";
 
 export interface JsonData {
   root: Node;
