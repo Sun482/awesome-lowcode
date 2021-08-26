@@ -4,9 +4,6 @@ export default defineConfig({
   dynamicImport: {
     loading: "@/components/Loading"
   },
-  dva: {
-    immer: true
-  },
 
   antd: {},
   nodeModulesTransform: {

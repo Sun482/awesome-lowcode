@@ -1,6 +1,7 @@
 import type { Node } from "@/core/DSL/interface/node";
 import type { ComponentProps } from "@/package/common";
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties } from "react";
+import type { onDropInject } from "./inject";
 
 export interface FlexProps {
   children: Node[];
@@ -12,8 +13,7 @@ export interface FlexProps {
 export interface FlexItemProps {
   index: number;
   total: number;
-  children: ReactNode;
-  onDrop: (source: Node, target: Node) => any;
+  children: Node[];
 }
-export type FlexItemType = ComponentProps<FlexItemProps>;
+export type FlexItemType = ComponentProps<FlexItemProps & onDropInject>;
 export type FlexType = ComponentProps<FlexProps>;

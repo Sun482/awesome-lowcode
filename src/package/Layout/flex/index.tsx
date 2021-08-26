@@ -18,8 +18,8 @@ const FlexItem: FlexItemType = ({ children, dragID, node, onDrop }) => {
         isHovering: monitor.isOver()
       };
     },
-    drop(item: Node) {
-      onDrop(item, node);
+    drop(item: any) {
+      onDrop(item.node, node);
     }
   });
 
