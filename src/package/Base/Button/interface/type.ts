@@ -1,8 +1,5 @@
 import type { ComponentProps } from "@/package/common";
+import { ButtonInject } from "./inject";
 
-interface ButtonProps {
-  text: string;
-  onClick: any;
-  children: any[];
-}
-export type ButtonType = ComponentProps<ButtonProps>;
+interface ButtonProps {}
+export type ButtonType = ComponentProps<ButtonProps & ButtonInject>;

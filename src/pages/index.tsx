@@ -3,8 +3,10 @@
 /* eslint-disable no-underscore-dangle */
 import { componentType } from "@/constants/componentType";
 import type { Node } from "@/core/DSL/interface/node";
+import { injectNode } from "@/core/Render/ViewRender/utils/injectNode";
 
-import { injectNode, ViewRender } from "@/core/Render/ViewRender/ViewRender";
+import { ViewRender } from "@/core/Render/ViewRender/ViewRender";
+import { ButtonInject } from "@/package/Base/Button/interface/inject";
 import type { onDropInject } from "@/package/Layout/flex/interface/inject";
 import { DataTree } from "@/store/tree";
 import { useMemo } from "react";
@@ -16,6 +18,23 @@ const IndexPage = () => {
   const [tree, setTree] = useRecoilState(DataTree);
   const handleOnDrop = (source: Node, target: Node) => {
     console.log(`from ${String(source.id)} to ${String(target.id)}`);
+    setTree((prev) => {
+      return {
+        ...prev,
+        children: [
+          ...prev.children,
+          injectNode<ButtonInject>(
+            {
+              name: "Button",
+              type: componentType.Base,
+              children: [],
+              id: Symbol("inject#1")
+            },
+            { text: "inject" }
+          )
+        ]
+      };
+    });
   };
   // useEffect(() => {
   //   setTree((prev) => {
@@ -30,6 +49,7 @@ const IndexPage = () => {
   //   });
   // }, []);
   const root = useMemo(() => {
+    console.log("改变了");
     return injectNode<onDropInject>(tree, {
       onDrop: handleOnDrop
     });

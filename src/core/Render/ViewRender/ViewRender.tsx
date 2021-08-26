@@ -6,14 +6,6 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import type { ViewRenderProps } from "./interface/type";
 
-export const injectNode = <T extends Record<string, any>>(
-  node: Node,
-  injectProp: T
-) => {
-  return { ...node, ...injectProp };
-};
-
-// 没有检测ViewRender是否根据子节点的不同更新了
 export const ViewRender: FC<ViewRenderProps> = ({
   root,
   handleOnDrop,
