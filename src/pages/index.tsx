@@ -1,53 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-underscore-dangle */
-import { componentType } from "@/constants/componentType";
-import type { Node } from "@/core/DSL/interface/node";
+
+import container from "@/core/DSL/container";
+import { IDENTIFIERS } from "@/core/DSL/container/identifiers";
+import type { Node, NodeUtil } from "@/core/DSL/interface/node";
 import { injectNode } from "@/core/Render/ViewRender/utils/injectNode";
 
 import { ViewRender } from "@/core/Render/ViewRender/ViewRender";
-import { ButtonInject } from "@/package/Base/Button/interface/inject";
+
 import type { onDropInject } from "@/package/Layout/flex/interface/inject";
 import { DataTree } from "@/store/tree";
+import produce from "immer";
 import { useMemo } from "react";
-import { useEffect, useState } from "react";
-import { useDeepCompareEffect } from "react-use";
-import { RecoilRoot, useRecoilState } from "recoil";
+import { useState } from "react";
 
 const IndexPage = () => {
-  const [tree, setTree] = useRecoilState(DataTree);
+  const [tree, setTree] = useState<Node>(DataTree);
+  const noder = useMemo(
+    () => container.get<NodeUtil>(IDENTIFIERS.NodeUtil),
+    []
+  );
   const handleOnDrop = (source: Node, target: Node) => {
-    console.log(`from ${String(source.id)} to ${String(target.id)}`);
-    setTree((prev) => {
-      return {
-        ...prev,
-        children: [
-          ...prev.children,
-          injectNode<ButtonInject>(
-            {
-              name: "Button",
-              type: componentType.Base,
-              children: [],
-              id: Symbol("inject#1")
-            },
-            { text: "inject" }
-          )
-        ]
-      };
-    });
+    setTree(
+      produce((draft) => {
+        const _source = noder.getNode(draft, source.id);
+        if (_source) noder.appendChild(_source, target);
+      })
+    );
   };
-  // useEffect(() => {
-  //   setTree((prev) => {
-  //     return {
-  //       ...prev,
-  //       children: [
-  //         injectNode<onDropInject>(sonFlex, {
-  //           onDrop: handleOnDrop
-  //         })
-  //       ]
-  //     };
-  //   });
-  // }, []);
+
   const root = useMemo(() => {
     console.log("改变了");
     return injectNode<onDropInject>(tree, {
@@ -57,11 +39,7 @@ const IndexPage = () => {
   return <ViewRender root={root} handleOnDrop={handleOnDrop} />;
 };
 const App = () => {
-  return (
-    <RecoilRoot>
-      <IndexPage />
-    </RecoilRoot>
-  );
+  return <IndexPage />;
 };
 
 export default App;
