@@ -18,7 +18,7 @@ export class Noder implements NodeUtil {
     return null;
   }
 
-  appendChild(target: Node, node: Node) {
-    target.children = [...target.children, node];
+  appendChild(target: Node, node: Node | null) {
+    if (node) target.children = [...target.children, node];
   }
 }

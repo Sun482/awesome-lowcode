@@ -15,5 +15,10 @@ export type Node<T = null> = T extends null
 
 export interface NodeUtil {
   getNode: (root: Node, nodeID: symbol) => Node | null; // 由nodeID获取Node引用
-  appendChild: (target: Node, node: Node) => any; // 添加节点到指定节点的children里
+  /**
+   * 添加节点到指定节点的children里
+   * @param target 目标节点
+   * @param node 要添加的节点
+   */
+  appendChild: (target: Node, node: Node | null) => any;
 }

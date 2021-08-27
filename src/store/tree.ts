@@ -4,7 +4,7 @@ import { injectNode } from "@/core/Render/ViewRender/utils/injectNode";
 import type { ButtonInject } from "@/package/Base/Button/interface/inject";
 import type { onDropInject } from "@/package/Layout/flex/interface/inject";
 
-const sonButton: Node = {
+export const sonButton: Node = {
   name: "Button",
   type: componentType.Base,
   val: "sonButton",

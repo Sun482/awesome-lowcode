@@ -1,5 +1,6 @@
 import type { Node } from "@/core/DSL/interface/node";
 import DynamicEngine from "@/core/Dynamic/Dynamic";
+import { commonInject } from "@/core/Render/ViewRender/utils/injectNode";
 
 import { useMemo, useRef } from "react";
 
@@ -43,7 +44,9 @@ export const Render: FlexType = ({
   total,
   dragID,
   children,
-  onDrop
+  onDrop,
+  root,
+  setTree
 }) => {
   const processNode = useMemo(() => {
     return (node: Node, index: number, _dragID: string) => {
@@ -55,7 +58,7 @@ export const Render: FlexType = ({
           setChildren={setChildren}
           dragID={_dragID}
           key={index}
-          node={node}
+          {...commonInject(node, root, setTree)}
           onDrop={onDrop}
         >
           <DynamicEngine
@@ -63,12 +66,13 @@ export const Render: FlexType = ({
             name={name}
             item={val}
             key={index}
+            {...commonInject(node, root, setTree)}
             {...config}
           />
         </FlexItem>
       ) : null;
     };
-  }, [children, setChildren, total]);
+  }, [setChildren, total, onDrop, root, setTree]);
 
   return (
     <DndProvider backend={HTML5Backend}>

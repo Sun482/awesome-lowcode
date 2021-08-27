@@ -17,29 +17,21 @@ import { useState } from "react";
 
 const IndexPage = () => {
   const [tree, setTree] = useState<Node>(DataTree);
-  const noder = useMemo(
-    () => container.get<NodeUtil>(IDENTIFIERS.NodeUtil),
-    []
-  );
-  const handleOnDrop = (source: Node, target: Node) => {
-    setTree(
-      produce((draft) => {
-        const _source = noder.getNode(draft, source.id);
-        if (_source) noder.appendChild(_source, target);
-      })
-    );
-  };
+  // const noder = useMemo(
+  //   () => container.get<NodeUtil>(IDENTIFIERS.NodeUtil),
+  //   []
+  // );
+
+  const handleOnDrop = (source: Node, target: Node) => {};
 
   const root = useMemo(() => {
-    console.log("改变了");
     return injectNode<onDropInject>(tree, {
       onDrop: handleOnDrop
     });
   }, [tree]);
-  return <ViewRender root={root} handleOnDrop={handleOnDrop} />;
-};
-const App = () => {
-  return <IndexPage />;
+  return (
+    <ViewRender root={root} setTree={setTree} handleOnDrop={handleOnDrop} />
+  );
 };
 
-export default App;
+export default IndexPage;

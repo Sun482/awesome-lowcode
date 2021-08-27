@@ -38,6 +38,7 @@ export const DragableItem: FC<DragableItemProps> = ({
     })
   });
   drag(drop(ref));
+
   return (
     <div ref={ref} style={style} className={isHovering ? _style.hovered : null}>
       {children}
