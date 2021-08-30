@@ -13,11 +13,19 @@ export function getRoutes() {
     "routes": [
       {
         "exact": true,
+        "path": "/",
+        "name": "欢迎",
+        "icon": "user",
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__home' */'@/pages/home'), loading: LoadingComponent}),
+        "hideInMenu": true
+      },
+      {
+        "exact": true,
         "path": "/home",
         "name": "欢迎",
         "icon": "user",
-        "hideChildrenInMenu": true,
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__home' */'@/pages/home'), loading: LoadingComponent})
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__home' */'@/pages/home'), loading: LoadingComponent}),
+        "hideInMenu": true
       },
       {
         "exact": true,
@@ -25,6 +33,13 @@ export function getRoutes() {
         "name": "编辑器",
         "icon": "edit",
         "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__editor__index' */'@/pages/editor/index'), loading: LoadingComponent})
+      },
+      {
+        "exact": true,
+        "path": "/dls",
+        "name": "DSL转换",
+        "icon": "export",
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__dsl__index' */'@/pages/dsl/index'), loading: LoadingComponent})
       }
     ]
   }

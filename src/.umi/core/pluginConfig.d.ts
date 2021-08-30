@@ -296,5 +296,8 @@ layout?: {
 request?: {
 dataField?: ""
 }
+esbuild?: {
+target?: (string | string[])
+}
 [k: string]: any
 }

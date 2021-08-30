@@ -18,17 +18,14 @@ import { Card, Tabs } from "antd";
 import ViewRender from "@/core/Render/ViewRender/ViewRender";
 import { useCallback } from "react";
 import { TreeView } from "../tree";
+import { RecoilRoot, useRecoilState } from "recoil";
 
 const { TabPane } = Tabs;
 const IndexPage = () => {
-  const [tree, setTree] = useState<Node>(DataTree);
+  const [tree, setTree] = useRecoilState<Node>(DataTree);
   const [dragState, setDragState] = useState({ x: 0, y: 0 });
-  // const noder = useMemo(
-  //   () => container.get<NodeUtil>(IDENTIFIERS.NodeUtil),
-  //   []
-  // );
 
-  const handleOnDrop = useCallback(() => {
+  const handleOnDrop = useMemo(() => {
     return (source: Node, target: Node) => {};
   }, []);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -106,6 +103,7 @@ const IndexPage = () => {
           onMouseUp={mouseupfn}
           onMouseLeave={mouseupfn}
           ref={containerRef}
+          style={{ display: "flex", justifyContent: "center" }}
         >
           <Draggable
             position={dragState}
@@ -131,5 +129,10 @@ const IndexPage = () => {
     </Layout>
   );
 };
-
-export default IndexPage;
+export default function Index() {
+  return (
+    <RecoilRoot>
+      <IndexPage />
+    </RecoilRoot>
+  );
+}

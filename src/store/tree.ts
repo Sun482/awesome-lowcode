@@ -3,6 +3,7 @@ import type { Node } from "@/core/DSL/interface/node";
 import { injectNode } from "@/core/Render/ViewRender/utils/injectNode";
 import type { ButtonInject } from "@/package/Base/Button/interface/inject";
 import type { onDropInject } from "@/package/Layout/flex/interface/inject";
+import { atom } from "recoil";
 
 export const sonButton: Node = {
   name: "Button",
@@ -10,7 +11,7 @@ export const sonButton: Node = {
   val: "sonButton",
   children: [],
   dragID: "sonButton",
-  id: Symbol("Button#1")
+  id: "Button#1"
 };
 const sonFlex: Node = {
   name: "flex",
@@ -19,27 +20,30 @@ const sonFlex: Node = {
   children: [
     injectNode<ButtonInject>(sonButton, {
       onClick: () => {
-        alert("点击了!");
+        // alert("点击了!");
       },
       text: "勿忘我"
     })
   ],
-  id: Symbol("flex#1"),
+  id: "flex#1",
   dragID: "sonFlex",
-  total: 10,
+  total: 1,
   style: { margin: "10px" }
 };
-export const DataTree = {
-  name: "flex",
-  type: componentType.Layout,
-  children: [
-    injectNode<onDropInject>(sonFlex, {
-      onDrop: (source, target) => {
-        console.log(source);
-      }
-    })
-  ],
-  dragID: "root",
-  total: 10,
-  id: Symbol("root")
-};
+export const DataTree = atom({
+  key: "DataTree",
+  default: {
+    name: "flex",
+    type: componentType.Layout,
+    children: [
+      injectNode<onDropInject>(sonFlex, {
+        onDrop: (source) => {
+          console.log(source);
+        }
+      })
+    ],
+    dragID: "root",
+    total: 5,
+    id: "root"
+  } as Node
+});
