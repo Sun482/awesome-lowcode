@@ -20,7 +20,10 @@ const sonFlex: Node = {
   children: [
     injectNode<ButtonInject>(sonButton, {
       onClick: () => {
-        // alert("点击了!");
+        alert("点击了勿忘我!");
+      },
+      onShow: () => {
+        alert("这是第一次显示");
       },
       text: "勿忘我"
     })

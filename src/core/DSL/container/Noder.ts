@@ -5,7 +5,7 @@ import type { Node, NodeUtil } from "../interface/node";
 
 @injectable()
 export class Noder implements NodeUtil {
-  getNode(root: Node, nodeID: symbol) {
+  getNode(root: Node, nodeID: string) {
     const processArr = new Array<Node>();
     processArr.push(root);
     while (processArr.length) {

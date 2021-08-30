@@ -14,6 +14,11 @@ export type Node<T = null> = T extends null
   : BasicNode & T;
 
 export interface NodeUtil {
+  /**
+   * 获取指定nodeId的节点引用
+   * @param root 根节点
+   * @param nodeID 指定的nodeID
+   */
   getNode: (root: Node, nodeID: string) => Node | null; // 由nodeID获取Node引用
   /**
    * 添加节点到指定节点的children里
