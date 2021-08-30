@@ -1,15 +1,16 @@
 import type { Node } from "@/core/DSL/interface/node";
 import DynamicEngine from "@/core/Dynamic/Dynamic";
 import { commonInject } from "@/core/Render/ViewRender/utils/injectNode";
+import { useMemo } from "react";
 
-import { useMemo, useRef } from "react";
+import { memo, useRef } from "react";
 
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import style from "./index.less";
 import type { FlexItemType, FlexType } from "./interface/type";
 
-const FlexItem: FlexItemType = ({ children, dragID, node, onDrop }) => {
+const FlexItem: FlexItemType = memo(({ children, dragID, node, onDrop }) => {
   const ref = useRef(null);
   const [{ isHovering }, drop] = useDrop({
     accept: dragID,
@@ -37,7 +38,7 @@ const FlexItem: FlexItemType = ({ children, dragID, node, onDrop }) => {
       {children}
     </div>
   );
-};
+});
 export const Render: FlexType = ({
   style: propStyle,
   setChildren,
@@ -48,31 +49,33 @@ export const Render: FlexType = ({
   root,
   setTree
 }) => {
-  const processNode = useMemo(() => {
-    return (node: Node, index: number, _dragID: string) => {
-      const { name, type, val, ...config } = node;
-      return node ? (
-        <FlexItem
-          total={total}
-          index={index}
-          setChildren={setChildren}
-          dragID={_dragID}
-          key={index}
-          {...commonInject(node, root, setTree)}
-          onDrop={onDrop}
-        >
-          <DynamicEngine
-            componentType={type}
-            name={name}
-            item={val}
-            key={index}
-            {...commonInject(node, root, setTree)}
-            {...config}
-          />
-        </FlexItem>
-      ) : null;
-    };
-  }, [setChildren, total, onDrop, root, setTree]);
+  const nodes = useMemo(() => {
+    return children.length <= total ? (
+      children.map((item: Node, index: number) => {
+        const { name, type, val, ...config } = item;
+        return item ? (
+          <FlexItem
+            total={total}
+            index={index}
+            setChildren={setChildren}
+            dragID={dragID}
+            key={String(item.id)}
+            {...commonInject(item, root, setTree)}
+            onDrop={onDrop}
+          >
+            <DynamicEngine
+              componentType={type}
+              name={name}
+              {...commonInject(item, root, setTree)}
+              {...config}
+            />
+          </FlexItem>
+        ) : null;
+      })
+    ) : (
+      <div>超过数量限制</div>
+    );
+  }, [children, dragID, onDrop, root, setChildren, setTree, total]);
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -83,13 +86,7 @@ export const Render: FlexType = ({
           ...propStyle
         }}
       >
-        {children.length <= total ? (
-          children.map((item: Node, index: number) => {
-            return processNode(item, index, dragID);
-          })
-        ) : (
-          <div>超过数量限制</div>
-        )}
+        {nodes}
       </div>
     </DndProvider>
   );

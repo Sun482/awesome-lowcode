@@ -9,22 +9,31 @@
     "test:coverage": "umi-test --coverage"
   },
   "dependencies": {
-    "@ant-design/pro-layout": "^6.5.0",
+    "@ant-design/icons": "^4.6.4",
+    "@ant-design/pro-layout": "^6.24.3",
+    "@antv/data-set": "^0.11.0",
     "@umijs/fabric": "^2.6.4",
     "antd": "^4.16.13",
+    "bizcharts": "^3.5.3-beta.0",
+    "bizcharts-plugin-slider": "^2.1.1-beta.1",
+    "gg-editor": "^2.0.2",
     "immer": "^9.0.5",
     "inversify": "^5.1.1",
+    "moment": "^2.22.2",
+    "numeral": "^2.0.6",
     "react": "17.x",
     "react-dnd": "^14.0.3",
     "react-dnd-html5-backend": "^14.0.1",
     "react-dom": "17.x",
- 
+    "react-draggable": "^4.4.4",
+    "react-fittext": "^1.0.0",
     "umi": "^3.5.17"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@umijs/preset-react": "1.x",
+    "@umijs/preset-ui": "^2.2.9",
     "@umijs/test": "^3.5.17",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",

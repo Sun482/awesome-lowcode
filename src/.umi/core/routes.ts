@@ -9,8 +9,24 @@ export function getRoutes() {
   const routes = [
   {
     "path": "/",
-    "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__index' */'@/pages/index'), loading: LoadingComponent}),
-    "exact": true
+    "component": dynamic({ loader: () => import(/* webpackChunkName: '.umi__plugin-layout__Layout' */'/Users/apple/Projects/awesome-lowcode/src/.umi/plugin-layout/Layout.tsx'), loading: LoadingComponent}),
+    "routes": [
+      {
+        "exact": true,
+        "path": "/home",
+        "name": "欢迎",
+        "icon": "user",
+        "hideChildrenInMenu": true,
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__home' */'@/pages/home'), loading: LoadingComponent})
+      },
+      {
+        "exact": true,
+        "path": "/editor",
+        "name": "编辑器",
+        "icon": "edit",
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__editor__index' */'@/pages/editor/index'), loading: LoadingComponent})
+      }
+    ]
   }
 ];
 

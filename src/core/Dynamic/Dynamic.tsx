@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { FC, memo } from "react";
 import type { componentType } from "@/constants/componentType";
 import { useMemo } from "react";
 import Loading from "@/components/Loading";
@@ -38,4 +38,4 @@ const DynamicEngine = <T extends DynamicType>(props: T) => {
   return <Dynamic {...props} />;
 };
 
-export default DynamicEngine;
+export default memo(DynamicEngine);
