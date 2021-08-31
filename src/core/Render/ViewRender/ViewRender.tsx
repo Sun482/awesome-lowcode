@@ -2,13 +2,18 @@ import { DragableItem } from "@/core/DragableItem/DragableItem";
 
 import DynamicEngine from "@/core/Dynamic/Dynamic";
 import type { FC } from "react";
+import { useRef } from "react";
 import { useMemo } from "react";
 import { memo } from "react";
 
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { useDrop } from "react-dnd";
+
 import type { ViewRenderProps } from "./interface/type";
 import { commonInject } from "./utils/injectNode";
+import "./index.less";
+import { ComponentSchema } from "@/package/common";
+import produce from "immer";
+import { noder } from "@/core/DSL/container";
 
 const ViewRender: FC<ViewRenderProps> = ({
   root,
@@ -17,6 +22,30 @@ const ViewRender: FC<ViewRenderProps> = ({
   setTree,
   onClick
 }) => {
+  const ref = useRef(null);
+  const [{ isHovering }, drop] = useDrop({
+    accept: "ComponentSource",
+    collect(monitor) {
+      return {
+        handlerId: monitor.getHandlerId(),
+        isHovering: monitor.isOver()
+      };
+    },
+    drop(item: any) {
+      const schema = item.schema as ComponentSchema;
+      setTree(
+        produce((draft: any) => {
+          noder.appendChild(draft, {
+            name: schema.name,
+            type: schema.type,
+            children: [],
+            id: "newId"
+          });
+        })
+      );
+    }
+  });
+  drop(ref);
   const Nodes = useMemo(() => {
     const node = root;
     const { type, name, children, index, ...config } = node;
@@ -42,9 +71,9 @@ const ViewRender: FC<ViewRenderProps> = ({
   }, [handleOnDrop, onClick, root, setTree]);
 
   return root ? (
-    <DndProvider backend={HTML5Backend}>
-      <div style={style}> {Nodes}</div>
-    </DndProvider>
+    <div ref={ref} style={style} className={isHovering ? "hovered" : ""}>
+      {Nodes}
+    </div>
   ) : null;
 };
 export default memo(ViewRender);

@@ -1,8 +1,6 @@
 import type { Node } from "@/core/DSL/interface/node";
 import { Tree } from "antd";
-import { DataNode } from "antd/lib/tree";
 import type { FC } from "react";
-import { useCallback } from "react";
 import { useMemo } from "react";
 
 interface TreeViewProps {

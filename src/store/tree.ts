@@ -2,7 +2,7 @@ import { componentType } from "@/constants/componentType";
 import type { Node } from "@/core/DSL/interface/node";
 import { injectNode } from "@/core/Render/ViewRender/utils/injectNode";
 import type { ButtonInject } from "@/package/Base/Button/interface/inject";
-import type { onDropInject } from "@/package/Layout/flex/interface/inject";
+import type { onDropInject } from "@/package/Layout/Flex/interface/inject";
 import { atom } from "recoil";
 
 export const sonButton: Node = {
@@ -14,17 +14,11 @@ export const sonButton: Node = {
   id: "Button#1"
 };
 const sonFlex: Node = {
-  name: "flex",
+  name: "Flex",
   type: componentType.Layout,
   val: "sonFlex",
   children: [
     injectNode<ButtonInject>(sonButton, {
-      onClick: () => {
-        alert("点击了勿忘我!");
-      },
-      onShow: () => {
-        alert("这是第一次显示");
-      },
       text: "勿忘我"
     })
   ],
@@ -36,7 +30,7 @@ const sonFlex: Node = {
 export const DataTree = atom({
   key: "DataTree",
   default: {
-    name: "flex",
+    name: "Flex",
     type: componentType.Layout,
     children: [
       injectNode<onDropInject>(sonFlex, {

@@ -80,11 +80,19 @@ export const Render: FlexType = ({
   return (
     <DndProvider backend={HTML5Backend}>
       <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          ...propStyle
-        }}
+        style={
+          dragID === "root"
+            ? {
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+              }
+            : {
+                display: "flex",
+                justifyContent: "center",
+                ...propStyle
+              }
+        }
       >
         {nodes}
       </div>

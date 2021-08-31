@@ -1,4 +1,5 @@
-import { FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import type { componentType } from "@/constants/componentType";
 import { useMemo } from "react";
 import Loading from "@/components/Loading";
@@ -6,15 +7,16 @@ import Loading from "@/components/Loading";
 import { getComponentPath } from "@/constants/componentType";
 import { dynamic } from "umi";
 import type { Node } from "../DSL/interface/node";
+import { comUtils } from "../Render/ViewRender/container";
 
 export const map = new Map<string, any>();
-export const didShowMap = new Map<string, boolean>();
+
 const DynamicFunc = (type: componentType, name: string, config: any) => {
   const path = getComponentPath(type, name);
   // 如果已经加载了组件
   // 则直接使用
-  if (!didShowMap.has(String(config.node.id))) {
-    didShowMap.set(String(config.node.id), false);
+  if (!comUtils.beShown(config.node.id)) {
+    comUtils.initializeComponent(config.node);
   }
   if (map.has(`@/package/${path}`)) {
     const Render = map.get(`@/package/${path}`);

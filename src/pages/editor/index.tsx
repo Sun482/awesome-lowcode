@@ -7,7 +7,7 @@ import { injectNode } from "@/core/Render/ViewRender/utils/injectNode";
 import type { DraggableEvent, DraggableData } from "react-draggable";
 import Draggable from "react-draggable";
 
-import type { onDropInject } from "@/package/Layout/flex/interface/inject";
+import type { onDropInject } from "@/package/Layout/Flex/interface/inject";
 import { DataTree } from "@/store/tree";
 import Layout, { Content } from "antd/lib/layout/layout";
 import Sider from "antd/lib/layout/Sider";
@@ -19,6 +19,9 @@ import ViewRender from "@/core/Render/ViewRender/ViewRender";
 import { useCallback } from "react";
 import { TreeView } from "../tree";
 import { RecoilRoot, useRecoilState } from "recoil";
+import { ComponentTab } from "./components/ComponentTab/ComponentTab";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const { TabPane } = Tabs;
 const IndexPage = () => {
@@ -85,48 +88,43 @@ const IndexPage = () => {
     });
   }, [tree]);
   return (
-    <Layout style={{ height: "calc(100vh - 48px)" }}>
-      <Sider theme="light" width="350px" style={{ padding: "10px" }}>
-        <Tabs tabPosition="left">
-          <TabPane tab={"Base"} key={1}>
-            Content of tab 1
-          </TabPane>
-          <TabPane tab={"Layout"} key={2}>
-            <TreeView root={root} />
-          </TabPane>
-        </Tabs>
-      </Sider>
-      <Content style={{ overflow: "hidden" }}>
-        <div
-          onMouseDown={mousedownfn}
-          onMouseMove={mousemovefn}
-          onMouseUp={mouseupfn}
-          onMouseLeave={mouseupfn}
-          ref={containerRef}
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <Draggable
-            position={dragState}
-            handle=".js_box"
-            onStop={(e: DraggableEvent, data: DraggableData) => {
-              setDragState({ x: data.x, y: data.y });
-            }}
+    <DndProvider backend={HTML5Backend}>
+      <Layout style={{ height: "calc(100vh - 48px)" }}>
+        <Sider theme="light" width="300px" style={{ padding: "10px" }}>
+          <ComponentTab root={root} />
+        </Sider>
+        <Content style={{ overflow: "hidden" }}>
+          <div
+            onMouseDown={mousedownfn}
+            onMouseMove={mousemovefn}
+            onMouseUp={mouseupfn}
+            onMouseLeave={mouseupfn}
+            ref={containerRef}
+            style={{ display: "flex", justifyContent: "center" }}
           >
-            <ViewRender
-              root={root}
-              setTree={setTree}
-              handleOnDrop={handleOnDrop}
-              style={{
-                minHeight: "calc(100vh - 48px)",
-                width: "400px",
-                backgroundColor: "white",
-                boxShadow: "rgb(140 188 236 / 8%) 0px 2px 13px 1px"
+            <Draggable
+              position={dragState}
+              handle=".js_box"
+              onStop={(e: DraggableEvent, data: DraggableData) => {
+                setDragState({ x: data.x, y: data.y });
               }}
-            />
-          </Draggable>
-        </div>
-      </Content>
-    </Layout>
+            >
+              <ViewRender
+                root={root}
+                setTree={setTree}
+                handleOnDrop={handleOnDrop}
+                style={{
+                  minHeight: "calc(100vh - 48px)",
+                  width: "400px",
+                  backgroundColor: "white",
+                  boxShadow: "rgb(140 188 236 / 8%) 0px 2px 13px 1px"
+                }}
+              />
+            </Draggable>
+          </div>
+        </Content>
+      </Layout>
+    </DndProvider>
   );
 };
 export default function Index() {
