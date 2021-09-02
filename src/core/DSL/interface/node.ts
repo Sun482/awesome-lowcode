@@ -1,4 +1,5 @@
-import { componentType } from "@/constants/componentType";
+import type { componentType } from "@/constants/componentType";
+import { ComponentSchema } from "@/package/common";
 
 export type NodeType = "normal";
 
@@ -26,4 +27,9 @@ export interface NodeUtil {
    * @param node 要添加的节点
    */
   appendChild: (target: Node, node: Node | null) => any;
+  /**
+   * 从schema初始化节点
+   * @param schema schema 信息
+   */
+  fromSchema: (schema: ComponentSchema) => Node | null;
 }

@@ -1,34 +1,53 @@
 /* eslint-disable no-param-reassign */
-import type { Node } from "@/core/DSL/interface/node";
-import { injectable } from "inversify";
-import type { componentUtils } from "../interface/map";
+import { IDENTIFIERS } from "@/common/container/identifiers";
+import type {
+  componentPathType,
+  componentType
+} from "@/constants/componentType";
+import { componentPathObj } from "@/constants/componentType";
+import type { MapUtilsInterface } from "@/core/DSL/interface/map";
+import type { ComponentProps } from "@/package/common";
+
+import { inject, injectable } from "inversify";
+import type { componentUtils } from "../interface/comUtilsInterface";
 
 @injectable()
 export class ComUtils implements componentUtils {
-  didShowMap: Map<string, boolean>;
-  constructor() {
-    this.didShowMap = new Map();
-  }
+  private didShowMap: Map<string, boolean>;
+  private componentRenderMap: Map<string, ComponentProps>;
+  private mapUtil: MapUtilsInterface;
 
+  constructor(@inject(IDENTIFIERS.MapUtils) mapUtil: MapUtilsInterface) {
+    this.mapUtil = mapUtil;
+    this.didShowMap = this.mapUtil.ViewRenderShowMap;
+    this.componentRenderMap = this.mapUtil.ComponentRenderMap;
+  }
+  hasRender(componentPath: string) {
+    return this.componentRenderMap.has(componentPath);
+  }
+  getRender(componentPath: string) {
+    return this.componentRenderMap.get(componentPath) || null;
+  }
+  setRender(componentPath: string, Render: ComponentProps) {
+    if (this.hasRender(componentPath)) {
+      console.warn(`Render: ${componentPath}已加载!`);
+      return false;
+    }
+    this.componentRenderMap.set(componentPath, Render);
+    return true;
+  }
   beShown(nodeID: string) {
     if (this.didShowMap.has(nodeID)) {
       return this.didShowMap.get(nodeID) as boolean;
     }
     return false;
   }
-  didInitialize(node: Node) {
-    return this.beShown(node.id);
-  }
-  initializeComponent(node: Node) {
-    if (this.beShown(node.id)) return false;
-    this.didShowMap.set(node.id, false);
+  setShown(nodeID: string, shown: boolean) {
+    this.didShowMap.set(nodeID, shown);
     return true;
   }
-  setShown(nodeID: string, shown: boolean) {
-    if (this.didShowMap.has(nodeID)) {
-      this.didShowMap.set(nodeID, shown);
-      return true;
-    }
-    return false;
+  getComponentPath(type: componentType, name: string) {
+    const key = Object.keys(componentPathObj)[type] as componentPathType;
+    return `${componentPathObj[key]}/${name}`;
   }
 }

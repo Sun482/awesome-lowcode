@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { DragableItemProps } from "@/core/DragableItem/interface/type";
+
 import { Node } from "@/core/DSL/interface/node";
 import type { ComponentSchema } from "@/package/common";
 import type { PackageItem } from "@/package/schema";
@@ -7,7 +7,7 @@ import { Package } from "@/package/schema";
 import { TreeView } from "@/pages/tree";
 import { Card, Tabs } from "antd";
 import { FC, useRef } from "react";
-import { useDrop, useDrag } from "react-dnd";
+import { useDrag } from "react-dnd";
 
 const { TabPane } = Tabs;
 interface ComponentSourceProps {

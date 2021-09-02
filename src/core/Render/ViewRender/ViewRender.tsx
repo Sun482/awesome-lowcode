@@ -8,12 +8,13 @@ import { memo } from "react";
 
 import { useDrop } from "react-dnd";
 
-import type { ViewRenderProps } from "./interface/type";
+import type { ViewRenderProps } from "./interface/viewRenderProps";
 import { commonInject } from "./utils/injectNode";
 import "./index.less";
-import { ComponentSchema } from "@/package/common";
+
 import produce from "immer";
 import { noder } from "@/core/DSL/container";
+import type { ComponentSchema } from "@/package/common";
 
 const ViewRender: FC<ViewRenderProps> = ({
   root,
@@ -35,12 +36,7 @@ const ViewRender: FC<ViewRenderProps> = ({
       const schema = item.schema as ComponentSchema;
       setTree(
         produce((draft: any) => {
-          noder.appendChild(draft, {
-            name: schema.name,
-            type: schema.type,
-            children: [],
-            id: "newId"
-          });
+          noder.appendChild(draft, noder.fromSchema(schema));
         })
       );
     }

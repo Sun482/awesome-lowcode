@@ -90,7 +90,7 @@ const IndexPage = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <Layout style={{ height: "calc(100vh - 48px)" }}>
-        <Sider theme="light" width="300px" style={{ padding: "10px" }}>
+        <Sider theme="light" width="320px" style={{ padding: "10px" }}>
           <ComponentTab root={root} />
         </Sider>
         <Content style={{ overflow: "hidden" }}>

@@ -1,27 +1,26 @@
 import type { FC } from "react";
 import { memo } from "react";
 import type { componentType } from "@/constants/componentType";
+import { getComponentPath } from "@/constants/componentType";
 import { useMemo } from "react";
 import Loading from "@/components/Loading";
 
-import { getComponentPath } from "@/constants/componentType";
 import { dynamic } from "umi";
 import type { Node } from "../DSL/interface/node";
-import { comUtils } from "../Render/ViewRender/container";
-
-export const map = new Map<string, any>();
+import { comUtils } from "../DSL/container";
 
 const DynamicFunc = (type: componentType, name: string, config: any) => {
-  const path = getComponentPath(type, name);
+  const path = comUtils.getComponentPath(type, name);
+  if (!comUtils.beShown(config.node.id)) {
+    comUtils.setShown(config.node.id, false);
+  }
+
   // 如果已经加载了组件
   // 则直接使用
-  if (!comUtils.beShown(config.node.id)) {
-    comUtils.initializeComponent(config.node);
-  }
-  if (map.has(`@/package/${path}`)) {
-    const Render = map.get(`@/package/${path}`);
+  if (comUtils.hasRender(path)) {
+    const Render = comUtils.getRender(path);
     return () => {
-      return <Render {...config} />;
+      return Render ? <Render {...config} /> : null;
     };
   }
 
@@ -30,7 +29,7 @@ const DynamicFunc = (type: componentType, name: string, config: any) => {
   return dynamic({
     async loader() {
       const { Render } = await import(`@/package/${path}`);
-      map.set(`@/package/${path}`, Render);
+      comUtils.setRender(path, Render);
       return () => {
         return <Render {...config} />;
       };

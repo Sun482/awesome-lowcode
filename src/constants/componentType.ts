@@ -3,13 +3,9 @@ export enum componentType {
   Base, // 基本组件，例如按钮、文本等
   Chart // 图表
 }
-const componentPath = {
+export const componentPathObj = {
   Layout: "Layout",
-  Base: "Base"
+  Base: "Base",
+  Chart: "Chart"
 };
-type componentPathType = keyof typeof componentPath;
-
-export const getComponentPath = (type: componentType, name: string) => {
-  const key = Object.keys(componentPath)[type] as componentPathType;
-  return `${componentPath[key]}/${name}`;
-};
+export type componentPathType = keyof typeof componentPathObj;
