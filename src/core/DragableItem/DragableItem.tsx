@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { FC } from "react";
 import { useRef } from "react";
+import type { DropTargetMonitor, XYCoord } from "react-dnd";
 import { useDrag, useDrop } from "react-dnd";
 import type { DragableItemProps } from "./interface/type";
 import _style from "./DragableItem.less";
@@ -12,7 +13,7 @@ export const DragableItem: FC<DragableItemProps> = ({
   onDrop,
   node
 }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [{ isHovering }, drop] = useDrop<
     DragableItemProps,
     void,
@@ -25,6 +26,7 @@ export const DragableItem: FC<DragableItemProps> = ({
         isHovering: monitor.isOver()
       };
     },
+
     drop: (item, monitor) => {
       if (typeof onDrop === "function") onDrop(node, item.node);
     }

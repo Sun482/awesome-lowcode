@@ -5,7 +5,7 @@ import type { MapUtilsInterface } from "../interface/map";
 @injectable()
 export class MapUtils implements MapUtilsInterface {
   ViewRenderShowMap: Map<string, boolean>;
-  ComponentCountMap: Map<componentType, number>;
+  ComponentCountMap: Map<string, number>;
   ComponentRenderMap: Map<string, any>;
   constructor() {
     this.ViewRenderShowMap = new Map();

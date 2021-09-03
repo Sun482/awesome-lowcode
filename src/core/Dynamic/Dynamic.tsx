@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { memo } from "react";
 import type { componentType } from "@/constants/componentType";
-import { getComponentPath } from "@/constants/componentType";
+
 import { useMemo } from "react";
 import Loading from "@/components/Loading";
 

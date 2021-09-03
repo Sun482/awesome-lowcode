@@ -5,5 +5,6 @@ export const FlexSchema: ComponentSchema = {
   type: componentType.Layout,
   name: "Flex",
   alia: "Flex布局",
-  total: 5
+  total: 5,
+  style: { padding: "10px" }
 };

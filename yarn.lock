@@ -6379,6 +6379,11 @@ immer@^9.0.5:
   resolved "https://registry.nlark.com/immer/download/immer-9.0.5.tgz#a7154f34fe7064f15f00554cc94c66cc0bf453ec"
   integrity sha1-pxVPNP5wZPFfAFVMyUxmzAv0U+w=
 
+immutability-helper@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.nlark.com/immutability-helper/download/immutability-helper-3.1.1.tgz#2b86b2286ed3b1241c9e23b7b21e0444f52f77b7"
+  integrity sha1-K4ayKG7TsSQcniO3sh4ERPUvd7c=
+
 immutable@^3.8.1:
   version "3.8.2"
   resolved "https://registry.nlark.com/immutable/download/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"

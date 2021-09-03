@@ -25,7 +25,7 @@ const ViewRender: FC<ViewRenderProps> = ({
 }) => {
   const ref = useRef(null);
   const [{ isHovering }, drop] = useDrop({
-    accept: "ComponentSource",
+    accept: "ComponentSource", // 接受添加组件的请求
     collect(monitor) {
       return {
         handlerId: monitor.getHandlerId(),
