@@ -19,7 +19,6 @@
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
     "gg-editor": "^2.0.2",
     "immer": "^9.0.5",
-    "immutability-helper": "^3.1.1",
     "inversify": "^5.1.1",
     "moment": "^2.22.2",
     "numeral": "^2.0.6",
@@ -29,7 +28,6 @@
     "react-dom": "17.x",
     "react-draggable": "^4.4.4",
     "react-fittext": "^1.0.0",
-    "react-use": "^17.2.4",
     "recoil": "^0.4.1",
     "umi": "^3.5.17"
   },
