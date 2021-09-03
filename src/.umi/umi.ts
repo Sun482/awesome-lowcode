@@ -1,6 +1,6 @@
 // @ts-nocheck
 import './core/polyfill';
-import '@@/core/devScripts';
+
 import { plugin } from './core/plugin';
 import './core/pluginRegister';
 import { createHistory } from './core/history';
