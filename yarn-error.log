@@ -14,8 +14,14 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://github.com/types/react: ETIMEDOUT
-      at Timeout._onTimeout (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141409:19)
+  Error: https://github.com/types/react: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141376:19)
+      at Object.onceWrapper (events.js:421:28)
+      at ClientRequest.emit (events.js:315:20)
+      at TLSSocket.emitRequestTimeout (_http_client.js:784:9)
+      at Object.onceWrapper (events.js:421:28)
+      at TLSSocket.emit (events.js:327:22)
+      at TLSSocket.Socket._onTimeout (net.js:483:8)
       at listOnTimeout (internal/timers.js:554:17)
       at processTimers (internal/timers.js:497:7)
 
@@ -41,7 +47,6 @@ npm manifest:
       "bizcharts-plugin-slider": "^2.1.1-beta.1",
       "gg-editor": "^2.0.2",
       "immer": "^9.0.5",
-      "immutability-helper": "^3.1.1",
       "inversify": "^5.1.1",
       "moment": "^2.22.2",
       "numeral": "^2.0.6",
@@ -51,7 +56,6 @@ npm manifest:
       "react-dom": "17.x",
       "react-draggable": "^4.4.4",
       "react-fittext": "^1.0.0",
-      "react-use": "^17.2.4",
       "recoil": "^0.4.1",
       "umi": "^3.5.17"
     },
@@ -1971,11 +1975,6 @@ Lockfile:
     dependencies:
       "@types/istanbul-lib-report" "*"
   
-  "@types/js-cookie@^2.2.6":
-    version "2.2.7"
-    resolved "https://registry.nlark.com/@types/js-cookie/download/@types/js-cookie-2.2.7.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fjs-cookie%2Fdownload%2F%40types%2Fjs-cookie-2.2.7.tgz#226a9e31680835a6188e887f3988e60c04d3f6a3"
-    integrity sha1-ImqeMWgINaYYjoh/OYjmDATT9qM=
-  
   "@types/json-schema@*", "@types/json-schema@^7.0.7", "@types/json-schema@^7.0.8":
     version "7.0.9"
     resolved "https://registry.nlark.com/@types/json-schema/download/@types/json-schema-7.0.9.tgz?cache=0&sync_timestamp=1629708189890&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fjson-schema%2Fdownload%2F%40types%2Fjson-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
@@ -2634,11 +2633,6 @@ Lockfile:
     integrity sha1-dM7nXWK+KChUXiW0DfIK9/iVnSw=
     dependencies:
       "@umijs/deps" "3.5.17"
-  
-  "@xobotyi/scrollbar-width@^1.9.5":
-    version "1.9.5"
-    resolved "https://registry.nlark.com/@xobotyi/scrollbar-width/download/@xobotyi/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"
-    integrity sha1-gCJKaRknL0Bbh5E8oTuSkpvfPE0=
   
   abab@^2.0.0, abab@^2.0.3, abab@^2.0.5:
     version "2.0.5"
@@ -3941,7 +3935,7 @@ Lockfile:
     resolved "https://registry.nlark.com/copy-descriptor/download/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
     integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
   
-  copy-to-clipboard@^3.2.0, copy-to-clipboard@^3.3.1:
+  copy-to-clipboard@^3.2.0:
     version "3.3.1"
     resolved "https://registry.nlark.com/copy-to-clipboard/download/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
     integrity sha1-EVqhqZmP+rYZb5MHatbaO5E2Yq4=
@@ -4120,14 +4114,6 @@ Lockfile:
       postcss "^7.0.6"
       postcss-selector-parser "^5.0.0-rc.4"
   
-  css-in-js-utils@^2.0.0:
-    version "2.0.1"
-    resolved "https://registry.npm.taobao.org/css-in-js-utils/download/css-in-js-utils-2.0.1.tgz#3b472b398787291b47cfe3e44fecfdd9e914ba99"
-    integrity sha1-O0crOYeHKRtHz+PkT+z92ekUupk=
-    dependencies:
-      hyphenate-style-name "^1.0.2"
-      isobject "^3.0.1"
-  
   css-prefers-color-scheme@^3.1.1:
     version "3.1.1"
     resolved "https://registry.nlark.com/css-prefers-color-scheme/download/css-prefers-color-scheme-3.1.1.tgz#6f830a2714199d4f0d0d0bb8a27916ed65cff1f4"
@@ -4152,14 +4138,6 @@ Lockfile:
     dependencies:
       inherits "^2.0.1"
       readable-stream "^1.0.33"
-  
-  css-tree@^1.1.2:
-    version "1.1.3"
-    resolved "https://registry.nlark.com/css-tree/download/css-tree-1.1.3.tgz#eb4870fb6fd7707327ec95c2ff2ab09b5e8db91d"
-    integrity sha1-60hw+2/XcHMn7JXC/yqwm16NuR0=
-    dependencies:
-      mdn-data "2.0.14"
-      source-map "^0.6.1"
   
   cssdb@^4.4.0:
     version "4.4.0"
@@ -4200,7 +4178,7 @@ Lockfile:
     dependencies:
       cssom "~0.3.6"
   
-  csstype@^3.0.2, csstype@^3.0.6:
+  csstype@^3.0.2:
     version "3.0.8"
     resolved "https://registry.nlark.com/csstype/download/csstype-3.0.8.tgz?cache=0&sync_timestamp=1618818466657&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcsstype%2Fdownload%2Fcsstype-3.0.8.tgz#d2266a792729fb227cd216fb572f43728e1ad340"
     integrity sha1-0iZqeScp+yJ80hb7Vy9Dco4a00A=
@@ -5706,20 +5684,10 @@ Lockfile:
     resolved "https://registry.nlark.com/fast-levenshtein/download/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
     integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
   
-  fast-shallow-equal@^1.0.0:
-    version "1.0.0"
-    resolved "https://registry.nlark.com/fast-shallow-equal/download/fast-shallow-equal-1.0.0.tgz#d4dcaf6472440dcefa6f88b98e3251e27f25628b"
-    integrity sha1-1NyvZHJEDc76b4i5jjJR4n8lYos=
-  
   fastest-levenshtein@^1.0.12:
     version "1.0.12"
     resolved "https://registry.npm.taobao.org/fastest-levenshtein/download/fastest-levenshtein-1.0.12.tgz#9990f7d3a88cc5a9ffd1f1745745251700d497e2"
     integrity sha1-mZD306iMxan/0fF0V0UlFwDUl+I=
-  
-  fastest-stable-stringify@^2.0.2:
-    version "2.0.2"
-    resolved "https://registry.npm.taobao.org/fastest-stable-stringify/download/fastest-stable-stringify-2.0.2.tgz#3757a6774f6ec8de40c4e86ec28ea02417214c76"
-    integrity sha1-N1emd09uyN5AxOhuwo6gJBchTHY=
   
   fastq@^1.6.0:
     version "1.12.0"
@@ -6401,11 +6369,6 @@ Lockfile:
     resolved "https://registry.nlark.com/human-signals/download/human-signals-1.1.1.tgz?cache=0&sync_timestamp=1624364612113&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fhuman-signals%2Fdownload%2Fhuman-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
     integrity sha1-xbHNFPUK6uCatsWf5jujOV/k36M=
   
-  hyphenate-style-name@^1.0.2:
-    version "1.0.4"
-    resolved "https://registry.npm.taobao.org/hyphenate-style-name/download/hyphenate-style-name-1.0.4.tgz#691879af8e220aea5750e8827db4ef62a54e361d"
-    integrity sha1-aRh5r44iCupXUOiCfbTvYqVONh0=
-  
   iconv-lite@0.4, iconv-lite@0.4.24:
     version "0.4.24"
     resolved "https://registry.nlark.com/iconv-lite/download/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -6451,11 +6414,6 @@ Lockfile:
     version "9.0.5"
     resolved "https://registry.nlark.com/immer/download/immer-9.0.5.tgz#a7154f34fe7064f15f00554cc94c66cc0bf453ec"
     integrity sha1-pxVPNP5wZPFfAFVMyUxmzAv0U+w=
-  
-  immutability-helper@^3.1.1:
-    version "3.1.1"
-    resolved "https://registry.nlark.com/immutability-helper/download/immutability-helper-3.1.1.tgz#2b86b2286ed3b1241c9e23b7b21e0444f52f77b7"
-    integrity sha1-K4ayKG7TsSQcniO3sh4ERPUvd7c=
   
   immutable@^3.8.1:
     version "3.8.2"
@@ -6562,13 +6520,6 @@ Lockfile:
     version "1.3.8"
     resolved "https://registry.npm.taobao.org/ini/download/ini-1.3.8.tgz?cache=0&sync_timestamp=1607907861968&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fini%2Fdownload%2Fini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
     integrity sha1-op2kJbSIBvNHZ6Tvzjlyaa8oQyw=
-  
-  inline-style-prefixer@^6.0.0:
-    version "6.0.0"
-    resolved "https://registry.npm.taobao.org/inline-style-prefixer/download/inline-style-prefixer-6.0.0.tgz#f73d5dbf2855733d6b153a4d24b7b47a73e9770b"
-    integrity sha1-9z1dvyhVcz1rFTpNJLe0enPpdws=
-    dependencies:
-      css-in-js-utils "^2.0.0"
   
   internal-slot@^1.0.3:
     version "1.0.3"
@@ -7544,11 +7495,6 @@ Lockfile:
     resolved "https://registry.nlark.com/joycon/download/joycon-2.2.5.tgz#8d4cf4cbb2544d7b7583c216fcdfec19f6be1615"
     integrity sha1-jUz0y7JUTXt1g8IW/N/sGfa+FhU=
   
-  js-cookie@^2.2.1:
-    version "2.2.1"
-    resolved "https://registry.nlark.com/js-cookie/download/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
-    integrity sha1-aeEG3F1YBolFYpAqpbrsN0Tpsrg=
-  
   "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
     version "4.0.0"
     resolved "https://registry.nlark.com/js-tokens/download/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -8144,11 +8090,6 @@ Lockfile:
     resolved "https://registry.nlark.com/mdast-util-to-string/download/mdast-util-to-string-2.0.0.tgz#b8cfe6a713e1091cb5b728fc48885a4767f8b97b"
     integrity sha1-uM/mpxPhCRy1tyj8SIhaR2f4uXs=
   
-  mdn-data@2.0.14:
-    version "2.0.14"
-    resolved "https://registry.nlark.com/mdn-data/download/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
-    integrity sha1-cRP8QoGRfWPOKbQ0RvcB5owlulA=
-  
   mem@^5.0.0:
     version "5.1.1"
     resolved "https://registry.nlark.com/mem/download/mem-5.1.1.tgz?cache=0&sync_timestamp=1626534564687&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fmem%2Fdownload%2Fmem-5.1.1.tgz#7059b67bf9ac2c924c9f1cff7155a064394adfb3"
@@ -8385,20 +8326,6 @@ Lockfile:
     version "2.15.0"
     resolved "https://registry.nlark.com/nan/download/nan-2.15.0.tgz?cache=0&sync_timestamp=1628093719696&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnan%2Fdownload%2Fnan-2.15.0.tgz#3f34a473ff18e15c1b5626b62903b5ad6e665fee"
     integrity sha1-PzSkc/8Y4VwbVia2KQO1rW5mX+4=
-  
-  nano-css@^5.3.1:
-    version "5.3.4"
-    resolved "https://registry.nlark.com/nano-css/download/nano-css-5.3.4.tgz#40af6a83a76f84204f346e8ccaa9169cdae9167b"
-    integrity sha1-QK9qg6dvhCBPNG6MyqkWnNrpFns=
-    dependencies:
-      css-tree "^1.1.2"
-      csstype "^3.0.6"
-      fastest-stable-stringify "^2.0.2"
-      inline-style-prefixer "^6.0.0"
-      rtl-css-js "^1.14.0"
-      sourcemap-codec "^1.4.8"
-      stacktrace-js "^2.0.2"
-      stylis "^4.0.6"
   
   nanoid@^3.1.23:
     version "3.1.25"
@@ -10377,31 +10304,6 @@ Lockfile:
       raf "^3.1.0"
       tween-functions "^1.0.1"
   
-  react-universal-interface@^0.6.2:
-    version "0.6.2"
-    resolved "https://registry.nlark.com/react-universal-interface/download/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
-    integrity sha1-Xo1DigFymk27y+7OsLhr4Ub+Kzs=
-  
-  react-use@^17.2.4:
-    version "17.2.4"
-    resolved "https://registry.nlark.com/react-use/download/react-use-17.2.4.tgz#1f89be3db0a8237c79253db0a15e12bbe3cfeff1"
-    integrity sha1-H4m+PbCoI3x5JT2woV4Su+PP7/E=
-    dependencies:
-      "@types/js-cookie" "^2.2.6"
-      "@xobotyi/scrollbar-width" "^1.9.5"
-      copy-to-clipboard "^3.3.1"
-      fast-deep-equal "^3.1.3"
-      fast-shallow-equal "^1.0.0"
-      js-cookie "^2.2.1"
-      nano-css "^5.3.1"
-      react-universal-interface "^0.6.2"
-      resize-observer-polyfill "^1.5.1"
-      screenfull "^5.1.0"
-      set-harmonic-interval "^1.0.1"
-      throttle-debounce "^3.0.1"
-      ts-easing "^0.2.0"
-      tslib "^2.1.0"
-  
   react@16.x:
     version "16.14.0"
     resolved "https://registry.nlark.com/react/download/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
@@ -11092,13 +10994,6 @@ Lockfile:
     resolved "https://registry.nlark.com/rsvp/download/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
     integrity sha1-yPFVMR0Wf2jyHhaN9x7FsIMRNzQ=
   
-  rtl-css-js@^1.14.0:
-    version "1.14.2"
-    resolved "https://registry.nlark.com/rtl-css-js/download/rtl-css-js-1.14.2.tgz#fb2168433af9cdabee8a1613f4e2cbd1148acf6f"
-    integrity sha1-+yFoQzr5zavuihYT9OLL0RSKz28=
-    dependencies:
-      "@babel/runtime" "^7.1.2"
-  
   run-parallel@^1.1.9:
     version "1.2.0"
     resolved "https://registry.nlark.com/run-parallel/download/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"
@@ -11210,11 +11105,6 @@ Lockfile:
       ajv "^6.12.5"
       ajv-keywords "^3.5.2"
   
-  screenfull@^5.1.0:
-    version "5.1.0"
-    resolved "https://registry.nlark.com/screenfull/download/screenfull-5.1.0.tgz#85c13c70f4ead4c1b8a935c70010dfdcd2c0e5c8"
-    integrity sha1-hcE8cPTq1MG4qTXHABDf3NLA5cg=
-  
   scroll-into-view-if-needed@^2.2.25:
     version "2.2.28"
     resolved "https://registry.npm.taobao.org/scroll-into-view-if-needed/download/scroll-into-view-if-needed-2.2.28.tgz#5a15b2f58a52642c88c8eca584644e01703d645a"
@@ -11258,11 +11148,6 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.nlark.com/set-blocking/download/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
     integrity sha1-BF+XgtARrppoA93TgrJDkrPYkPc=
-  
-  set-harmonic-interval@^1.0.1:
-    version "1.0.1"
-    resolved "https://registry.npm.taobao.org/set-harmonic-interval/download/set-harmonic-interval-1.0.1.tgz#e1773705539cdfb80ce1c3d99e7f298bb3995249"
-    integrity sha1-4Xc3BVOc37gM4cPZnn8pi7OZUkk=
   
   set-value@^2.0.0, set-value@^2.0.1:
     version "2.0.1"
@@ -11472,11 +11357,6 @@ Lockfile:
     dependencies:
       amdefine ">=0.0.4"
   
-  source-map@0.5.6:
-    version "0.5.6"
-    resolved "https://registry.npm.taobao.org/source-map/download/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
-    integrity sha1-dc449SvwczxafwwRjYEzSiu19BI=
-  
   source-map@^0.5.0, source-map@^0.5.6, source-map@~0.5.1:
     version "0.5.7"
     resolved "https://registry.npm.taobao.org/source-map/download/source-map-0.5.7.tgz?cache=0&sync_timestamp=1598275560784&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsource-map%2Fdownload%2Fsource-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
@@ -11491,11 +11371,6 @@ Lockfile:
     version "0.7.3"
     resolved "https://registry.npm.taobao.org/source-map/download/source-map-0.7.3.tgz?cache=0&sync_timestamp=1598275560784&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsource-map%2Fdownload%2Fsource-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
     integrity sha1-UwL4FpAxc1ImVECS5kmB91F1A4M=
-  
-  sourcemap-codec@^1.4.8:
-    version "1.4.8"
-    resolved "https://registry.nlark.com/sourcemap-codec/download/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
-    integrity sha1-6oBL2UhXQC5pktBaOO8a41qatMQ=
   
   spdx-correct@^3.0.0:
     version "3.1.1"
@@ -11567,13 +11442,6 @@ Lockfile:
       safer-buffer "^2.0.2"
       tweetnacl "~0.14.0"
   
-  stack-generator@^2.0.5:
-    version "2.0.5"
-    resolved "https://registry.npm.taobao.org/stack-generator/download/stack-generator-2.0.5.tgz#fb00e5b4ee97de603e0773ea78ce944d81596c36"
-    integrity sha1-+wDltO6X3mA+B3PqeM6UTYFZbDY=
-    dependencies:
-      stackframe "^1.1.1"
-  
   stack-utils@^1.0.1:
     version "1.0.5"
     resolved "https://registry.nlark.com/stack-utils/download/stack-utils-1.0.5.tgz#a19b0b01947e0029c8e451d5d61a498f5bb1471b"
@@ -11592,23 +11460,6 @@ Lockfile:
     version "1.2.0"
     resolved "https://registry.npm.taobao.org/stackframe/download/stackframe-1.2.0.tgz#52429492d63c62eb989804c11552e3d22e779303"
     integrity sha1-UkKUktY8YuuYmATBFVLj0i53kwM=
-  
-  stacktrace-gps@^3.0.4:
-    version "3.0.4"
-    resolved "https://registry.npm.taobao.org/stacktrace-gps/download/stacktrace-gps-3.0.4.tgz#7688dc2fc09ffb3a13165ebe0dbcaf41bcf0c69a"
-    integrity sha1-dojcL8Cf+zoTFl6+DbyvQbzwxpo=
-    dependencies:
-      source-map "0.5.6"
-      stackframe "^1.1.1"
-  
-  stacktrace-js@^2.0.2:
-    version "2.0.2"
-    resolved "https://registry.npm.taobao.org/stacktrace-js/download/stacktrace-js-2.0.2.tgz#4ca93ea9f494752d55709a081d400fdaebee897b"
-    integrity sha1-TKk+qfSUdS1VcJoIHUAP2uvuiXs=
-    dependencies:
-      error-stack-parser "^2.0.6"
-      stack-generator "^2.0.5"
-      stacktrace-gps "^3.0.4"
   
   state-toggle@^1.0.0:
     version "1.0.3"
@@ -12002,11 +11853,6 @@ Lockfile:
       svg-tags "^1.0.0"
       table "^5.0.0"
   
-  stylis@^4.0.6:
-    version "4.0.10"
-    resolved "https://registry.nlark.com/stylis/download/stylis-4.0.10.tgz#446512d1097197ab3f02fb3c258358c3f7a14240"
-    integrity sha1-RGUS0Qlxl6s/Avs8JYNYw/ehQkA=
-  
   sugarss@^2.0.0:
     version "2.0.0"
     resolved "https://registry.nlark.com/sugarss/download/sugarss-2.0.0.tgz#ddd76e0124b297d40bf3cca31c8b22ecb43bc61d"
@@ -12153,11 +11999,6 @@ Lockfile:
     version "5.0.0"
     resolved "https://registry.nlark.com/throat/download/throat-5.0.0.tgz#c5199235803aad18754a667d659b5e72ce16764b"
     integrity sha1-xRmSNYA6rRh1SmZ9ZZtecs4Wdks=
-  
-  throttle-debounce@^3.0.1:
-    version "3.0.1"
-    resolved "https://registry.nlark.com/throttle-debounce/download/throttle-debounce-3.0.1.tgz#32f94d84dfa894f786c9a1f290e7a645b6a19abb"
-    integrity sha1-MvlNhN+olPeGyaHykOemRbahmrs=
   
   through2@^0.6.1, through2@^0.6.3, through2@~0.6.1:
     version "0.6.5"
@@ -12316,11 +12157,6 @@ Lockfile:
     resolved "https://registry.nlark.com/trough/download/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
     integrity sha1-uLY5zvrX0LsqvTfUM/+Ck++l9AY=
   
-  ts-easing@^0.2.0:
-    version "0.2.0"
-    resolved "https://registry.npm.taobao.org/ts-easing/download/ts-easing-0.2.0.tgz#c8a8a35025105566588d87dbda05dd7fbfa5a4ec"
-    integrity sha1-yKijUCUQVWZYjYfb2gXdf7+lpOw=
-  
   tsconfig-paths@^3.11.0:
     version "3.11.0"
     resolved "https://registry.nlark.com/tsconfig-paths/download/tsconfig-paths-3.11.0.tgz#954c1fe973da6339c78e06b03ce2e48810b65f36"
@@ -12336,7 +12172,7 @@ Lockfile:
     resolved "https://registry.nlark.com/tslib/download/tslib-1.14.1.tgz?cache=0&sync_timestamp=1628722556410&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
     integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
   
-  tslib@^2.0.3, tslib@^2.1.0:
+  tslib@^2.0.3:
     version "2.3.1"
     resolved "https://registry.nlark.com/tslib/download/tslib-2.3.1.tgz?cache=0&sync_timestamp=1628722556410&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
     integrity sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=

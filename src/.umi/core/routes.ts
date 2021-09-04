@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { ApplyPluginsType, dynamic } from '/Users/apple/Projects/awesome-lowcode/node_modules/umi/node_modules/@umijs/runtime';
+import { ApplyPluginsType, dynamic } from '/Users/apple/Projects/awesome-lowcode/node_modules/.pnpm/registry.nlark.com+@umijs+runtime@3.5.17_react@16.14.0/node_modules/@umijs/runtime';
 import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 import LoadingComponent from '@/components/Loading';

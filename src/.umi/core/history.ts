@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { createBrowserHistory, History } from '/Users/apple/Projects/awesome-lowcode/node_modules/umi/node_modules/@umijs/runtime';
+import { createBrowserHistory, History } from '/Users/apple/Projects/awesome-lowcode/node_modules/.pnpm/registry.nlark.com+@umijs+runtime@3.5.17_react@16.14.0/node_modules/@umijs/runtime';
 
 let options = {
   "basename": "/"

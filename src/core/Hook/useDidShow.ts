@@ -1,3 +1,4 @@
+import { useState } from "@umijs/renderer-react/node_modules/@types/react";
 import { useEffect } from "react";
 import { comUtils } from "../DSL/container";
 
@@ -11,3 +12,4 @@ export const useDidShow = (callback: any, nodeID: string) => {
     }
   }, []);
 };
+

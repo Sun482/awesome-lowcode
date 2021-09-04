@@ -9,18 +9,40 @@ import type { MapUtilsInterface } from "@/core/DSL/interface/map";
 import type { ComponentProps } from "@/package/common";
 
 import { inject, injectable } from "inversify";
+import { ReactNode } from "react";
 import type { componentUtils } from "../interface/comUtilsInterface";
 
 @injectable()
 export class ComUtils implements componentUtils {
   private didShowMap: Map<string, boolean>;
   private componentRenderMap: Map<string, ComponentProps>;
+  private componentInstanceMap: Map<string, ReactNode>;
   private mapUtil: MapUtilsInterface;
 
   constructor(@inject(IDENTIFIERS.MapUtils) mapUtil: MapUtilsInterface) {
     this.mapUtil = mapUtil;
     this.didShowMap = this.mapUtil.ViewRenderShowMap;
     this.componentRenderMap = this.mapUtil.ComponentRenderMap;
+    this.componentInstanceMap = this.mapUtil.ComponentInstanceMap;
+  }
+  hasInstance(nodeID: string) {
+    return this.componentInstanceMap.has(nodeID);
+  }
+
+  setInstance(nodeID: string, instance: ReactNode) {
+    if (this.componentInstanceMap.has(nodeID)) {
+      console.warn(`实力${nodeID}已注册!`);
+      return false;
+    }
+    this.componentInstanceMap.set(nodeID, instance);
+    return true;
+  }
+  getInstance(nodeID: string) {
+    if (this.componentInstanceMap.has(nodeID)) {
+      return this.componentInstanceMap.get(nodeID);
+    }
+    console.error(`实例${nodeID}不存在!`);
+    return null;
   }
   hasRender(componentPath: string) {
     return this.componentRenderMap.has(componentPath);

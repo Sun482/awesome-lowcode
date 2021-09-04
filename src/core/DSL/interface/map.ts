@@ -8,4 +8,6 @@ export interface MapUtilsInterface {
   readonly ComponentCountMap: Map<string, number>;
   // ComponentRenderMap: 已经加载入内存的组件Render
   readonly ComponentRenderMap: Map<string, ComponentProps>;
+  // ComponentInstanceMap: 画布上的React组件实例
+  readonly ComponentInstanceMap: Map<string, any>;
 }

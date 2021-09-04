@@ -1,11 +1,11 @@
 // @ts-nocheck
 import './core/polyfill';
-
+import '@@/core/devScripts';
 import { plugin } from './core/plugin';
 import './core/pluginRegister';
 import { createHistory } from './core/history';
-import { ApplyPluginsType } from '/Users/apple/Projects/awesome-lowcode/node_modules/umi/node_modules/@umijs/runtime';
-import { renderClient } from '/Users/apple/Projects/awesome-lowcode/node_modules/@umijs/renderer-react';
+import { ApplyPluginsType } from '/Users/apple/Projects/awesome-lowcode/node_modules/.pnpm/registry.nlark.com+@umijs+runtime@3.5.17_react@16.14.0/node_modules/@umijs/runtime';
+import { renderClient } from '/Users/apple/Projects/awesome-lowcode/node_modules/.pnpm/registry.nlark.com+@umijs+renderer-react@3.5.17_39566ec7cc5fe716a59f91f7330320ef/node_modules/@umijs/renderer-react';
 import { getRoutes } from './core/routes';
 
 

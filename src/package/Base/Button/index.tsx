@@ -1,14 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 
-import { useDidShow } from "@/core/Hook";
 import { Button } from "antd";
 import { memo } from "react";
 import type { ButtonType } from "./interface/type";
 
-export const Render: ButtonType = memo(({ text, onClick, node, onShow }) => {
-  useDidShow(() => {
-    if (onShow && typeof onShow === "function") onShow();
-  }, node.id);
+export const Render: ButtonType = memo(({ text, onClick }) => {
   return (
     <Button
       onClick={(e) => {

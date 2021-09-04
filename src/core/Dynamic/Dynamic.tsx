@@ -8,19 +8,30 @@ import Loading from "@/components/Loading";
 import { dynamic } from "umi";
 import type { Node } from "../DSL/interface/node";
 import { comUtils } from "../DSL/container";
+import { notification } from "antd";
+import { useEffect } from "react";
 
 const DynamicFunc = (type: componentType, name: string, config: any) => {
   const path = comUtils.getComponentPath(type, name);
-  if (!comUtils.beShown(config.node.id)) {
-    comUtils.setShown(config.node.id, false);
-  }
 
-  // 如果已经加载了组件
-  // 则直接使用
-  if (comUtils.hasRender(path)) {
-    const Render = comUtils.getRender(path);
+  const nodeID = config.id;
+
+  if (comUtils.hasInstance(nodeID)) {
+    const Instance: FC<any> = comUtils.getInstance(nodeID);
+    notification.success({ message: `${nodeID}实例读取成功` });
     return () => {
-      return Render ? <Render {...config} /> : null;
+      return Instance ? <Instance {...config} /> : null;
+    };
+  }
+  if (comUtils.hasRender(path)) {
+    notification.success({ message: `${nodeID}Render读取成功` });
+    const Render = comUtils.getRender(path);
+    const Instance = (props: any) => {
+      return Render ? <Render {...props} /> : null;
+    };
+    comUtils.setInstance(nodeID, Instance);
+    return () => {
+      return <Instance {...config} />;
     };
   }
 
@@ -29,9 +40,14 @@ const DynamicFunc = (type: componentType, name: string, config: any) => {
   return dynamic({
     async loader() {
       const { Render } = await import(`@/package/${path}`);
+
+      const Instance = (props: any) => {
+        return <Render {...props} />;
+      };
       comUtils.setRender(path, Render);
+      comUtils.setInstance(nodeID, Instance);
       return () => {
-        return <Render {...config} />;
+        return <Instance {...config} />;
       };
     },
     loading: () => (
@@ -49,10 +65,10 @@ type DynamicType = {
 
 const DynamicEngine = <T extends DynamicType>(props: T) => {
   const { componentType: type, name, ...config } = props;
-
+  console.log(props);
   const Dynamic = useMemo(() => {
     return DynamicFunc(type, name, config) as FC<T>;
-  }, [type, name, config]);
+  }, [config, name, type]);
 
   return <Dynamic {...props} />;
 };
