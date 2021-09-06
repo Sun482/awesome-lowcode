@@ -9,11 +9,11 @@ specifiers:
   '@umijs/fabric': ^2.6.4
   '@umijs/plugin-esbuild': ^1.3.1
   '@umijs/preset-react': 1.x
+  '@umijs/route-utils': ^1.0.37
   '@umijs/test': ^3.5.17
   antd: ^4.16.13
   bizcharts: ^3.5.3-beta.0
   bizcharts-plugin-slider: ^2.1.1-beta.1
-  gg-editor: ^2.0.2
   immer: ^9.0.5
   inversify: ^5.1.1
   lint-staged: ^10.0.7
@@ -37,10 +37,10 @@ dependencies:
   '@antv/data-set': registry.nlark.com/@antv/data-set/0.11.8
   '@umijs/fabric': registry.nlark.com/@umijs/fabric/2.6.7
   '@umijs/plugin-esbuild': registry.nlark.com/@umijs/plugin-esbuild/1.3.1_umi@3.5.17
+  '@umijs/route-utils': registry.nlark.com/@umijs/route-utils/1.0.37
   antd: registry.nlark.com/antd/4.16.13_react-dom@17.0.2+react@17.0.2
   bizcharts: registry.nlark.com/bizcharts/3.5.9_react@17.0.2
   bizcharts-plugin-slider: registry.nlark.com/bizcharts-plugin-slider/2.1.1_81089aa8609ea439ca988c21b79ff02a
-  gg-editor: registry.nlark.com/gg-editor/2.0.4_react@17.0.2
   immer: registry.nlark.com/immer/9.0.6
   inversify: registry.nlark.com/inversify/5.1.1
   moment: registry.nlark.com/moment/2.29.1
@@ -51,7 +51,7 @@ dependencies:
   react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
   react-draggable: registry.nlark.com/react-draggable/4.4.4_react-dom@17.0.2+react@17.0.2
   react-fittext: registry.nlark.com/react-fittext/1.0.0_react-dom@17.0.2+react@17.0.2
-  recoil: registry.nlark.com/recoil/0.4.1_react@17.0.2
+  recoil: registry.nlark.com/recoil/0.4.1_react-dom@17.0.2+react@17.0.2
   umi: registry.nlark.com/umi/3.5.17
 
 devDependencies:
@@ -596,7 +596,6 @@ packages:
 
   /classnames/2.3.1:
     resolution: {integrity: sha1-38+jiR4wbsHa0QXQ6I9EF7hTXo4=, tarball: classnames/download/classnames-2.3.1.tgz}
-    dev: true
 
   /cli-cursor/3.1.0:
     resolution: {integrity: sha1-JkMFp65JDR0Dvwybp8kl0XU68wc=, tarball: cli-cursor/download/cli-cursor-3.1.0.tgz}
@@ -1805,6 +1804,9 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       p-locate: 4.1.0
+
+  /lodash.isequal/4.5.0:
+    resolution: {integrity: sha1-QVxEePK8wwEgwizhDtMib30+GOA=, tarball: lodash.isequal/download/lodash.isequal-4.5.0.tgz}
 
   /lodash.memoize/4.1.2:
     resolution: {integrity: sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=, tarball: lodash.memoize/download/lodash.memoize-4.1.2.tgz}
@@ -3567,8 +3569,8 @@ packages:
     dependencies:
       '@ant-design/colors': registry.nlark.com/@ant-design/colors/6.0.0
       '@ant-design/icons-svg': registry.nlark.com/@ant-design/icons-svg/4.1.0
-      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.3
-      classnames: registry.nlark.com/classnames/2.3.1
+      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.4
+      classnames: 2.3.1
       rc-util: registry.nlark.com/rc-util/5.13.2_react-dom@17.0.2+react@17.0.2
       react: registry.nlark.com/react/17.0.2
       react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
@@ -3666,31 +3668,12 @@ packages:
       '@antv/util': registry.nlark.com/@antv/util/1.3.1
     dev: false
 
-  registry.nlark.com/@antv/attr/0.0.7:
-    resolution: {integrity: sha1-Mz8lLONfw+/fitSARsJjpr4tfQQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/attr/download/@antv/attr-0.0.7.tgz}
-    name: '@antv/attr'
-    version: 0.0.7
-    dependencies:
-      '@antv/util': registry.nlark.com/@antv/util/1.2.5
-    dev: false
-
   registry.nlark.com/@antv/attr/0.1.2:
     resolution: {integrity: sha1-LusSL8qvhRoth0mrx8YFGdP3fjc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/attr/download/@antv/attr-0.1.2.tgz}
     name: '@antv/attr'
     version: 0.1.2
     dependencies:
       '@antv/util': registry.nlark.com/@antv/util/1.3.1
-    dev: false
-
-  registry.nlark.com/@antv/component/0.0.9:
-    resolution: {integrity: sha1-od3i0dS3eqoNQ2BiWQiuNd03Oak=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/component/download/@antv/component-0.0.9.tgz}
-    name: '@antv/component'
-    version: 0.0.9
-    dependencies:
-      '@antv/attr': registry.nlark.com/@antv/attr/0.0.7
-      '@antv/g': registry.nlark.com/@antv/g/3.2.2
-      '@antv/util': registry.nlark.com/@antv/util/1.2.5
-      wolfy87-eventemitter: registry.nlark.com/wolfy87-eventemitter/5.1.0
     dev: false
 
   registry.nlark.com/@antv/component/0.3.9:
@@ -3735,19 +3718,6 @@ packages:
       wolfy87-eventemitter: registry.nlark.com/wolfy87-eventemitter/5.2.9
     dev: false
 
-  registry.nlark.com/@antv/g/3.2.2:
-    resolution: {integrity: sha1-qzD2mp1y5imRKu4EYfVNJ2UZwjc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/g/download/@antv/g-3.2.2.tgz}
-    name: '@antv/g'
-    version: 3.2.2
-    dependencies:
-      '@antv/gl-matrix': registry.nlark.com/@antv/gl-matrix/2.7.1
-      '@antv/util': registry.nlark.com/@antv/util/1.2.5
-      d3-ease: registry.nlark.com/d3-ease/1.0.7
-      d3-interpolate: registry.nlark.com/d3-interpolate/1.1.6
-      d3-timer: registry.nlark.com/d3-timer/1.0.10
-      wolfy87-eventemitter: registry.nlark.com/wolfy87-eventemitter/5.1.0
-    dev: false
-
   registry.nlark.com/@antv/g/3.3.6:
     resolution: {integrity: sha1-Ef7Z3cntTloqokS3yKu5gqAD8gE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/g/download/@antv/g-3.3.6.tgz}
     name: '@antv/g'
@@ -3759,19 +3729,6 @@ packages:
       d3-interpolate: registry.nlark.com/d3-interpolate/1.1.6
       d3-timer: registry.nlark.com/d3-timer/1.0.10
       wolfy87-eventemitter: registry.nlark.com/wolfy87-eventemitter/5.1.0
-    dev: false
-
-  registry.nlark.com/@antv/g/3.4.10:
-    resolution: {integrity: sha1-57YWqiGxesUYUNAzMypa+N6P4BU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/g/download/@antv/g-3.4.10.tgz}
-    name: '@antv/g'
-    version: 3.4.10
-    dependencies:
-      '@antv/gl-matrix': registry.nlark.com/@antv/gl-matrix/2.7.1
-      '@antv/util': registry.nlark.com/@antv/util/1.3.1
-      d3-ease: registry.nlark.com/d3-ease/1.0.7
-      d3-interpolate: registry.nlark.com/d3-interpolate/1.1.6
-      d3-timer: registry.nlark.com/d3-timer/1.0.10
-      detect-browser: registry.nlark.com/detect-browser/5.2.0
     dev: false
 
   registry.nlark.com/@antv/g2-plugin-slider/2.1.0:
@@ -3798,38 +3755,10 @@ packages:
       wolfy87-eventemitter: registry.nlark.com/wolfy87-eventemitter/5.1.0
     dev: false
 
-  registry.nlark.com/@antv/g6/2.2.6:
-    resolution: {integrity: sha1-3Kn5R0rlvSyuI/2f+X93S0lsWa0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/g6/download/@antv/g6-2.2.6.tgz}
-    name: '@antv/g6'
-    version: 2.2.6
-    engines: {node: '>=8.9.0'}
-    dependencies:
-      '@antv/component': registry.nlark.com/@antv/component/0.0.9
-      '@antv/g': registry.nlark.com/@antv/g/3.4.10
-      '@antv/hierarchy': registry.nlark.com/@antv/hierarchy/0.3.15
-      '@antv/scale': registry.nlark.com/@antv/scale/0.0.1
-      '@antv/util': registry.nlark.com/@antv/util/1.3.1
-      d3: registry.nlark.com/d3/5.16.0
-      d3-sankey: registry.nlark.com/d3-sankey/0.7.1
-      d3-svg-legend: registry.nlark.com/d3-svg-legend/2.25.6
-      dagre: registry.nlark.com/dagre/0.8.5
-      dom-to-image: registry.nlark.com/dom-to-image/2.6.0
-      lodash: registry.nlark.com/lodash/4.17.21
-      wolfy87-eventemitter: registry.nlark.com/wolfy87-eventemitter/5.2.9
-    dev: false
-
   registry.nlark.com/@antv/gl-matrix/2.7.1:
     resolution: {integrity: sha1-rLjjf3qz3wE0WrpDcteUK+QuuhQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/gl-matrix/download/@antv/gl-matrix-2.7.1.tgz}
     name: '@antv/gl-matrix'
     version: 2.7.1
-    dev: false
-
-  registry.nlark.com/@antv/hierarchy/0.3.15:
-    resolution: {integrity: sha1-IYxmRRDFBSGF3MmSToI20/0ioCA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/hierarchy/download/@antv/hierarchy-0.3.15.tgz}
-    name: '@antv/hierarchy'
-    version: 0.3.15
-    dependencies:
-      '@antv/util': registry.nlark.com/@antv/util/1.3.1
     dev: false
 
   registry.nlark.com/@antv/hierarchy/0.6.8:
@@ -3840,15 +3769,6 @@ packages:
       '@antv/util': registry.nlark.com/@antv/util/2.0.14
     dev: false
 
-  registry.nlark.com/@antv/scale/0.0.1:
-    resolution: {integrity: sha1-5UTAN/rAA4y8q4k0PLeZMYYFYA0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/scale/download/@antv/scale-0.0.1.tgz}
-    name: '@antv/scale'
-    version: 0.0.1
-    dependencies:
-      '@antv/util': registry.nlark.com/@antv/util/1.0.12
-      fecha: registry.nlark.com/fecha/2.3.3
-    dev: false
-
   registry.nlark.com/@antv/scale/0.1.5:
     resolution: {integrity: sha1-JDJm6LkEfPZLL9/ED5g0zwhGSW4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/scale/download/@antv/scale-0.1.5.tgz}
     name: '@antv/scale'
@@ -3856,20 +3776,6 @@ packages:
     dependencies:
       '@antv/util': registry.nlark.com/@antv/util/1.3.1
       fecha: registry.nlark.com/fecha/2.3.3
-    dev: false
-
-  registry.nlark.com/@antv/util/1.0.12:
-    resolution: {integrity: sha1-tV6SHzDxyEEPPiSi2InoJWjD3zg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/util/download/@antv/util-1.0.12.tgz}
-    name: '@antv/util'
-    version: 1.0.12
-    dev: false
-
-  registry.nlark.com/@antv/util/1.2.5:
-    resolution: {integrity: sha1-iJbFBV7Cnko0S12ql7+CkF99QM0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@antv/util/download/@antv/util-1.2.5.tgz}
-    name: '@antv/util'
-    version: 1.2.5
-    dependencies:
-      '@antv/gl-matrix': registry.nlark.com/@antv/gl-matrix/2.7.1
     dev: false
 
   registry.nlark.com/@antv/util/1.3.1:
@@ -5595,6 +5501,14 @@ packages:
     dependencies:
       regenerator-runtime: registry.nlark.com/regenerator-runtime/0.13.9
 
+  registry.nlark.com/@babel/runtime/7.15.4:
+    resolution: {integrity: sha1-/RfRa/34eObdAtGXU6OfqKjZyEo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@babel/runtime/download/@babel/runtime-7.15.4.tgz}
+    name: '@babel/runtime'
+    version: 7.15.4
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: registry.nlark.com/regenerator-runtime/0.13.9
+
   registry.nlark.com/@babel/template/7.14.5:
     resolution: {integrity: sha1-qbydizM1T/blWpxg0RCSAKaJdPQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@babel/template/download/@babel/template-7.14.5.tgz}
     name: '@babel/template'
@@ -6223,12 +6137,6 @@ packages:
       '@babel/types': registry.nlark.com/@babel/types/7.15.0
     dev: true
 
-  registry.nlark.com/@types/d3-selection/1.0.10:
-    resolution: {integrity: sha1-3PsN3837GtJq6kNRMjdx4a6pboQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/d3-selection/download/@types/d3-selection-1.0.10.tgz}
-    name: '@types/d3-selection'
-    version: 1.0.10
-    dev: false
-
   registry.nlark.com/@types/eslint/7.28.0:
     resolution: {integrity: sha1-fkHySB0wHGjhT0g/4QsBd1POjVo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/eslint/download/@types/eslint-7.28.0.tgz}
     name: '@types/eslint'
@@ -6271,7 +6179,7 @@ packages:
     name: '@types/hoist-non-react-statics'
     version: 3.3.1
     dependencies:
-      '@types/react': registry.nlark.com/@types/react/17.0.19
+      '@types/react': registry.nlark.com/@types/react/17.0.20
       hoist-non-react-statics: 3.3.2
     dev: true
 
@@ -6406,7 +6314,7 @@ packages:
     version: 7.1.18
     dependencies:
       '@types/hoist-non-react-statics': registry.nlark.com/@types/hoist-non-react-statics/3.3.1
-      '@types/react': registry.nlark.com/@types/react/17.0.19
+      '@types/react': registry.nlark.com/@types/react/17.0.20
       hoist-non-react-statics: 3.3.2
       redux: registry.nlark.com/redux/4.1.1
     dev: true
@@ -6476,6 +6384,16 @@ packages:
       '@types/prop-types': registry.nlark.com/@types/prop-types/15.7.4
       '@types/scheduler': registry.nlark.com/@types/scheduler/0.16.2
       csstype: registry.nlark.com/csstype/3.0.8
+
+  registry.nlark.com/@types/react/17.0.20:
+    resolution: {integrity: sha1-pChLGE1Hl1xxZYzWnnWba9N8O4w=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/react/download/@types/react-17.0.20.tgz}
+    name: '@types/react'
+    version: 17.0.20
+    dependencies:
+      '@types/prop-types': registry.nlark.com/@types/prop-types/15.7.4
+      '@types/scheduler': registry.nlark.com/@types/scheduler/0.16.2
+      csstype: registry.nlark.com/csstype/3.0.8
+    dev: true
 
   registry.nlark.com/@types/scheduler/0.16.2:
     resolution: {integrity: sha1-GmL4lSVyPd4kuhsBsJK/XfitTTk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/scheduler/download/@types/scheduler-0.16.2.tgz}
@@ -6550,6 +6468,10 @@ packages:
     peerDependencies:
       '@typescript-eslint/parser': ^4.0.0
       eslint: ^5.0.0 || ^6.0.0 || ^7.0.0
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       '@typescript-eslint/experimental-utils': registry.nlark.com/@typescript-eslint/experimental-utils/4.30.0_eslint@7.32.0+typescript@4.3.5
       '@typescript-eslint/parser': registry.nlark.com/@typescript-eslint/parser/4.30.0_eslint@7.32.0+typescript@4.3.5
@@ -6560,9 +6482,9 @@ packages:
       regexpp: registry.nlark.com/regexpp/3.2.0
       semver: registry.nlark.com/semver/7.3.5
       tsutils: registry.nlark.com/tsutils/3.21.0_typescript@4.3.5
+      typescript: registry.nlark.com/typescript/4.3.5
     transitivePeerDependencies:
       - supports-color
-      - typescript
     dev: false
 
   registry.nlark.com/@typescript-eslint/experimental-utils/4.30.0_eslint@7.32.0+typescript@4.3.5:
@@ -6594,15 +6516,19 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     peerDependencies:
       eslint: ^5.0.0 || ^6.0.0 || ^7.0.0
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       '@typescript-eslint/scope-manager': registry.nlark.com/@typescript-eslint/scope-manager/4.30.0
       '@typescript-eslint/types': registry.nlark.com/@typescript-eslint/types/4.30.0
       '@typescript-eslint/typescript-estree': registry.nlark.com/@typescript-eslint/typescript-estree/4.30.0_typescript@4.3.5
       debug: registry.nlark.com/debug/4.3.2
       eslint: registry.nlark.com/eslint/7.32.0
+      typescript: registry.nlark.com/typescript/4.3.5
     transitivePeerDependencies:
       - supports-color
-      - typescript
     dev: false
 
   registry.nlark.com/@typescript-eslint/scope-manager/4.30.0:
@@ -6628,6 +6554,11 @@ packages:
     name: '@typescript-eslint/typescript-estree'
     version: 4.30.0
     engines: {node: ^10.12.0 || >=12.0.0}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       '@typescript-eslint/types': registry.nlark.com/@typescript-eslint/types/4.30.0
       '@typescript-eslint/visitor-keys': registry.nlark.com/@typescript-eslint/visitor-keys/4.30.0
@@ -6636,9 +6567,9 @@ packages:
       is-glob: registry.nlark.com/is-glob/4.0.1
       semver: registry.nlark.com/semver/7.3.5
       tsutils: registry.nlark.com/tsutils/3.21.0_typescript@4.3.5
+      typescript: registry.nlark.com/typescript/4.3.5
     transitivePeerDependencies:
       - supports-color
-      - typescript
     dev: false
 
   registry.nlark.com/@typescript-eslint/visitor-keys/4.30.0:
@@ -7200,8 +7131,8 @@ packages:
     version: 1.0.37
     dependencies:
       '@qixian.cs/path-to-regexp': registry.nlark.com/@qixian.cs/path-to-regexp/6.1.0
-      fast-deep-equal: registry.nlark.com/fast-deep-equal/3.1.3
-      lodash.isequal: registry.nlark.com/lodash.isequal/4.5.0
+      fast-deep-equal: 3.1.3
+      lodash.isequal: 4.5.0
       memoize-one: registry.nlark.com/memoize-one/5.2.1
 
   registry.nlark.com/@umijs/runtime/3.5.17_react@16.14.0:
@@ -7489,15 +7420,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       color-convert: 2.0.1
-
-  registry.nlark.com/ant-design-palettes/1.1.3:
-    resolution: {integrity: sha1-hBGbGk2GNjrcUqONWH5lM2oKJ90=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/ant-design-palettes/download/ant-design-palettes-1.1.3.tgz}
-    name: ant-design-palettes
-    version: 1.1.3
-    deprecated: Please use @ant-design/colors to replace ant-design-palettes
-    dependencies:
-      tinycolor2: registry.nlark.com/tinycolor2/1.4.2
-    dev: false
 
   registry.nlark.com/antd-mobile/2.3.4:
     resolution: {integrity: sha1-j1hHB7MDQ9EC88oQ/a9nfipdHMg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/antd-mobile/download/antd-mobile-2.3.4.tgz}
@@ -8436,6 +8358,7 @@ packages:
     name: core-js
     version: 3.8.2
     requiresBuild: true
+    dev: true
 
   registry.nlark.com/core-util-is/1.0.2:
     resolution: {integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/core-util-is/download/core-util-is-1.0.2.tgz}
@@ -8577,12 +8500,6 @@ packages:
       array-find-index: registry.nlark.com/array-find-index/1.0.2
     dev: false
 
-  registry.nlark.com/d3-array/1.0.1:
-    resolution: {integrity: sha1-N1wCh0/NlsFu2fG89bSnvlPzWOc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-array/download/d3-array-1.0.1.tgz}
-    name: d3-array
-    version: 1.0.1
-    dev: false
-
   registry.nlark.com/d3-array/1.2.4:
     resolution: {integrity: sha1-Y1zk1e6nWfb2BYY9vPww7cc39x8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-array/download/d3-array-1.2.4.tgz}
     name: d3-array
@@ -8595,33 +8512,6 @@ packages:
     version: 2.12.1
     dependencies:
       internmap: registry.nlark.com/internmap/1.0.1
-    dev: false
-
-  registry.nlark.com/d3-axis/1.0.12:
-    resolution: {integrity: sha1-zfILohDPu0N5WvM3Vohvs2ONqsk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-axis/download/d3-axis-1.0.12.tgz}
-    name: d3-axis
-    version: 1.0.12
-    dev: false
-
-  registry.nlark.com/d3-brush/1.1.6:
-    resolution: {integrity: sha1-sKIsc3LKvsEovd35vdwFhZL4nps=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-brush/download/d3-brush-1.1.6.tgz}
-    name: d3-brush
-    version: 1.1.6
-    dependencies:
-      d3-dispatch: registry.nlark.com/d3-dispatch/1.0.6
-      d3-drag: registry.nlark.com/d3-drag/1.2.5
-      d3-interpolate: registry.nlark.com/d3-interpolate/1.4.0
-      d3-selection: registry.nlark.com/d3-selection/1.4.2
-      d3-transition: registry.nlark.com/d3-transition/1.3.2
-    dev: false
-
-  registry.nlark.com/d3-chord/1.0.6:
-    resolution: {integrity: sha1-MJFX4/LbLHUvAoD+3TXyBnzLsV8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-chord/download/d3-chord-1.0.6.tgz}
-    name: d3-chord
-    version: 1.0.6
-    dependencies:
-      d3-array: registry.nlark.com/d3-array/1.2.4
-      d3-path: registry.nlark.com/d3-path/1.0.9
     dev: false
 
   registry.nlark.com/d3-collection/1.0.7:
@@ -8645,33 +8535,10 @@ packages:
       d3-path: registry.nlark.com/d3-path/2.0.0
     dev: false
 
-  registry.nlark.com/d3-contour/1.3.2:
-    resolution: {integrity: sha1-ZSqs1QDSJkyzQjzuENtp9vWb6tM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-contour/download/d3-contour-1.3.2.tgz}
-    name: d3-contour
-    version: 1.3.2
-    dependencies:
-      d3-array: registry.nlark.com/d3-array/1.2.4
-    dev: false
-
-  registry.nlark.com/d3-dispatch/1.0.1:
-    resolution: {integrity: sha1-S9ZaQ87P9DGN653yRVKqi/KBqEA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-dispatch/download/d3-dispatch-1.0.1.tgz}
-    name: d3-dispatch
-    version: 1.0.1
-    dev: false
-
   registry.nlark.com/d3-dispatch/1.0.6:
     resolution: {integrity: sha1-ANN7zuTdjNl3Kd2JOgrCnKq6XVg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-dispatch/download/d3-dispatch-1.0.6.tgz}
     name: d3-dispatch
     version: 1.0.6
-    dev: false
-
-  registry.nlark.com/d3-drag/1.2.5:
-    resolution: {integrity: sha1-JTf0UazTnTFAZne33HfIL32Yj3A=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-drag/download/d3-drag-1.2.5.tgz}
-    name: d3-drag
-    version: 1.2.5
-    dependencies:
-      d3-dispatch: registry.nlark.com/d3-dispatch/1.0.6
-      d3-selection: registry.nlark.com/d3-selection/1.4.2
     dev: false
 
   registry.nlark.com/d3-dsv/1.2.0:
@@ -8691,37 +8558,6 @@ packages:
     version: 1.0.7
     dev: false
 
-  registry.nlark.com/d3-fetch/1.2.0:
-    resolution: {integrity: sha1-Fc4uz8QbCSsdtQq9LFUsIxbPf8c=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-fetch/download/d3-fetch-1.2.0.tgz}
-    name: d3-fetch
-    version: 1.2.0
-    dependencies:
-      d3-dsv: registry.nlark.com/d3-dsv/1.2.0
-    dev: false
-
-  registry.nlark.com/d3-force/1.2.1:
-    resolution: {integrity: sha1-/Sml0f8YHJ5/BmnkvXK9sOkU7As=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-force/download/d3-force-1.2.1.tgz}
-    name: d3-force
-    version: 1.2.1
-    dependencies:
-      d3-collection: registry.nlark.com/d3-collection/1.0.7
-      d3-dispatch: registry.nlark.com/d3-dispatch/1.0.6
-      d3-quadtree: registry.nlark.com/d3-quadtree/1.0.7
-      d3-timer: registry.nlark.com/d3-timer/1.0.10
-    dev: false
-
-  registry.nlark.com/d3-format/1.0.2:
-    resolution: {integrity: sha1-E4YYMgtLvrQ7XA/zBRkHn7vXN14=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-format/download/d3-format-1.0.2.tgz}
-    name: d3-format
-    version: 1.0.2
-    dev: false
-
-  registry.nlark.com/d3-format/1.4.5:
-    resolution: {integrity: sha1-N08roTIONxfrdKk1bGfa7hen7bQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-format/download/d3-format-1.4.5.tgz}
-    name: d3-format
-    version: 1.4.5
-    dev: false
-
   registry.nlark.com/d3-geo-projection/2.1.2:
     resolution: {integrity: sha1-ffjh6dBG1jHGUJ9+UxNX1K3CSqM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-geo-projection/download/d3-geo-projection-2.1.2.tgz}
     name: d3-geo-projection
@@ -8731,14 +8567,6 @@ packages:
       commander: registry.nlark.com/commander/2.20.3
       d3-array: registry.nlark.com/d3-array/1.2.4
       d3-geo: registry.nlark.com/d3-geo/1.6.4
-    dev: false
-
-  registry.nlark.com/d3-geo/1.12.1:
-    resolution: {integrity: sha1-f8KrdBS3Lln7y9YD6A2a3AKbA18=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-geo/download/d3-geo-1.12.1.tgz}
-    name: d3-geo
-    version: 1.12.1
-    dependencies:
-      d3-array: registry.nlark.com/d3-array/1.2.4
     dev: false
 
   registry.nlark.com/d3-geo/1.6.4:
@@ -8799,34 +8627,6 @@ packages:
     version: 2.0.0
     dev: false
 
-  registry.nlark.com/d3-polygon/1.0.6:
-    resolution: {integrity: sha1-C/jLgYCm3BB/UY3feXXhKrv7044=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-polygon/download/d3-polygon-1.0.6.tgz}
-    name: d3-polygon
-    version: 1.0.6
-    dev: false
-
-  registry.nlark.com/d3-quadtree/1.0.7:
-    resolution: {integrity: sha1-youE33u1N2P+PC8kvUNRN/TlMTU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-quadtree/download/d3-quadtree-1.0.7.tgz}
-    name: d3-quadtree
-    version: 1.0.7
-    dev: false
-
-  registry.nlark.com/d3-random/1.1.2:
-    resolution: {integrity: sha1-KDO+fBJDYL+eLT/U8zhHz+bKspE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-random/download/d3-random-1.1.2.tgz}
-    name: d3-random
-    version: 1.1.2
-    dev: false
-
-  registry.nlark.com/d3-sankey/0.7.1:
-    resolution: {integrity: sha1-0imDImj8aaf+yEgD6WwiVqYUxSE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-sankey/download/d3-sankey-0.7.1.tgz}
-    name: d3-sankey
-    version: 0.7.1
-    dependencies:
-      d3-array: registry.nlark.com/d3-array/1.2.4
-      d3-collection: registry.nlark.com/d3-collection/1.0.7
-      d3-shape: registry.nlark.com/d3-shape/1.3.7
-    dev: false
-
   registry.nlark.com/d3-sankey/0.9.1:
     resolution: {integrity: sha1-uFAUWjKEERY23eyQ39qMZJGb7k4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-sankey/download/d3-sankey-0.9.1.tgz}
     name: d3-sankey
@@ -8835,48 +8635,6 @@ packages:
       d3-array: registry.nlark.com/d3-array/1.2.4
       d3-collection: registry.nlark.com/d3-collection/1.0.7
       d3-shape: registry.nlark.com/d3-shape/1.3.7
-    dev: false
-
-  registry.nlark.com/d3-scale-chromatic/1.5.0:
-    resolution: {integrity: sha1-VOMz/HghL0ObFGQftVgB3YETWpg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-scale-chromatic/download/d3-scale-chromatic-1.5.0.tgz}
-    name: d3-scale-chromatic
-    version: 1.5.0
-    dependencies:
-      d3-color: registry.nlark.com/d3-color/1.4.1
-      d3-interpolate: registry.nlark.com/d3-interpolate/1.4.0
-    dev: false
-
-  registry.nlark.com/d3-scale/1.0.3:
-    resolution: {integrity: sha1-T56PDMLqDzkl/wSsJ63AkEX6TJA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-scale/download/d3-scale-1.0.3.tgz}
-    name: d3-scale
-    version: 1.0.3
-    dependencies:
-      d3-array: registry.nlark.com/d3-array/1.0.1
-      d3-collection: registry.nlark.com/d3-collection/1.0.7
-      d3-color: registry.nlark.com/d3-color/1.4.1
-      d3-format: registry.nlark.com/d3-format/1.0.2
-      d3-interpolate: registry.nlark.com/d3-interpolate/1.4.0
-      d3-time: registry.nlark.com/d3-time/1.1.0
-      d3-time-format: registry.nlark.com/d3-time-format/2.3.0
-    dev: false
-
-  registry.nlark.com/d3-scale/2.2.2:
-    resolution: {integrity: sha1-TogOCydFrKrd0+3iap6Qip4XuB8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-scale/download/d3-scale-2.2.2.tgz}
-    name: d3-scale
-    version: 2.2.2
-    dependencies:
-      d3-array: registry.nlark.com/d3-array/1.2.4
-      d3-collection: registry.nlark.com/d3-collection/1.0.7
-      d3-format: registry.nlark.com/d3-format/1.4.5
-      d3-interpolate: registry.nlark.com/d3-interpolate/1.4.0
-      d3-time: registry.nlark.com/d3-time/1.1.0
-      d3-time-format: registry.nlark.com/d3-time-format/2.3.0
-    dev: false
-
-  registry.nlark.com/d3-selection/1.0.2:
-    resolution: {integrity: sha1-rmYq/UcCrJxdoDmyEHoXZPockHA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-selection/download/d3-selection-1.0.2.tgz}
-    name: d3-selection
-    version: 1.0.2
     dev: false
 
   registry.nlark.com/d3-selection/1.4.2:
@@ -8893,51 +8651,10 @@ packages:
       d3-path: registry.nlark.com/d3-path/1.0.9
     dev: false
 
-  registry.nlark.com/d3-svg-legend/2.25.6:
-    resolution: {integrity: sha1-jY3BvWk8N47ki2+CPook5o8uGtI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-svg-legend/download/d3-svg-legend-2.25.6.tgz}
-    name: d3-svg-legend
-    version: 2.25.6
-    dependencies:
-      '@types/d3-selection': registry.nlark.com/@types/d3-selection/1.0.10
-      d3-array: registry.nlark.com/d3-array/1.0.1
-      d3-dispatch: registry.nlark.com/d3-dispatch/1.0.1
-      d3-format: registry.nlark.com/d3-format/1.0.2
-      d3-scale: registry.nlark.com/d3-scale/1.0.3
-      d3-selection: registry.nlark.com/d3-selection/1.0.2
-      d3-transition: registry.nlark.com/d3-transition/1.0.3
-    dev: false
-
-  registry.nlark.com/d3-time-format/2.3.0:
-    resolution: {integrity: sha1-EHvcAoZneIqJJLoED68fvM1aeFA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-time-format/download/d3-time-format-2.3.0.tgz}
-    name: d3-time-format
-    version: 2.3.0
-    dependencies:
-      d3-time: registry.nlark.com/d3-time/1.1.0
-    dev: false
-
-  registry.nlark.com/d3-time/1.1.0:
-    resolution: {integrity: sha1-seGdMH2unJALflsl/8XcwkmooPE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-time/download/d3-time-1.1.0.tgz}
-    name: d3-time
-    version: 1.1.0
-    dev: false
-
   registry.nlark.com/d3-timer/1.0.10:
     resolution: {integrity: sha1-3+dripF0iDGxO22ceT/71QjdneU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-timer/download/d3-timer-1.0.10.tgz}
     name: d3-timer
     version: 1.0.10
-    dev: false
-
-  registry.nlark.com/d3-transition/1.0.3:
-    resolution: {integrity: sha1-kdyYa92zCXNjkyCoXbcs5KsaJ7s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-transition/download/d3-transition-1.0.3.tgz}
-    name: d3-transition
-    version: 1.0.3
-    dependencies:
-      d3-color: registry.nlark.com/d3-color/1.4.1
-      d3-dispatch: registry.nlark.com/d3-dispatch/1.0.1
-      d3-ease: registry.nlark.com/d3-ease/1.0.7
-      d3-interpolate: registry.nlark.com/d3-interpolate/1.4.0
-      d3-selection: registry.nlark.com/d3-selection/1.0.2
-      d3-timer: registry.nlark.com/d3-timer/1.0.10
     dev: false
 
   registry.nlark.com/d3-transition/1.3.2:
@@ -8957,56 +8674,6 @@ packages:
     resolution: {integrity: sha1-3Tx412U9K7NZKErkeGRdlZRMgpc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-voronoi/download/d3-voronoi-1.1.4.tgz}
     name: d3-voronoi
     version: 1.1.4
-    dev: false
-
-  registry.nlark.com/d3-zoom/1.8.3:
-    resolution: {integrity: sha1-tqPb5zjHdjEhzQW4p3lf/hf0/Ao=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3-zoom/download/d3-zoom-1.8.3.tgz}
-    name: d3-zoom
-    version: 1.8.3
-    dependencies:
-      d3-dispatch: registry.nlark.com/d3-dispatch/1.0.6
-      d3-drag: registry.nlark.com/d3-drag/1.2.5
-      d3-interpolate: registry.nlark.com/d3-interpolate/1.4.0
-      d3-selection: registry.nlark.com/d3-selection/1.4.2
-      d3-transition: registry.nlark.com/d3-transition/1.3.2
-    dev: false
-
-  registry.nlark.com/d3/5.16.0:
-    resolution: {integrity: sha1-nF6NO1ZAPHnU7UL71i9hE/GZyHc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/d3/download/d3-5.16.0.tgz}
-    name: d3
-    version: 5.16.0
-    dependencies:
-      d3-array: registry.nlark.com/d3-array/1.2.4
-      d3-axis: registry.nlark.com/d3-axis/1.0.12
-      d3-brush: registry.nlark.com/d3-brush/1.1.6
-      d3-chord: registry.nlark.com/d3-chord/1.0.6
-      d3-collection: registry.nlark.com/d3-collection/1.0.7
-      d3-color: registry.nlark.com/d3-color/1.4.1
-      d3-contour: registry.nlark.com/d3-contour/1.3.2
-      d3-dispatch: registry.nlark.com/d3-dispatch/1.0.6
-      d3-drag: registry.nlark.com/d3-drag/1.2.5
-      d3-dsv: registry.nlark.com/d3-dsv/1.2.0
-      d3-ease: registry.nlark.com/d3-ease/1.0.7
-      d3-fetch: registry.nlark.com/d3-fetch/1.2.0
-      d3-force: registry.nlark.com/d3-force/1.2.1
-      d3-format: registry.nlark.com/d3-format/1.4.5
-      d3-geo: registry.nlark.com/d3-geo/1.12.1
-      d3-hierarchy: registry.nlark.com/d3-hierarchy/1.1.9
-      d3-interpolate: registry.nlark.com/d3-interpolate/1.4.0
-      d3-path: registry.nlark.com/d3-path/1.0.9
-      d3-polygon: registry.nlark.com/d3-polygon/1.0.6
-      d3-quadtree: registry.nlark.com/d3-quadtree/1.0.7
-      d3-random: registry.nlark.com/d3-random/1.1.2
-      d3-scale: registry.nlark.com/d3-scale/2.2.2
-      d3-scale-chromatic: registry.nlark.com/d3-scale-chromatic/1.5.0
-      d3-selection: registry.nlark.com/d3-selection/1.4.2
-      d3-shape: registry.nlark.com/d3-shape/1.3.7
-      d3-time: registry.nlark.com/d3-time/1.1.0
-      d3-time-format: registry.nlark.com/d3-time-format/2.3.0
-      d3-timer: registry.nlark.com/d3-timer/1.0.10
-      d3-transition: registry.nlark.com/d3-transition/1.3.2
-      d3-voronoi: registry.nlark.com/d3-voronoi/1.1.4
-      d3-zoom: registry.nlark.com/d3-zoom/1.8.3
     dev: false
 
   registry.nlark.com/dagre/0.8.5:
@@ -9183,12 +8850,6 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  registry.nlark.com/detect-browser/5.2.0:
-    resolution: {integrity: sha1-yc1a+pamoZ/aC76em+SKa24enJc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/detect-browser/download/detect-browser-5.2.0.tgz}
-    name: detect-browser
-    version: 5.2.0
-    dev: false
-
   registry.nlark.com/diff-sequences/26.6.2:
     resolution: {integrity: sha1-SLqZFX3hkjQS7tQdtrbUqpynwLE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/diff-sequences/download/diff-sequences-26.6.2.tgz}
     name: diff-sequences
@@ -9273,12 +8934,6 @@ packages:
     dependencies:
       domelementtype: registry.nlark.com/domelementtype/2.2.0
       entities: registry.nlark.com/entities/2.2.0
-    dev: false
-
-  registry.nlark.com/dom-to-image/2.6.0:
-    resolution: {integrity: sha1-ilA2CAiMh7HCL5A0rgMuGJiVWGc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/dom-to-image/download/dom-to-image-2.6.0.tgz}
-    name: dom-to-image
-    version: 2.6.0
     dev: false
 
   registry.nlark.com/domain-browser/1.2.0:
@@ -9715,6 +9370,9 @@ packages:
     peerDependencies:
       '@typescript-eslint/eslint-plugin': '>= 4'
       eslint: '>=5'
+    peerDependenciesMeta:
+      '@typescript-eslint/eslint-plugin':
+        optional: true
     dependencies:
       '@typescript-eslint/eslint-plugin': registry.nlark.com/@typescript-eslint/eslint-plugin/4.30.0_779bf50de6cb809b78aa0fe33be4e453
       '@typescript-eslint/experimental-utils': registry.nlark.com/@typescript-eslint/experimental-utils/4.30.0_eslint@7.32.0+typescript@4.3.5
@@ -10171,6 +9829,7 @@ packages:
     resolution: {integrity: sha1-On1WtVnWy8PrUSMlJE5hmmXGxSU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/fast-deep-equal/download/fast-deep-equal-3.1.3.tgz}
     name: fast-deep-equal
     version: 3.1.3
+    dev: false
 
   registry.nlark.com/fast-glob/2.2.7:
     resolution: {integrity: sha1-aVOFfDr6R1//ku5gFdUtpwpM050=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/fast-glob/download/fast-glob-2.2.7.tgz}
@@ -10427,31 +10086,6 @@ packages:
     name: get-stdin
     version: 8.0.0
     engines: {node: '>=10'}
-    dev: false
-
-  registry.nlark.com/gg-editor-core/1.3.4:
-    resolution: {integrity: sha1-85Kvho/wWo8+Vq+/5VDxJk8/lsE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/gg-editor-core/download/gg-editor-core-1.3.4.tgz}
-    name: gg-editor-core
-    version: 1.3.4
-    dependencies:
-      '@antv/g6': registry.nlark.com/@antv/g6/2.2.6
-      ant-design-palettes: registry.nlark.com/ant-design-palettes/1.1.3
-      wolfy87-eventemitter: registry.nlark.com/wolfy87-eventemitter/5.2.9
-    dev: false
-
-  registry.nlark.com/gg-editor/2.0.4_react@17.0.2:
-    resolution: {integrity: sha1-vVgHOCIEe080JmVPsNk7ktRCxs4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/gg-editor/download/gg-editor-2.0.4.tgz}
-    id: registry.nlark.com/gg-editor/2.0.4
-    name: gg-editor
-    version: 2.0.4
-    peerDependencies:
-      react: ^16.3.0
-    dependencies:
-      '@antv/g6': registry.nlark.com/@antv/g6/2.2.6
-      core-js: registry.nlark.com/core-js/3.8.2
-      gg-editor-core: registry.nlark.com/gg-editor-core/1.3.4
-      lodash: registry.nlark.com/lodash/4.17.21
-      react: registry.nlark.com/react/17.0.2
     dev: false
 
   registry.nlark.com/glob-parent/3.1.0:
@@ -12240,11 +11874,6 @@ packages:
     name: lodash.get
     version: 4.4.2
     dev: false
-
-  registry.nlark.com/lodash.isequal/4.5.0:
-    resolution: {integrity: sha1-QVxEePK8wwEgwizhDtMib30+GOA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/lodash.isequal/download/lodash.isequal-4.5.0.tgz}
-    name: lodash.isequal
-    version: 4.5.0
 
   registry.nlark.com/lodash.merge/4.6.2:
     resolution: {integrity: sha1-VYqlO0O2YeGSWgr9+japoQhf5Xo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/lodash.merge/download/lodash.merge-4.6.2.tgz}
@@ -14324,6 +13953,13 @@ packages:
       '@types/node': '>= 12'
       '@types/react': '>= 16'
       react: '>= 16.14'
+    peerDependenciesMeta:
+      '@types/hoist-non-react-statics':
+        optional: true
+      '@types/node':
+        optional: true
+      '@types/react':
+        optional: true
     dependencies:
       '@react-dnd/invariant': registry.nlark.com/@react-dnd/invariant/2.0.0
       '@react-dnd/shallowequal': registry.nlark.com/@react-dnd/shallowequal/2.0.0
@@ -14731,16 +14367,24 @@ packages:
       util-deprecate: registry.nlark.com/util-deprecate/1.0.2
     dev: false
 
-  registry.nlark.com/recoil/0.4.1_react@17.0.2:
+  registry.nlark.com/recoil/0.4.1_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha1-HLIXG8mNQTYVBxMaBZ18NSXYxP4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/recoil/download/recoil-0.4.1.tgz}
     id: registry.nlark.com/recoil/0.4.1
     name: recoil
     version: 0.4.1
     peerDependencies:
       react: '>=16.13.1'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
     dependencies:
       hamt_plus: registry.nlark.com/hamt_plus/1.0.2
       react: registry.nlark.com/react/17.0.2
+      react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
     dev: false
 
   registry.nlark.com/redent/2.0.0:
@@ -14774,7 +14418,7 @@ packages:
     name: redux
     version: 4.1.1
     dependencies:
-      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.3
+      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.4
 
   registry.nlark.com/regenerate-unicode-properties/8.2.0:
     resolution: {integrity: sha1-5d5xEdZV57pgwFfb6f83yH5lzew=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/regenerate-unicode-properties/download/regenerate-unicode-properties-8.2.0.tgz}
@@ -16255,12 +15899,6 @@ packages:
     resolution: {integrity: sha1-Y0xfjv3CdxS384bDXmdgmR0jCHU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/tiny-invariant/download/tiny-invariant-1.1.0.tgz}
     name: tiny-invariant
     version: 1.1.0
-
-  registry.nlark.com/tinycolor2/1.4.2:
-    resolution: {integrity: sha1-P2pNEHGtB2dtf6Ry4frECnGdiAM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/tinycolor2/download/tinycolor2-1.4.2.tgz}
-    name: tinycolor2
-    version: 1.4.2
-    dev: false
 
   registry.nlark.com/to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/to-fast-properties/download/to-fast-properties-2.0.0.tgz}

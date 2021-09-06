@@ -8,24 +8,23 @@ import type { DraggableEvent, DraggableData } from "react-draggable";
 import Draggable from "react-draggable";
 
 import type { onDropInject } from "@/package/Layout/Flex/interface/inject";
-import { DataTree } from "@/store/tree";
+
 import Layout, { Content } from "antd/lib/layout/layout";
 import Sider from "antd/lib/layout/Sider";
 
 import { useMemo, useRef } from "react";
 import { useState } from "react";
-import { Card, Tabs } from "antd";
+
 import ViewRender from "@/core/Render/ViewRender/ViewRender";
-import { useCallback } from "react";
-import { TreeView } from "../tree";
-import { RecoilRoot, useRecoilState } from "recoil";
+
 import { ComponentTab } from "./components/ComponentTab/ComponentTab";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { useRecoilState } from "recoil";
+import { DataTree } from "@/store/tree";
 
-const { TabPane } = Tabs;
 const IndexPage = () => {
-  const [tree, setTree] = useRecoilState<Node>(DataTree);
+  const [tree, setTree] = useRecoilState(DataTree);
   const [dragState, setDragState] = useState({ x: 0, y: 0 });
 
   const handleOnDrop = useMemo(() => {
@@ -82,11 +81,7 @@ const IndexPage = () => {
       });
     };
   }, []);
-  const root = useMemo(() => {
-    return injectNode<onDropInject>(tree, {
-      onDrop: handleOnDrop
-    });
-  }, [tree]);
+  const root = useMemo(() => tree, [tree]);
   return (
     <DndProvider backend={HTML5Backend}>
       <Layout style={{ height: "calc(100vh - 48px)" }}>
@@ -128,9 +123,5 @@ const IndexPage = () => {
   );
 };
 export default function Index() {
-  return (
-    <RecoilRoot>
-      <IndexPage />
-    </RecoilRoot>
-  );
+  return <IndexPage />;
 }

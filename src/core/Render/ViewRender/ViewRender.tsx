@@ -11,27 +11,30 @@ import { NodesViewer } from "./components/NodesViewer/NodesViewer";
 
 const ViewRender: FC<ViewRenderProps> = ({ root, style, setTree }) => {
   const ref = useRef(null);
-  const [{ isHovering }, drop] = useDrop({
+  const [{ isOverHovering }, drop] = useDrop({
     accept: "ComponentSource", // 接受添加组件的请求
     collect(monitor) {
       return {
         handlerId: monitor.getHandlerId(),
-        isHovering: monitor.isOver()
+        isHovering: monitor.isOver(),
+        isOverHovering: monitor.isOver({ shallow: true })
       };
     },
-    drop(item: any) {
+    drop(item: any, monitor) {
+      if (monitor.didDrop()) return;
       const schema = item.schema as ComponentSchema;
-      setTree(
-        produce((draft: any) => {
-          noder.appendChild(draft, noder.fromSchema(schema));
-        })
-      );
+      if (setTree)
+        setTree(
+          produce((draft: any) => {
+            noder.appendChild(draft, noder.fromSchema(schema));
+          })
+        );
     }
   });
   drop(ref);
 
   return root ? (
-    <div ref={ref} style={style} className={isHovering ? "hovered" : ""}>
+    <div ref={ref} style={style} className={isOverHovering ? "hovered" : ""}>
       <NodesViewer root={root} setTree={setTree} />
     </div>
   ) : null;

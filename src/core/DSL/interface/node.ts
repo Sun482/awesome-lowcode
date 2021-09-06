@@ -8,6 +8,7 @@ export interface BasicNode {
   type: componentType; // 节点对应的组件类型
   children: Node[]; // 子节点
   id: string; // 节点标识(全局唯一)
+  fatherNode?: string; // 父节点标识(全局唯一)
 }
 
 export type Node<T = null> = T extends null
@@ -32,4 +33,9 @@ export interface NodeUtil {
    * @param schema schema 信息
    */
   fromSchema: (schema: ComponentSchema) => Node | null;
+  /**
+   * 获取指定节点的父节点nodeID
+   * @param node 要查询的节点
+   */
+  getParent: (node: Node) => string | null;
 }

@@ -1,6 +1,7 @@
 import type { FlexItemProps } from "@/package/Layout/Flex/interface/type";
 import { useMemo } from "react";
-import { FC, memo, useRef } from "react";
+import type { FC } from "react";
+import { memo, useRef } from "react";
 import type { DropTargetMonitor, XYCoord } from "react-dnd";
 import { useDrop, useDrag } from "react-dnd";
 import style from "./index.less";
@@ -15,6 +16,7 @@ interface DragItemProps {
 export const DragItem: FC<DragItemProps> = memo(
   ({ children, dragID, node, onDrop, index, moveItem }) => {
     const ref = useRef<HTMLDivElement>(null);
+
     const [{ isHovering }, drop] = useDrop<FlexItemProps, any, any>({
       accept: dragID,
       collect(monitor) {
@@ -78,12 +80,12 @@ export const DragItem: FC<DragItemProps> = memo(
     });
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [{ isDragging }, drag] = useDrag({
+    const [, drag] = useDrag({
       type: dragID,
-      item: { node },
-      collect: (monitor: any) => ({
-        isDragging: monitor.isDragging()
-      })
+      item: { node }
+      // collect: (monitor: any) => ({
+      //   isDragging: monitor.isDragging()
+      // })
     });
     const Render = useMemo(() => {
       return children;

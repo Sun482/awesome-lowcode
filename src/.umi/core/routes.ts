@@ -9,37 +9,27 @@ export function getRoutes() {
   const routes = [
   {
     "path": "/",
-    "component": dynamic({ loader: () => import(/* webpackChunkName: '.umi__plugin-layout__Layout' */'/Users/apple/Projects/awesome-lowcode/src/.umi/plugin-layout/Layout.tsx'), loading: LoadingComponent}),
+    "component": dynamic({ loader: () => import(/* webpackChunkName: 'layouts__index' */'@/layouts/index.tsx'), loading: LoadingComponent}),
     "routes": [
       {
+        "path": "/dsl",
         "exact": true,
-        "path": "/",
-        "name": "欢迎",
-        "icon": "user",
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__home' */'@/pages/home'), loading: LoadingComponent}),
-        "hideInMenu": true
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__dsl__index' */'@/pages/dsl/index.tsx'), loading: LoadingComponent})
       },
       {
-        "exact": true,
-        "path": "/home",
-        "name": "欢迎",
-        "icon": "user",
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__home' */'@/pages/home'), loading: LoadingComponent}),
-        "hideInMenu": true
-      },
-      {
-        "exact": true,
         "path": "/editor",
-        "name": "编辑器",
-        "icon": "edit",
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__editor__index' */'@/pages/editor/index'), loading: LoadingComponent})
+        "exact": true,
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__editor__index' */'@/pages/editor/index.tsx'), loading: LoadingComponent})
       },
       {
+        "path": "/home",
         "exact": true,
-        "path": "/dls",
-        "name": "DSL转换",
-        "icon": "export",
-        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__dsl__index' */'@/pages/dsl/index'), loading: LoadingComponent})
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__home__index' */'@/pages/home/index.tsx'), loading: LoadingComponent})
+      },
+      {
+        "path": "/tree",
+        "exact": true,
+        "component": dynamic({ loader: () => import(/* webpackChunkName: 'p__tree__index' */'@/pages/tree/index.tsx'), loading: LoadingComponent})
       }
     ]
   }
