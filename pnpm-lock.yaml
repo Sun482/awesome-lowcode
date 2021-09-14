@@ -14,6 +14,7 @@ specifiers:
   antd: ^4.16.13
   bizcharts: ^3.5.3-beta.0
   bizcharts-plugin-slider: ^2.1.1-beta.1
+  hyperscript: ^2.0.2
   immer: ^9.0.5
   inversify: ^5.1.1
   lint-staged: ^10.0.7
@@ -41,6 +42,7 @@ dependencies:
   antd: registry.nlark.com/antd/4.16.13_react-dom@17.0.2+react@17.0.2
   bizcharts: registry.nlark.com/bizcharts/3.5.9_react@17.0.2
   bizcharts-plugin-slider: registry.nlark.com/bizcharts-plugin-slider/2.1.1_81089aa8609ea439ca988c21b79ff02a
+  hyperscript: registry.nlark.com/hyperscript/2.0.2
   immer: registry.nlark.com/immer/9.0.6
   inversify: registry.nlark.com/inversify/5.1.1
   moment: registry.nlark.com/moment/2.29.1
@@ -1417,6 +1419,10 @@ packages:
 
   /indexes-of/1.0.1:
     resolution: {integrity: sha1-8w9xbI4r00bHtn0985FVZqfAVgc=, tarball: indexes-of/download/indexes-of-1.0.1.tgz}
+    dev: false
+
+  /indexof/0.0.1:
+    resolution: {integrity: sha1-gtwzbSMrkGIXnQWrMpOmYFn9Q10=, tarball: indexof/download/indexof-0.0.1.tgz}
     dev: false
 
   /inflight/1.0.6:
@@ -7909,6 +7915,12 @@ packages:
       fill-range: registry.nlark.com/fill-range/7.0.1
     dev: false
 
+  registry.nlark.com/browser-split/0.0.0:
+    resolution: {integrity: sha1-QUGcrvdpdVkp3VGJZ9PuwKYmJ3E=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/browser-split/download/browser-split-0.0.0.tgz}
+    name: browser-split
+    version: 0.0.0
+    dev: false
+
   registry.nlark.com/browserify-rsa/4.1.0:
     resolution: {integrity: sha1-sv0Gtbda4pf3zi3GUfkY9b4VjI0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/browserify-rsa/download/browserify-rsa-4.1.0.tgz}
     name: browserify-rsa
@@ -8141,6 +8153,14 @@ packages:
     name: cjs-module-lexer
     version: 0.6.0
     dev: true
+
+  registry.nlark.com/class-list/0.1.1:
+    resolution: {integrity: sha1-m5dFGSxBebXaCg12M2WOPHDXlss=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/class-list/download/class-list-0.1.1.tgz}
+    name: class-list
+    version: 0.1.1
+    dependencies:
+      indexof: 0.0.1
+    dev: false
 
   registry.nlark.com/classnames/2.3.1:
     resolution: {integrity: sha1-38+jiR4wbsHa0QXQ6I9EF7hTXo4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/classnames/download/classnames-2.3.1.tgz}
@@ -10327,6 +10347,15 @@ packages:
       lru-cache: registry.nlark.com/lru-cache/6.0.0
     dev: false
 
+  registry.nlark.com/html-element/2.3.1:
+    resolution: {integrity: sha1-X+sj3VImRn74wvrsUaW/KcTvVEA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/html-element/download/html-element-2.3.1.tgz}
+    name: html-element
+    version: 2.3.1
+    engines: {node: '>=4.2'}
+    dependencies:
+      class-list: registry.nlark.com/class-list/0.1.1
+    dev: false
+
   registry.nlark.com/html-tags/2.0.0:
     resolution: {integrity: sha1-ELMKOGCF9Dzt41PMj6fLDe7qZos=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/html-tags/download/html-tags-2.0.0.tgz}
     name: html-tags
@@ -10359,6 +10388,16 @@ packages:
     name: human-signals
     version: 1.1.1
     engines: {node: '>=8.12.0'}
+
+  registry.nlark.com/hyperscript/2.0.2:
+    resolution: {integrity: sha1-ODnLpFVUvf4nu4HCFC0WhPgTWvU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/hyperscript/download/hyperscript-2.0.2.tgz}
+    name: hyperscript
+    version: 2.0.2
+    dependencies:
+      browser-split: registry.nlark.com/browser-split/0.0.0
+      class-list: registry.nlark.com/class-list/0.1.1
+      html-element: registry.nlark.com/html-element/2.3.1
+    dev: false
 
   registry.nlark.com/iconv-lite/0.4.24:
     resolution: {integrity: sha1-ICK0sl+93CHS9SSXSkdKr+czkIs=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/iconv-lite/download/iconv-lite-0.4.24.tgz}

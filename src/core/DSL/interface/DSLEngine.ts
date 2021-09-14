@@ -1,6 +1,12 @@
-import { DSLOutput, DSLRender } from "@/package/dslRender";
-import { Node } from "./node";
+import type { componentType } from "@/constants/componentType";
+import type { DSLOutput, DSLRender, targetPlatform } from "@/package/dslRender";
+import type { Node } from "./node";
 
 export interface DSLEngineInterface {
-  Node2Code: (node: Node, targetPlatform: string) => DSLOutput;
+  getDSLRender: (
+    targetPlatform: targetPlatform,
+    comName: string,
+    comType: componentType
+  ) => DSLRender;
+  Node2Code: (node: Node, targetPlatform: targetPlatform) => DSLOutput;
 }

@@ -10,7 +10,7 @@ import style from "./index.less";
 import { memo, useRef } from "react";
 import type { ComponentSchema } from "@/package/common";
 import produce from "immer";
-import { noder } from "@/core/DSL/container";
+import { dslEngine, noder } from "@/core/DSL/container";
 import { useMemo } from "react";
 import type { DSLRender } from "@/package/dslRender";
 
@@ -83,9 +83,12 @@ export const Render: FlexType = memo(
 );
 
 export const HTMLRender: DSLRender = ({ node }) => {
+  const childrenContent = node.children.map((item) => {
+    return dslEngine.Node2Code(item, "HTML");
+  });
   return `
   <div>
-    this is a ${node.name}
+    ${childrenContent.join("\n")}
   </div>
   `;
 };
