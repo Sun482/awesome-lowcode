@@ -4,8 +4,10 @@ specifiers:
   '@ant-design/icons': ^4.6.4
   '@ant-design/pro-layout': ^6.24.3
   '@antv/data-set': ^0.11.0
+  '@types/hyperscript': ^0.0.4
   '@types/react': ^17.0.0
   '@types/react-dom': ^17.0.0
+  '@uiw/react-monacoeditor': ^3.4.3
   '@umijs/fabric': ^2.6.4
   '@umijs/plugin-esbuild': ^1.3.1
   '@umijs/preset-react': 1.x
@@ -19,14 +21,17 @@ specifiers:
   inversify: ^5.1.1
   lint-staged: ^10.0.7
   moment: ^2.22.2
+  monaco-editor: ^0.27.0
+  monaco-editor-webpack-plugin: ^4.1.2
   numeral: ^2.0.6
-  prettier: ^2.2.0
+  prettier: ^2.4.0
   react: 17.x
   react-dnd: ^14.0.3
   react-dnd-html5-backend: ^14.0.1
   react-dom: 17.x
   react-draggable: ^4.4.4
   react-fittext: ^1.0.0
+  react-monaco-editor: ^0.44.0
   recoil: ^0.4.1
   typescript: ^4.1.2
   umi: ^3.5.17
@@ -36,6 +41,7 @@ dependencies:
   '@ant-design/icons': registry.nlark.com/@ant-design/icons/4.6.4_react-dom@17.0.2+react@17.0.2
   '@ant-design/pro-layout': registry.nlark.com/@ant-design/pro-layout/6.25.1_cb15c3fd8cfa79dfc1ac8043488ce288
   '@antv/data-set': registry.nlark.com/@antv/data-set/0.11.8
+  '@uiw/react-monacoeditor': registry.nlark.com/@uiw/react-monacoeditor/3.4.3_react-dom@17.0.2+react@17.0.2
   '@umijs/fabric': registry.nlark.com/@umijs/fabric/2.6.7
   '@umijs/plugin-esbuild': registry.nlark.com/@umijs/plugin-esbuild/1.3.1_umi@3.5.17
   '@umijs/route-utils': registry.nlark.com/@umijs/route-utils/1.0.37
@@ -46,6 +52,8 @@ dependencies:
   immer: registry.nlark.com/immer/9.0.6
   inversify: registry.nlark.com/inversify/5.1.1
   moment: registry.nlark.com/moment/2.29.1
+  monaco-editor: registry.nlark.com/monaco-editor/0.27.0
+  monaco-editor-webpack-plugin: registry.nlark.com/monaco-editor-webpack-plugin/4.1.2_monaco-editor@0.27.0
   numeral: registry.nlark.com/numeral/2.0.6
   react: registry.nlark.com/react/17.0.2
   react-dnd: registry.nlark.com/react-dnd/14.0.3_4cd822c6044f4c1a7e1f1fea0e728f12
@@ -53,16 +61,18 @@ dependencies:
   react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
   react-draggable: registry.nlark.com/react-draggable/4.4.4_react-dom@17.0.2+react@17.0.2
   react-fittext: registry.nlark.com/react-fittext/1.0.0_react-dom@17.0.2+react@17.0.2
+  react-monaco-editor: registry.nlark.com/react-monaco-editor/0.44.0_4cd822c6044f4c1a7e1f1fea0e728f12
   recoil: registry.nlark.com/recoil/0.4.1_react-dom@17.0.2+react@17.0.2
   umi: registry.nlark.com/umi/3.5.17
 
 devDependencies:
+  '@types/hyperscript': registry.nlark.com/@types/hyperscript/0.0.4
   '@types/react': registry.nlark.com/@types/react/17.0.19
   '@types/react-dom': registry.nlark.com/@types/react-dom/17.0.9
   '@umijs/preset-react': registry.nlark.com/@umijs/preset-react/1.8.22_71cf7b2aa4121b7a32d4634aa12991b7
   '@umijs/test': registry.nlark.com/@umijs/test/3.5.17
   lint-staged: registry.nlark.com/lint-staged/10.5.4
-  prettier: registry.nlark.com/prettier/2.3.2
+  prettier: registry.nlark.com/prettier/2.4.0
   typescript: registry.nlark.com/typescript/4.3.5
   yorkie: 2.0.0
 
@@ -1795,6 +1805,15 @@ packages:
       big.js: registry.nlark.com/big.js/5.2.2
       emojis-list: 3.0.0
       json5: 1.0.1
+    dev: false
+
+  /loader-utils/2.0.0:
+    resolution: {integrity: sha1-5MrOW4FtQloWa18JfhDNErNgZLA=, tarball: loader-utils/download/loader-utils-2.0.0.tgz}
+    engines: {node: '>=8.9.0'}
+    dependencies:
+      big.js: registry.nlark.com/big.js/5.2.2
+      emojis-list: 3.0.0
+      json5: 2.2.0
     dev: false
 
   /locate-path/3.0.0:
@@ -6189,6 +6208,12 @@ packages:
       hoist-non-react-statics: 3.3.2
     dev: true
 
+  registry.nlark.com/@types/hyperscript/0.0.4:
+    resolution: {integrity: sha1-IJ321vMEqFFcj62zlf5ARG1kZVo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/hyperscript/download/@types/hyperscript-0.0.4.tgz}
+    name: '@types/hyperscript'
+    version: 0.0.4
+    dev: true
+
   registry.nlark.com/@types/invariant/2.2.34:
     resolution: {integrity: sha1-BeT3n0ZcIAeIQ3TUeVRS+ZVyC74=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/invariant/download/@types/invariant-2.2.34.tgz}
     name: '@types/invariant'
@@ -6586,6 +6611,21 @@ packages:
     dependencies:
       '@typescript-eslint/types': registry.nlark.com/@typescript-eslint/types/4.30.0
       eslint-visitor-keys: registry.nlark.com/eslint-visitor-keys/2.1.0
+    dev: false
+
+  registry.nlark.com/@uiw/react-monacoeditor/3.4.3_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-Jq8Yc+6UON35ddKBGgqJibG7xtc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@uiw/react-monacoeditor/download/@uiw/react-monacoeditor-3.4.3.tgz}
+    id: registry.nlark.com/@uiw/react-monacoeditor/3.4.3
+    name: '@uiw/react-monacoeditor'
+    version: 3.4.3
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.4
+      monaco-editor: registry.nlark.com/monaco-editor/0.27.0
+      react: registry.nlark.com/react/17.0.2
+      react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
     dev: false
 
   registry.nlark.com/@umijs/ast/3.5.17:
@@ -12289,6 +12329,31 @@ packages:
     name: moment
     version: 2.29.1
 
+  registry.nlark.com/monaco-editor-webpack-plugin/4.1.2_monaco-editor@0.27.0:
+    resolution: {integrity: sha1-r+ow5OA3QTL48pjTWMme/CytPoQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/monaco-editor-webpack-plugin/download/monaco-editor-webpack-plugin-4.1.2.tgz}
+    id: registry.nlark.com/monaco-editor-webpack-plugin/4.1.2
+    name: monaco-editor-webpack-plugin
+    version: 4.1.2
+    peerDependencies:
+      monaco-editor: 0.25.x || 0.26.x || 0.27.x
+      webpack: ^4.5.0 || 5.x
+    dependencies:
+      loader-utils: 2.0.0
+      monaco-editor: registry.nlark.com/monaco-editor/0.27.0
+    dev: false
+
+  registry.nlark.com/monaco-editor/0.26.1:
+    resolution: {integrity: sha1-YrtfZYvJU3n4q7ZLFHYyvRwBnXM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/monaco-editor/download/monaco-editor-0.26.1.tgz}
+    name: monaco-editor
+    version: 0.26.1
+    dev: false
+
+  registry.nlark.com/monaco-editor/0.27.0:
+    resolution: {integrity: sha1-S2kQi7HcH2AXTF3N9RvFMGq1uiY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/monaco-editor/download/monaco-editor-0.27.0.tgz}
+    name: monaco-editor
+    version: 0.27.0
+    dev: false
+
   registry.nlark.com/ms/2.1.2:
     resolution: {integrity: sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/ms/download/ms-2.1.2.tgz}
     name: ms
@@ -13187,6 +13252,15 @@ packages:
     version: 2.3.2
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: false
+
+  registry.nlark.com/prettier/2.4.0:
+    resolution: {integrity: sha1-hb3+D3DD53fPE6T//zlxPKb2TLo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/prettier/download/prettier-2.4.0.tgz}
+    name: prettier
+    version: 2.4.0
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
 
   registry.nlark.com/pretty-format/26.6.2:
     resolution: {integrity: sha1-41wnBfFMt/4v6U+geDRbREEg/JM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/pretty-format/download/pretty-format-26.6.2.tgz}
@@ -14116,6 +14190,21 @@ packages:
     name: react-is
     version: 17.0.2
     dev: true
+
+  registry.nlark.com/react-monaco-editor/0.44.0_4cd822c6044f4c1a7e1f1fea0e728f12:
+    resolution: {integrity: sha1-n5Zv0AtsMOi+iHOj+8hvFKDaK6Q=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/react-monaco-editor/download/react-monaco-editor-0.44.0.tgz}
+    id: registry.nlark.com/react-monaco-editor/0.44.0
+    name: react-monaco-editor
+    version: 0.44.0
+    peerDependencies:
+      '@types/react': ^17.x
+      react: ^17.x
+    dependencies:
+      '@types/react': registry.nlark.com/@types/react/17.0.19
+      monaco-editor: registry.nlark.com/monaco-editor/0.26.1
+      prop-types: 15.7.2
+      react: registry.nlark.com/react/17.0.2
+    dev: false
 
   registry.nlark.com/react-native-swipeout/2.3.6:
     resolution: {integrity: sha1-R9rIqDWCXPPy7vnklVdKPZq20/o=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/react-native-swipeout/download/react-native-swipeout-2.3.6.tgz}

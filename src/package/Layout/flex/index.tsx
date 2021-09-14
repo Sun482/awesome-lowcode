@@ -13,6 +13,7 @@ import produce from "immer";
 import { dslEngine, noder } from "@/core/DSL/container";
 import { useMemo } from "react";
 import type { DSLRender } from "@/package/dslRender";
+import h from "hyperscript";
 
 export const Render: FlexType = memo(
   ({ style: propStyle, total, dragID, children, root, setTree, node }) => {
@@ -86,9 +87,6 @@ export const HTMLRender: DSLRender = ({ node }) => {
   const childrenContent = node.children.map((item) => {
     return dslEngine.Node2Code(item, "HTML");
   });
-  return `
-  <div>
-    ${childrenContent.join("\n")}
-  </div>
-  `;
+  const dom = h("div", {}, [...childrenContent]);
+  return dom;
 };

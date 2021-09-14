@@ -2,6 +2,7 @@ import type { Node } from "@/core/DSL/interface/node";
 import { HTMLRender as flexHTML } from "./Layout/Flex";
 import { HTMLRender as buttonHTML } from "./Base/Button";
 import { dslEngine } from "@/core/DSL/container";
+import h from "hyperscript";
 
 export type DSLInput = { node: Node };
 export type DSLOutput = any;
@@ -12,10 +13,11 @@ export type dslRenderType = Record<
   Record<string, Record<targetPlatform, DSLRender>>
 >;
 const rootRender: DSLRender = ({ node }) => {
-  const result = node.children.map((item) => {
+  const childrenContent = node.children.map((item) => {
     return dslEngine.Node2Code(item, "HTML");
   });
-  return result.join("\n");
+  const dom = h("div", {}, [...childrenContent]);
+  return dom.outerHTML;
 };
 export const dslRender: dslRenderType = {
   Layout: {

@@ -3,7 +3,8 @@
 import type { DSLRender } from "@/package/dslRender";
 import { Button } from "antd";
 import { memo } from "react";
-import HyperScript from "hyperscript";
+import h from "hyperscript";
+
 import type { ButtonType } from "./interface/type";
 
 export const Render: ButtonType = memo(({ text, onClick }) => {
@@ -18,5 +19,6 @@ export const Render: ButtonType = memo(({ text, onClick }) => {
   );
 });
 export const HTMLRender: DSLRender = ({ node }) => {
-  return `<button>${node.id}<button>`;
+  const dom = h("button", { style: { height: "100px" } }, [node.id]);
+  return dom;
 };
