@@ -1,12 +1,14 @@
 /* eslint-disable react/no-array-index-key */
 
+import { Node } from "@/core/DSL/interface/node";
 import type { ComponentSchema } from "@/package/common";
 import type { PackageItem } from "@/package/schema";
 import { Package } from "@/package/schema";
 import { TreeView } from "@/pages/tree";
-import { RootNode } from "@/models/tree";
+
 import { Card, Tabs } from "antd";
-import { FC, useRef } from "react";
+import type { FC } from "react";
+import { useRef } from "react";
 import { useDrag } from "react-dnd";
 
 const { TabPane } = Tabs;
@@ -33,11 +35,12 @@ const ComponentSource: FC<ComponentSourceProps> = ({ schema }) => {
   );
 };
 interface ComponentTabProps {
-  root: RootNode;
+  root: Node;
+  visible: boolean;
 }
-export const ComponentTab: FC<ComponentTabProps> = ({ root }) => {
+export const ComponentTab: FC<ComponentTabProps> = ({ root, visible }) => {
   const packageItems = Object.keys(Package) as PackageItem[];
-  return (
+  return visible ? (
     <Tabs tabPosition="left">
       {packageItems.map((item, index) => {
         return (
@@ -52,5 +55,5 @@ export const ComponentTab: FC<ComponentTabProps> = ({ root }) => {
         <TreeView root={root} />
       </TabPane>
     </Tabs>
-  );
+  ) : null;
 };

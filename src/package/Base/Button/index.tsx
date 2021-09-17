@@ -19,6 +19,6 @@ export const Render: ButtonType = memo(({ text, onClick }) => {
   );
 });
 export const HTMLRender: DSLRender = ({ node }) => {
-  const dom = h("button", { style: { height: "100px" } }, [node.id]);
+  const dom = h("button", { style: { height: "100px" } }, [node.text]);
   return dom;
 };

@@ -7,7 +7,7 @@ export enum componentType {
 export const componentPathObj = {
   Layout: "Layout",
   Base: "Base",
-  Chart: "Chart",
+
   Pro: "Pro"
 };
 export type componentPathType = keyof typeof componentPathObj;

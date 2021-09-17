@@ -1,10 +1,10 @@
-import { RootNode } from "@/models/tree";
+import type { Node } from "@/core/DSL/interface/node";
 import { Tree } from "antd";
 import type { FC } from "react";
 import { useMemo } from "react";
 
 interface TreeViewProps {
-  root: RootNode;
+  root: Node;
 }
 const fn = (node: any) => {
   const children = node.children.length

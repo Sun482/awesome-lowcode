@@ -22,9 +22,13 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useRecoilState } from "recoil";
 import { DataTree } from "@/store/tree";
+import { ComponentProp } from "./components/ComponentProp/ComponentProp";
+import { LeftSquareOutlined } from "@ant-design/icons";
+import { editingInfo } from "@/store/node";
 
 const IndexPage = () => {
   const [tree, setTree] = useRecoilState(DataTree);
+  const [editInfo, setEditInfo] = useRecoilState(editingInfo);
   const [dragState, setDragState] = useState({ x: 0, y: 0 });
 
   const handleOnDrop = useMemo(() => {
@@ -82,40 +86,71 @@ const IndexPage = () => {
     };
   }, []);
   const root = useMemo(() => tree, [tree]);
+  const [siderVisible, setSiderVisible] = useState(true);
   return (
     <DndProvider backend={HTML5Backend}>
       <Layout style={{ height: "calc(100vh - 48px)" }}>
-        <Sider theme="light" width="320px" style={{ padding: "10px" }}>
-          <ComponentTab root={root} />
+        <Sider
+          theme="light"
+          width={siderVisible ? "320px" : "35px"}
+          style={{ padding: "10px" }}
+        >
+          <ComponentTab root={root} visible={siderVisible} />
+          <LeftSquareOutlined
+            style={{
+              position: "absolute",
+              bottom: "10px",
+              right: "10px",
+              transform: siderVisible ? "rotate(0deg)" : "rotate(180deg)"
+            }}
+            onClick={() => {
+              setSiderVisible((prev) => !prev);
+            }}
+          />
         </Sider>
         <Content style={{ overflow: "hidden" }}>
-          <div
-            onMouseDown={mousedownfn}
-            onMouseMove={mousemovefn}
-            onMouseUp={mouseupfn}
-            onMouseLeave={mouseupfn}
-            ref={containerRef}
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            <Draggable
-              position={dragState}
-              handle=".js_box"
-              onStop={(e: DraggableEvent, data: DraggableData) => {
-                setDragState({ x: data.x, y: data.y });
+          <div style={{ display: "flex" }}>
+            <div
+              onMouseDown={mousedownfn}
+              onMouseMove={mousemovefn}
+              onMouseUp={mouseupfn}
+              onMouseLeave={mouseupfn}
+              ref={containerRef}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexGrow: 1,
+                overflow: "hidden"
               }}
             >
-              <ViewRender
-                root={root}
-                setTree={setTree}
-                handleOnDrop={handleOnDrop}
-                style={{
-                  minHeight: "calc(100vh - 48px)",
-                  width: "400px",
-                  backgroundColor: "white",
-                  boxShadow: "rgb(140 188 236 / 8%) 0px 2px 13px 1px"
+              <Draggable
+                position={dragState}
+                handle=".js_box"
+                onStop={(e: DraggableEvent, data: DraggableData) => {
+                  setDragState({ x: data.x, y: data.y });
                 }}
+              >
+                <ViewRender
+                  root={root}
+                  setTree={setTree}
+                  handleOnDrop={handleOnDrop}
+                  setEditingInfo={setEditInfo}
+                  style={{
+                    minHeight: "calc(100vh - 48px)",
+                    width: "400px",
+                    backgroundColor: "white",
+                    boxShadow: "rgb(140 188 236 / 8%) 0px 2px 13px 1px"
+                  }}
+                />
+              </Draggable>
+            </div>
+            <div style={{ width: "300px", backgroundColor: "white" }}>
+              <ComponentProp
+                setTree={setTree}
+                root={root}
+                editingNodeID={editInfo.nodeID}
               />
-            </Draggable>
+            </div>
           </div>
         </Content>
       </Layout>

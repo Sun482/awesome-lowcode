@@ -54,12 +54,13 @@ export class Noder implements NodeUtil {
     return `${name}#${this.getCountByName(name) + 1}`;
   }
   fromSchema(schema: ComponentSchema) {
-    const { name, type, alia, ...config } = schema;
+    const { name, type, alia, editableProp, ...config } = schema;
     const target: Node = {
       name,
       type,
       children: [],
       id: this.getValidID(type, name),
+      ...editableProp,
       ...config
     };
     return target;

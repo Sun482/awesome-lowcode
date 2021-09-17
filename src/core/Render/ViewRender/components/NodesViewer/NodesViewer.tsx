@@ -8,13 +8,17 @@ import { DragItem } from "../DragItem/DragItem";
 import produce from "immer";
 
 import { commonInject } from "../../utils/injectNode";
-import type { RootNode } from "@/store/tree";
 
 interface NodesViewerProps {
-  root: RootNode;
+  root: Node;
   setTree: any;
+  setEditingInfo: any;
 }
-export const NodesViewer: FC<NodesViewerProps> = ({ root, setTree }) => {
+export const NodesViewer: FC<NodesViewerProps> = ({
+  root,
+  setTree,
+  setEditingInfo
+}) => {
   const nodes = useMemo(() => {
     return root.children;
   }, [root]);
@@ -52,7 +56,7 @@ export const NodesViewer: FC<NodesViewerProps> = ({ root, setTree }) => {
               componentType={type}
               name={name}
               children={children}
-              {...commonInject(item, root, setTree)}
+              {...commonInject(item, root, setTree, setEditingInfo)}
               {...config}
             />
           </DragItem>
