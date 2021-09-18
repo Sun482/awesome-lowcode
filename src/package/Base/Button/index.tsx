@@ -7,9 +7,10 @@ import h from "hyperscript";
 
 import type { ButtonType } from "./interface/type";
 
-export const Render: ButtonType = memo(({ text, onClick }) => {
+export const Render: ButtonType = memo(({ text, style, onClick }) => {
   return (
     <Button
+      style={style}
       onClick={(e) => {
         if (onClick) onClick(e);
       }}

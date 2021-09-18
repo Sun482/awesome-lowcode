@@ -1,15 +1,24 @@
 import { componentType } from "@/constants/componentType";
+import type { Node } from "@/core/DSL/interface/node";
 import type { ComponentSchema } from "@/package/common";
-import type { CSSProperties } from "@umijs/renderer-react/node_modules/@types/react";
+import { PropEditor as propEditor } from "./PropEditor";
 
-type FlexSchemaInject = {
-  total: number;
-  style?: CSSProperties | undefined;
+const handleInjectNode = (propValue: any, node: Node) => {
+  // 这里的propValue是object
+  Object.assign(node, { style: propValue });
 };
-export const FlexSchema: ComponentSchema<FlexSchemaInject> = {
+export const FlexSchema: ComponentSchema = {
   type: componentType.Layout,
   name: "Flex",
   alia: "Flex布局",
-  total: 5,
-  style: { padding: "10px", width: "400px" }
+  editableProp: {
+    style: {
+      value: { padding: "10px" },
+      propName: "style",
+      propType: "other",
+      propEditor,
+      handleInjectNode
+    },
+    total: { value: 3, propName: "total", propType: "number" }
+  }
 };

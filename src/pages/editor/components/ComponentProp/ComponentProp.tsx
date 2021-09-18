@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { useMemo } from "react";
 import { memo } from "react";
 import produce from "immer";
+import { useCallback } from "react";
 
 interface ComponentPropInterface {
   root: Node;
@@ -44,36 +45,76 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
         })[0],
       [editingNode?.name, nodeSchema]
     );
-    const handleOnChange = (propName: string, value: string) => {
-      if (setTree) {
-        setTree(
-          produce((draft: any) => {
-            const node = noder.getNode(draft, editingNodeID);
-            if (node) node[propName] = value;
-          })
+    const handleOnChange = useCallback(
+      (propName: string, value: string) => {
+        if (setTree) {
+          setTree(
+            produce((draft: any) => {
+              const node = noder.getNode(draft, editingNodeID);
+              if (node) node[propName] = value;
+            })
+          );
+        }
+      },
+      [editingNodeID, setTree]
+    );
+    const getPropItem = (propName: string, key: number) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      const schema = nodeSchema?.map((item) => {
+        if (item.name === editingNode?.name) {
+          return item.editableProp;
+        }
+        return null;
+      })[0];
+      if (schema && schema[propName] && schema[propName].propEditor) {
+        const Render = schema[propName].propEditor;
+        const value = (editingNode && editingNode[propName]) || null;
+        return (
+          (Render && (
+            <Render
+              value={value}
+              key={key}
+              node={editingNode || undefined}
+              setValue={(valueFn: any) => {
+                setTree(
+                  produce((draft: any) => {
+                    const node = noder.getNode(draft, editingNodeID);
+                    Object.assign(
+                      node,
+                      typeof valueFn === "function" ? valueFn(value) : valueFn
+                    );
+                  })
+                );
+              }}
+            />
+          )) ||
+          null
         );
       }
+      return (
+        <Form.Item name={propName} label={propName} key={key}>
+          <Input onChange={(e) => handleOnChange(propName, e.target.value)} />
+        </Form.Item>
+      );
     };
     useEffect(() => {
       if (editableProp && editingNode) {
         const info = {};
+
         // eslint-disable-next-line array-callback-return
         editableProp.map((prop) => {
           Object.assign(info, { [prop]: editingNode[prop] });
         });
         formHook.setFieldsValue(info);
       }
-    }, [editableProp, editingNode, formHook]);
+    }, [editableProp, editingNode, editingNodeID, formHook, root]);
 
     return (
       <div style={{ padding: "10px" }}>
         <Form form={formHook}>
-          {editableProp?.map((item) => {
-            return (
-              <Form.Item name={item} label={item}>
-                <Input onChange={(e) => handleOnChange(item, e.target.value)} />
-              </Form.Item>
-            );
+          <Form.Item label={"nodeID"}>{editingNodeID}</Form.Item>
+          {editableProp?.map((item, index) => {
+            return getPropItem(item, index);
           })}
         </Form>
       </div>

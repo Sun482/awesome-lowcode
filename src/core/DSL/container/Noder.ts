@@ -1,9 +1,9 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-param-reassign */
 import { IDENTIFIERS } from "@/common/container/identifiers";
 import type { componentType } from "@/constants/componentType";
 import { injectNode } from "@/core/Render/ViewRender/utils/injectNode";
-// import { ComUtils } from "@/core/Render/ViewRender/container/ComUtils";
-// import { componentUtils } from "@/core/Render/ViewRender/interface/comUtilsInterface";
+
 import type { ComponentSchema } from "@/package/common";
 import { warn } from "@/utils/logger";
 import { inject, injectable } from "inversify";
@@ -15,14 +15,10 @@ import type { Node, NodeUtil } from "../interface/node";
 export class Noder implements NodeUtil {
   private componentCountMap: Map<string, number>;
   private mapUtils: MapUtilsInterface;
-  // private comUtils: componentUtils;
 
-  constructor(
-    @inject(IDENTIFIERS.MapUtils) mapUtils: MapUtilsInterface
-    // @inject(IDENTIFIERS.ComponentUtils) comUtils: componentUtils
-  ) {
+  constructor(@inject(IDENTIFIERS.MapUtils) mapUtils: MapUtilsInterface) {
     this.mapUtils = mapUtils;
-    // this.comUtils = comUtils;
+
     this.componentCountMap = this.mapUtils.ComponentCountMap;
   }
   getNode(root: Node, nodeID: string) {
@@ -60,9 +56,18 @@ export class Noder implements NodeUtil {
       type,
       children: [],
       id: this.getValidID(type, name),
-      ...editableProp,
       ...config
     };
+
+    Object.keys(editableProp).map((prop) => {
+      const { handleInjectNode, value, propName } = editableProp[prop];
+
+      if (handleInjectNode) {
+        handleInjectNode(value, target);
+      } else {
+        Object.assign(target, { [propName]: value });
+      }
+    });
     return target;
   }
   getParent(node: Node) {

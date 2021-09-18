@@ -6,11 +6,6 @@ export const injectNode = <T extends Record<string, any>>(
 ) => {
   return { ...node, ...injectProp };
 };
-export const commonInject = (
-  node: Node,
-  root: Node,
-  setTree: any,
-  setEditingInfo: any
-) => {
-  return { node, root, setTree, setEditingInfo };
+export const commonInject = (node: Node, root: Node, setTree: any) => {
+  return { node, root, setTree };
 };
