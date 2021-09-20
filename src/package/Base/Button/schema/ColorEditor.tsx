@@ -1,6 +1,6 @@
-import { PropEditorType } from "@/package/common";
+import type { PropEditorType } from "@/package/common";
 import { Button, Space } from "antd";
-import { FC } from "react";
+import type { FC } from "react";
 
 export const ColorEditor: FC<PropEditorType> = ({ value, setValue }) => {
   const handleChange = () => {

@@ -59,15 +59,16 @@ export class Noder implements NodeUtil {
       ...config
     };
 
-    Object.keys(editableProp).map((prop) => {
-      const { handleInjectNode, value, propName } = editableProp[prop];
+    if (editableProp)
+      Object.keys(editableProp).map((prop) => {
+        const { handleInjectNode, value, propName } = editableProp[prop];
 
-      if (handleInjectNode) {
-        handleInjectNode(value, target);
-      } else {
-        Object.assign(target, { [propName]: value });
-      }
-    });
+        if (handleInjectNode) {
+          handleInjectNode(value, target);
+        } else {
+          Object.assign(target, { [propName]: value });
+        }
+      });
     return target;
   }
   getParent(node: Node) {
@@ -77,13 +78,12 @@ export class Noder implements NodeUtil {
     warn(`${node.id}不存在parent!`);
     return null;
   }
-  moveNode(target: Node, source: Node, sourceParent: Node) {
+  moveNode(target: Node, sourceParent: Node) {
     // 原父节点删除指定节点
     sourceParent.children = [
-      ...sourceParent.children.filter((v) => v.id !== source.id)
+      ...sourceParent.children.filter((v) => v.id !== target.id)
     ];
-
-    // 将source添加至目标节点children
-    target.children = [...target.children, source];
+    // const exist = this.componentCountMap.get(target.name) || 0;
+    // this.componentCountMap.set(target.name, exist - 1);
   }
 }

@@ -1,4 +1,4 @@
-import { Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import { noder } from "@/core/DSL/container";
 import type { Node } from "@/core/DSL/interface/node";
 
@@ -12,14 +12,17 @@ import { useMemo } from "react";
 import { memo } from "react";
 import produce from "immer";
 import { useCallback } from "react";
+import "./index.less";
+import { EditingInfo } from "@/store/node";
 
 interface ComponentPropInterface {
   root: Node;
   setTree: any;
   editingNodeID: string;
+  setEditInfo: any;
 }
 export const ComponentProp: FC<ComponentPropInterface> = memo(
-  ({ editingNodeID, root, setTree }) => {
+  ({ editingNodeID, root, setTree, setEditInfo }) => {
     const [formHook] = useForm();
     const editingNode = useMemo(
       () => noder.getNode(root, editingNodeID),
@@ -38,7 +41,7 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
     const editableProp = useMemo(
       () =>
         nodeSchema?.map((item) => {
-          if (item.name === editingNode?.name) {
+          if (item.name === editingNode?.name && item.editableProp) {
             return Object.keys(item.editableProp);
           }
           return null;
@@ -58,6 +61,25 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
       },
       [editingNodeID, setTree]
     );
+    const handleDeleteNode = (node: Node | null) => {
+      if (setTree) {
+        setTree(
+          produce((draft: any) => {
+            if (node) {
+              const parentID = noder.getParent(node);
+              const parent =
+                (parentID && noder.getNode(draft, parentID)) || null;
+              if (parent) noder.moveNode(node, parent);
+            }
+          })
+        );
+      }
+      if (setEditInfo) {
+        setEditInfo((prev: EditingInfo) => {
+          return { ...prev, nodeID: "" };
+        });
+      }
+    };
     const getPropItem = (propName: string, key: number) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       const schema = nodeSchema?.map((item) => {
@@ -97,6 +119,7 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
         </Form.Item>
       );
     };
+
     useEffect(() => {
       if (editableProp && editingNode) {
         const info = {};
@@ -111,12 +134,26 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
 
     return (
       <div style={{ padding: "10px" }}>
-        <Form form={formHook}>
-          <Form.Item label={"nodeID"}>{editingNodeID}</Form.Item>
-          {editableProp?.map((item, index) => {
-            return getPropItem(item, index);
-          })}
-        </Form>
+        {editingNodeID ? (
+          <>
+            <Form form={formHook}>
+              <Form.Item label={"nodeID"}>{editingNodeID}</Form.Item>
+              {editableProp?.map((item, index) => {
+                return getPropItem(item, index);
+              })}
+            </Form>
+            <div className="default-buttons-container">
+              <Button
+                type="primary"
+                color="red"
+                danger
+                onClick={() => handleDeleteNode(editingNode)}
+              >
+                删除
+              </Button>
+            </div>
+          </>
+        ) : null}
       </div>
     );
   }

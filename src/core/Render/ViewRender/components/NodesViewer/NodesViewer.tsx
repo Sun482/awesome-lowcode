@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Node } from "@/core/DSL/interface/node";
 import { useMemo } from "react";
@@ -8,16 +9,20 @@ import { DragItem } from "../DragItem/DragItem";
 import produce from "immer";
 
 import { commonInject } from "../../utils/injectNode";
+import type { EditingInfo } from "@/store/node";
+import type { SetterOrUpdater } from "recoil";
 
 interface NodesViewerProps {
   root: Node;
   setTree: any;
-  setEditingInfo: any;
+  setEditingInfo: SetterOrUpdater<EditingInfo>;
+  editNodeID: string;
 }
 export const NodesViewer: FC<NodesViewerProps> = ({
   root,
   setTree,
-  setEditingInfo
+  setEditingInfo,
+  editNodeID
 }) => {
   const nodes = useMemo(() => {
     return root.children;
@@ -38,6 +43,17 @@ export const NodesViewer: FC<NodesViewerProps> = ({
       }
     };
   }, [setTree]);
+  const handleClick = (nodeID: string) => {
+    if (nodeID !== editNodeID)
+      setEditingInfo((prev: EditingInfo) => {
+        return { ...prev, nodeID };
+      });
+    else {
+      setEditingInfo((prev: EditingInfo) => {
+        return { ...prev, nodeID: "" };
+      });
+    }
+  };
   return (
     <div>
       {nodes.map((item, index) => {
@@ -51,12 +67,14 @@ export const NodesViewer: FC<NodesViewerProps> = ({
             dragID={"rootDrag"}
             onDrop={() => {}}
             key={index}
+            onClick={() => handleClick(item.id)}
+            editNodeID={editNodeID}
           >
             <DynamicEngine
               componentType={type}
               name={name}
               children={children}
-              {...commonInject(item, root, setTree, setEditingInfo)}
+              {...commonInject(item, root, setTree)}
               {...config}
             />
           </DragItem>

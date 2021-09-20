@@ -6,6 +6,6 @@ export type EditingInfo = {
 export const editingInfo = atom({
   key: "editingInfo",
   default: {
-    nodeID: "123"
+    nodeID: ""
   } as EditingInfo
 });

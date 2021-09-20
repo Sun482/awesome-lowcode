@@ -38,4 +38,10 @@ export interface NodeUtil {
    * @param node 要查询的节点
    */
   getParent: (node: Node) => string | null;
+  /**
+   * 原父节点删除指定节点
+   * @param targetID 要删除的节点id
+   * @param sourceParent 父节点对象
+   */
+  moveNode: (target: Node, sourceParent: Node) => any;
 }

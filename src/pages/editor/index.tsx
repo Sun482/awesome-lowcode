@@ -87,6 +87,7 @@ const IndexPage = () => {
   }, []);
   const root = useMemo(() => tree, [tree]);
   const [siderVisible, setSiderVisible] = useState(true);
+  const [propEditorVisible, setPropEditorVisible] = useState(true);
   return (
     <DndProvider backend={HTML5Backend}>
       <Layout style={{ height: "calc(100vh - 48px)" }}>
@@ -135,6 +136,7 @@ const IndexPage = () => {
                   setTree={setTree}
                   handleOnDrop={handleOnDrop}
                   setEditingInfo={setEditInfo}
+                  editingInfo={editInfo}
                   style={{
                     minHeight: "calc(100vh - 48px)",
                     width: "400px",
@@ -144,11 +146,33 @@ const IndexPage = () => {
                 />
               </Draggable>
             </div>
-            <div style={{ width: "300px", backgroundColor: "white" }}>
-              <ComponentProp
-                setTree={setTree}
-                root={root}
-                editingNodeID={editInfo.nodeID}
+            <div
+              style={{
+                width: propEditorVisible ? "300px" : "35px",
+                backgroundColor: "white",
+                position: "relative"
+              }}
+            >
+              {propEditorVisible ? (
+                <ComponentProp
+                  setTree={setTree}
+                  root={root}
+                  editingNodeID={editInfo.nodeID}
+                  setEditInfo={setEditInfo}
+                />
+              ) : null}
+              <LeftSquareOutlined
+                style={{
+                  position: "absolute",
+                  bottom: "10px",
+                  left: "10px",
+                  transform: propEditorVisible
+                    ? "rotate(180deg)"
+                    : "rotate(0deg)"
+                }}
+                onClick={() => {
+                  setPropEditorVisible((prev) => !prev);
+                }}
               />
             </div>
           </div>

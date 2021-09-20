@@ -26,7 +26,7 @@ export default function Layout(props: any) {
           );
         }}
         layout="top"
-        title="Lowcode Demo"
+        title="Lowcode"
         route={routes}
         location={{ pathname }}
       >

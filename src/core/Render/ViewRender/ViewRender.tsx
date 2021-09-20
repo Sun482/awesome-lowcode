@@ -8,13 +8,13 @@ import produce from "immer";
 import { noder } from "@/core/DSL/container";
 import type { ComponentSchema } from "@/package/common";
 import { NodesViewer } from "./components/NodesViewer/NodesViewer";
-import { EditingInfo } from "@/store/node";
 
 const ViewRender: FC<ViewRenderProps> = ({
   root,
   style,
   setTree,
-  setEditingInfo
+  setEditingInfo,
+  editingInfo
 }) => {
   const ref = useRef(null);
   const [{ isOverHovering }, drop] = useDrop({
@@ -36,9 +36,6 @@ const ViewRender: FC<ViewRenderProps> = ({
             noder.appendChild(draft, newNode);
           })
         );
-        setEditingInfo((prev: EditingInfo) => {
-          return { ...prev, nodeID: newNode?.id };
-        });
       }
     }
   });
@@ -50,6 +47,7 @@ const ViewRender: FC<ViewRenderProps> = ({
         root={root}
         setTree={setTree}
         setEditingInfo={setEditingInfo}
+        editNodeID={editingInfo.nodeID}
       />
     </div>
   ) : null;

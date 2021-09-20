@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import type { FlexItemProps } from "@/package/Layout/Flex/interface/type";
 import { useMemo } from "react";
 import type { FC } from "react";
@@ -5,6 +6,7 @@ import { memo, useRef } from "react";
 import type { DropTargetMonitor, XYCoord } from "react-dnd";
 import { useDrop, useDrag } from "react-dnd";
 import style from "./index.less";
+import { useState } from "react";
 
 interface DragItemProps {
   moveItem: any;
@@ -12,11 +14,22 @@ interface DragItemProps {
   onDrop: any;
   node: any;
   dragID: string;
+  onClick: any;
+  editNodeID: string;
 }
 export const DragItem: FC<DragItemProps> = memo(
-  ({ children, dragID, node, onDrop, index, moveItem }) => {
+  ({
+    children,
+    dragID,
+    node,
+    onDrop,
+    index,
+    moveItem,
+    onClick,
+    editNodeID
+  }) => {
     const ref = useRef<HTMLDivElement>(null);
-
+    const [isMouseHovering, setMouseHovering] = useState(false);
     const [{ isHovering }, drop] = useDrop<FlexItemProps, any, any>({
       accept: dragID,
       collect(monitor) {
@@ -83,16 +96,31 @@ export const DragItem: FC<DragItemProps> = memo(
     const [, drag] = useDrag({
       type: dragID,
       item: { node }
-      // collect: (monitor: any) => ({
-      //   isDragging: monitor.isDragging()
-      // })
     });
     const Render = useMemo(() => {
       return children;
     }, [children]);
+    const handleMouseEnter = () => {
+      setMouseHovering(true);
+    };
+    const handleMouseLeave = () => {
+      setMouseHovering(false);
+    };
     drag(drop(ref));
     return (
-      <div ref={ref} className={isHovering ? style.hovered : null}>
+      <div
+        ref={ref}
+        className={
+          isHovering
+            ? style.hovered
+            : isMouseHovering || editNodeID === node.id
+            ? style.mouseHovered
+            : style["drag-item"]
+        }
+        onClick={onClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         {Render}
       </div>
     );
