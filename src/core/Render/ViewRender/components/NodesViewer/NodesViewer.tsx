@@ -74,7 +74,7 @@ export const NodesViewer: FC<NodesViewerProps> = ({
               componentType={type}
               name={name}
               children={children}
-              {...commonInject(item, root, setTree)}
+              {...commonInject(item, root, setTree, editNodeID, setEditingInfo)}
               {...config}
             />
           </DragItem>

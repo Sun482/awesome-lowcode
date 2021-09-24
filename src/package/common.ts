@@ -7,7 +7,7 @@ export type PropType = "string" | "number" | "object" | "other";
 export type InjectNodeFn = (propValue: any, node: Node) => any;
 export type PropEditorType = {
   value: any;
-  setValue: any;
+  setValue: any; // 注入属性到node节点里
   node?: Node;
 };
 export type EditablePropItem = {

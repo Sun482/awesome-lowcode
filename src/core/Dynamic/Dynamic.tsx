@@ -40,6 +40,7 @@ type DynamicType = {
   componentType: componentType;
   name: string;
   children: Node[];
+  [key: string]: any;
 };
 
 const DynamicEngine = <T extends DynamicType>(props: T) => {

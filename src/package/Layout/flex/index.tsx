@@ -15,8 +15,22 @@ import { useMemo } from "react";
 import type { DSLRender } from "@/package/dslRender";
 import h from "hyperscript";
 
+import { useCallback } from "react";
+import { useState } from "react";
+
 export const Render: FlexType = memo(
-  ({ style: propStyle, total, dragID, children, root, setTree, node }) => {
+  ({
+    style: propStyle,
+    total,
+    dragID,
+    children,
+    root,
+    setTree,
+    node,
+    editNodeID,
+    setEditingInfo
+  }) => {
+    const [hoverID, setHoverID] = useState("");
     const ref = useRef<HTMLDivElement>(null);
     const [{ isOverHovering }, drop] = useDrop({
       accept: "ComponentSource", // 接受添加组件的请求
@@ -39,6 +53,19 @@ export const Render: FlexType = memo(
       }
     });
     drop(ref);
+    const handleClick = useCallback(
+      (_node: Node, e: Event) => {
+        setEditingInfo((prev: any) => ({ ...prev, nodeID: _node.id }));
+        e.stopPropagation();
+      },
+      [setEditingInfo]
+    );
+    const handleMouseEnter = (nodeID: string) => {
+      setHoverID(nodeID);
+    };
+    const handleMouseLeave = () => {
+      setHoverID("");
+    };
     const nodes = useMemo(() => {
       if (!children.length) return <div>请添加元素</div>;
       return children.length <= total ? (
@@ -49,15 +76,19 @@ export const Render: FlexType = memo(
               componentType={type}
               name={name}
               key={index}
-              {...commonInject(item, root, setTree)}
+              {...commonInject(item, root, setTree, editNodeID, setEditingInfo)}
               {...config}
+              onClick={(e: Event) => handleClick(item, e)}
+              onMouseEnter={() => handleMouseEnter(item.id)}
+              onMouseLeave={() => handleMouseLeave()}
+              className={editNodeID === item.id ? style.mouseHovered : ""}
             />
           );
         })
       ) : (
         <div>超过数量限制</div>
       );
-    }, [children, root, setTree, total]);
+    }, [children, handleClick, root, setEditingInfo, setTree, total]);
 
     return (
       <div
