@@ -1,6 +1,7 @@
 import type { Node } from "@/core/DSL/interface/node";
 import { HTMLRender as flexHTML } from "./Layout/Flex";
 import { HTMLRender as buttonHTML } from "./Base/Button";
+import { HTMLRender as headerHTML } from "./Pro/Header";
 import { dslEngine } from "@/core/DSL/container";
 import h from "hyperscript";
 
@@ -31,6 +32,11 @@ export const dslRender: dslRenderType = {
   Base: {
     Button: {
       HTML: buttonHTML
+    }
+  },
+  Pro: {
+    Header: {
+      HTML: headerHTML
     }
   }
 };

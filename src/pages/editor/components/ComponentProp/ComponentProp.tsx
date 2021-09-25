@@ -13,7 +13,7 @@ import { memo } from "react";
 import produce from "immer";
 import { useCallback } from "react";
 import "./index.less";
-import { EditingInfo } from "@/store/node";
+import type { EditingInfo } from "@/store/node";
 
 interface ComponentPropInterface {
   root: Node;
@@ -48,6 +48,7 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
         })[0],
       [editingNode?.name, nodeSchema]
     );
+
     const handleOnChange = useCallback(
       (propName: string, value: string) => {
         if (setTree) {
@@ -101,6 +102,7 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
                 setTree(
                   produce((draft: any) => {
                     const node = noder.getNode(draft, editingNodeID);
+                    // const newValue=typeof valueFn === "function" ? valueFn(value) : valueFn
                     Object.assign(
                       node,
                       typeof valueFn === "function" ? valueFn(value) : valueFn

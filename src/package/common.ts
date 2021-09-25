@@ -3,11 +3,12 @@ import type { FC } from "react";
 import type { Node } from "@/core/DSL/interface/node";
 
 export type ComponentProps<T = any> = FC<T & Record<string, any>>;
-export type PropType = "string" | "number" | "object" | "other";
+export type PropType = "string" | "number" | "select" | "object" | "other";
 export type InjectNodeFn = (propValue: any, node: Node) => any;
+export type Updater = (prev: any) => any | Record<string, unknown>;
 export type PropEditorType = {
   value: any;
-  setValue: any; // 注入属性到node节点里
+  setValue: (updater: Updater) => any; // 注入属性到node节点里
   node?: Node;
 };
 export type EditablePropItem = {

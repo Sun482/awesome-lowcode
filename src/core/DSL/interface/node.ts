@@ -1,5 +1,5 @@
 import type { componentType } from "@/constants/componentType";
-import { ComponentSchema } from "@/package/common";
+import type { ComponentSchema } from "@/package/common";
 
 export type NodeType = "normal";
 
