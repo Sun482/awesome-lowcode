@@ -1,3 +1,4 @@
+import { ResourceType } from "@/core/FileUtil/interface/ResourceUtil";
 import type { ComponentProps } from "@/package/common";
 
 // 这里聚集了会用到的一系列map
@@ -10,4 +11,6 @@ export interface MapUtilsInterface {
   readonly ComponentRenderMap: Map<string, ComponentProps>;
   // ComponentInstanceMap: 画布上的React组件实例
   readonly ComponentInstanceMap: Map<string, any>;
+  // ResourceMap: 资源管理Map
+  readonly ResourceMap: Map<string, ResourceType>;
 }

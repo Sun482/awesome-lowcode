@@ -21,6 +21,7 @@ interface ComponentPropInterface {
   editingNodeID: string;
   setEditInfo: any;
 }
+const supportedTypeArr = ["number"];
 export const ComponentProp: FC<ComponentPropInterface> = memo(
   ({ editingNodeID, root, setTree, setEditInfo }) => {
     const [formHook] = useForm();
@@ -115,9 +116,13 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
           null
         );
       }
+      const itemType = (schema && schema[propName].propType) as any;
       return (
         <Form.Item name={propName} label={propName} key={key}>
-          <Input onChange={(e) => handleOnChange(propName, e.target.value)} />
+          <Input
+            type={supportedTypeArr.indexOf(itemType) !== -1 ? itemType : null}
+            onChange={(e) => handleOnChange(propName, e.target.value)}
+          />
         </Form.Item>
       );
     };

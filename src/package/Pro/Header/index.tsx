@@ -2,15 +2,37 @@
 
 import type { HeaderType } from "./interface/type";
 
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
-import { dslEngine } from "@/core/DSL/container";
+import { dslEngine, resourceUtil } from "@/core/DSL/container";
 
 import type { DSLRender } from "@/package/dslRender";
 import h from "hyperscript";
 
-export const Render: HeaderType = memo(({ title }) => {
-  return <div>{title}</div>;
+export const Render: HeaderType = memo(({ title, node }) => {
+  const bgMode = useMemo(() => {
+    return node.backgroundMode;
+  }, [node.backgroundMode]);
+  const bgImgSrc = useMemo(() => {
+    const res = resourceUtil.getResource(`${node?.id}#bgImg`);
+    return (res.success && res.value) || "";
+  }, [node?.id]);
+  const headerHeight = useMemo(() => {
+    return node.height || 100;
+  }, [node.height]);
+  const bgProp =
+    bgMode.mode === "color"
+      ? {
+          backgroundColor: bgMode.value,
+          backgroundSize: "100% 100%",
+          height: `${headerHeight}px`
+        }
+      : {
+          backgroundImage: `url(${bgImgSrc})`,
+          backgroundSize: "100% 100%",
+          height: `${headerHeight}px`
+        };
+  return <div style={bgProp}>{title}</div>;
 });
 
 export const HTMLRender: DSLRender = ({ node }) => {

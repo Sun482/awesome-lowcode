@@ -8,7 +8,12 @@ export type InjectNodeFn = (propValue: any, node: Node) => any;
 export type Updater = (prev: any) => any | Record<string, unknown>;
 export type PropEditorType = {
   value: any;
-  setValue: (updater: Updater) => any; // 注入属性到node节点里
+  // setValue
+  // 注入属性到node节点里
+  // 注意Updater的prev是可编辑prop的当前value
+  // 而Updater的返回值是操作在node上而不是操作在可编辑prop上
+  // 因此需要根据具体情况设计返回值
+  setValue: (updater: Updater) => any;
   node?: Node;
 };
 export type EditablePropItem = {

@@ -1,6 +1,9 @@
-import { Button, Form, Select, Upload } from "antd";
+import { Button, Form, Select, Upload, Image, notification } from "antd";
 import type { PropEditorType } from "@/package/common";
 import type { FC } from "react";
+
+import { useMemo } from "react";
+import { resourceUtil } from "@/core/DSL/container";
 
 const bgModeArr = ["color", "img"];
 export const BgModePropEditor: FC<PropEditorType> = ({ node, setValue }) => {
@@ -39,13 +42,35 @@ export const BgImgPropEditor: FC<PropEditorType> = ({
   value,
   setValue
 }) => {
+  const handleGetFile = (file: Blob) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      const base64 = fileReader.result;
+      const resID = resourceUtil.addResource(base64, `${node?.id}#bgImg`);
+      notification.success({ message: "资源获取成功!" });
+      setValue((prev) => {
+        return { ...node, backgroundImg: { ...prev, resID } };
+      });
+    };
+    return false;
+  };
+
+  const bgImgSrc = useMemo(() => {
+    return resourceUtil.getResource(value.resID);
+  }, [value.resID]);
+
   return (
     <>
       {node && node.backgroundMode.mode === "img" ? (
         <Form.Item label="图片">
-          <Upload>
-            <Button>上传图片</Button>
-          </Upload>
+          {bgImgSrc.value ? (
+            <Image src={bgImgSrc.value as string} />
+          ) : (
+            <Upload beforeUpload={handleGetFile}>
+              <Button>上传图片</Button>
+            </Upload>
+          )}
         </Form.Item>
       ) : null}
     </>

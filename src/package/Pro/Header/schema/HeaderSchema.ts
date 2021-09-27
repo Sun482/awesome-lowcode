@@ -9,6 +9,7 @@ export const HeaderSchema: ComponentSchema = {
   editableProp: {
     title: { value: "标题", propName: "title", propType: "string" },
     subTitle: { value: "副标题", propName: "subTitle", propType: "string" },
+    height: { value: 100, propName: "height", propType: "number" },
     backgroundMode: {
       value: { mode: "color", value: "red" },
       propName: "backgroundMode",

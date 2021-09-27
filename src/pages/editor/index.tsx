@@ -25,6 +25,7 @@ import { DataTree } from "@/store/tree";
 import { ComponentProp } from "./components/ComponentProp/ComponentProp";
 import { LeftSquareOutlined } from "@ant-design/icons";
 import { editingInfo } from "@/store/node";
+import { useEffect } from ".pnpm/registry.nlark.com+@types+react@16.14.14/node_modules/@types/react";
 
 const IndexPage = () => {
   const [tree, setTree] = useRecoilState(DataTree);
@@ -85,6 +86,7 @@ const IndexPage = () => {
       });
     };
   }, []);
+
   const root = useMemo(() => tree, [tree]);
   const [siderVisible, setSiderVisible] = useState(true);
   const [propEditorVisible, setPropEditorVisible] = useState(true);
@@ -139,7 +141,7 @@ const IndexPage = () => {
                   editingInfo={editInfo}
                   style={{
                     minHeight: "calc(100vh - 48px)",
-                    width: "400px",
+                    width: "1200px",
                     backgroundColor: "white",
                     boxShadow: "rgb(140 188 236 / 8%) 0px 2px 13px 1px"
                   }}
