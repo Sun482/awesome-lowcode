@@ -76,3 +76,40 @@ export const BgImgPropEditor: FC<PropEditorType> = ({
     </>
   );
 };
+export const HeaderIconEditor: FC<PropEditorType> = ({
+  node,
+  value,
+  setValue
+}) => {
+  const handleGetFile = (file: Blob) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      const base64 = fileReader.result;
+      const resID = resourceUtil.addResource(base64, `${node?.id}#iconImg`);
+      notification.success({ message: "图标获取成功!" });
+      setValue((prev) => {
+        return { ...node, icon: { ...prev, resID } };
+      });
+    };
+    return false;
+  };
+
+  const iconImgSrc = useMemo(() => {
+    return resourceUtil.getResource(value.resID);
+  }, [value.resID]);
+
+  return (
+    <>
+      <Form.Item label="Header Icon">
+        {iconImgSrc.value ? (
+          <Image src={iconImgSrc.value as string} />
+        ) : (
+          <Upload beforeUpload={handleGetFile}>
+            <Button>上传图标</Button>
+          </Upload>
+        )}
+      </Form.Item>
+    </>
+  );
+};

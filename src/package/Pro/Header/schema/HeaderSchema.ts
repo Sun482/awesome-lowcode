@@ -1,6 +1,10 @@
 import { componentType } from "@/constants/componentType";
 import type { ComponentSchema } from "@/package/common";
-import { BgModePropEditor, BgImgPropEditor } from "./PropEditor";
+import {
+  BgModePropEditor,
+  BgImgPropEditor,
+  HeaderIconEditor
+} from "./PropEditor";
 
 export const HeaderSchema: ComponentSchema = {
   type: componentType.Pro,
@@ -25,7 +29,8 @@ export const HeaderSchema: ComponentSchema = {
     icon: {
       value: { base64: "" },
       propName: "icon",
-      propType: "other"
+      propType: "other",
+      propEditor: HeaderIconEditor
     }
   }
 };

@@ -39,14 +39,17 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
       () => componentType && Package[componentType],
       [componentType]
     );
+
     const editableProp = useMemo(
       () =>
-        nodeSchema?.map((item) => {
-          if (item.name === editingNode?.name && item.editableProp) {
-            return Object.keys(item.editableProp);
-          }
-          return null;
-        })[0],
+        nodeSchema
+          ?.map((item) => {
+            if (item.name === editingNode?.name && item.editableProp) {
+              return Object.keys(item.editableProp);
+            }
+            return null;
+          })
+          .filter((v) => v)[0],
       [editingNode?.name, nodeSchema]
     );
 
@@ -84,12 +87,15 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
     };
     const getPropItem = (propName: string, key: number) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      const schema = nodeSchema?.map((item) => {
-        if (item.name === editingNode?.name) {
-          return item.editableProp;
-        }
-        return null;
-      })[0];
+      const schema = nodeSchema
+        ?.map((item) => {
+          if (item.name === editingNode?.name) {
+            return item.editableProp;
+          }
+          return null;
+        })
+        .filter((v) => v)[0];
+
       if (schema && schema[propName] && schema[propName].propEditor) {
         const Render = schema[propName].propEditor;
         const value = (editingNode && editingNode[propName]) || null;
@@ -138,7 +144,6 @@ export const ComponentProp: FC<ComponentPropInterface> = memo(
         formHook.setFieldsValue(info);
       }
     }, [editableProp, editingNode, editingNodeID, formHook, root]);
-
     return (
       <div style={{ padding: "10px" }}>
         {editingNodeID ? (

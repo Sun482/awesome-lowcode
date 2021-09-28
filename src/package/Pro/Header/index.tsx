@@ -8,8 +8,9 @@ import { dslEngine, resourceUtil } from "@/core/DSL/container";
 
 import type { DSLRender } from "@/package/dslRender";
 import h from "hyperscript";
+import "./index.less";
 
-export const Render: HeaderType = memo(({ title, node }) => {
+export const Render: HeaderType = memo(({ title, subTitle, node }) => {
   const bgMode = useMemo(() => {
     return node.backgroundMode;
   }, [node.backgroundMode]);
@@ -32,7 +33,29 @@ export const Render: HeaderType = memo(({ title, node }) => {
           backgroundSize: "100% 100%",
           height: `${headerHeight}px`
         };
-  return <div style={bgProp}>{title}</div>;
+  const headerIconSrc = useMemo(() => {
+    const res = resourceUtil.getResource(`${node?.id}#iconImg`);
+    return (res.success && res.value) || "";
+  }, [node?.id]);
+  return (
+    <div className="header" style={bgProp}>
+      <div className="header-container">
+        <div className="header-left">
+          <img className="header-icon" src={headerIconSrc as string} />
+          <div className="header-title-container">
+            <div className="header-title">{title}</div>
+            <div className="header-subTitle">{subTitle}</div>
+          </div>
+        </div>
+        <div className="header-right">
+          <div className="search-container">
+            <input className="search-input" placeholder="请输入搜索内容" />
+            <div className="search-button">搜索</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 });
 
 export const HTMLRender: DSLRender = ({ node }) => {
