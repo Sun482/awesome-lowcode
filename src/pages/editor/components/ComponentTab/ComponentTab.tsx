@@ -5,11 +5,13 @@ import type { ComponentSchema } from "@/package/common";
 import type { PackageItem } from "@/package/schema";
 import { Package } from "@/package/schema";
 import { TreeView } from "@/pages/tree";
+import { editingInfo } from "@/store/node";
 
 import { Card, Tabs } from "antd";
 import type { FC } from "react";
 import { useRef } from "react";
 import { useDrag } from "react-dnd";
+import { useSetRecoilState } from "recoil";
 
 const { TabPane } = Tabs;
 interface ComponentSourceProps {
@@ -39,6 +41,7 @@ interface ComponentTabProps {
   visible: boolean;
 }
 export const ComponentTab: FC<ComponentTabProps> = ({ root, visible }) => {
+  const setEditInfo = useSetRecoilState(editingInfo);
   const packageItems = Object.keys(Package) as PackageItem[];
   return visible ? (
     <Tabs tabPosition="left">
@@ -52,7 +55,7 @@ export const ComponentTab: FC<ComponentTabProps> = ({ root, visible }) => {
         );
       })}
       <TabPane tab={"TreeData"}>
-        <TreeView root={root} />
+        <TreeView root={root} setEditingInfo={setEditInfo} />
       </TabPane>
     </Tabs>
   ) : null;

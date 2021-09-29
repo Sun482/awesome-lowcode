@@ -16,6 +16,7 @@ specifiers:
   antd: ^4.16.13
   bizcharts: ^3.5.3-beta.0
   bizcharts-plugin-slider: ^2.1.1-beta.1
+  bootstrap: 5.1.1
   hyperscript: ^2.0.2
   immer: ^9.0.5
   inversify: ^5.1.1
@@ -26,6 +27,7 @@ specifiers:
   numeral: ^2.0.6
   prettier: ^2.4.0
   react: 17.x
+  react-bootstrap: ^2.0.0-rc.0
   react-dnd: ^14.0.3
   react-dnd-html5-backend: ^14.0.1
   react-dom: 17.x
@@ -48,6 +50,7 @@ dependencies:
   antd: registry.nlark.com/antd/4.16.13_react-dom@17.0.2+react@17.0.2
   bizcharts: registry.nlark.com/bizcharts/3.5.9_react@17.0.2
   bizcharts-plugin-slider: registry.nlark.com/bizcharts-plugin-slider/2.1.1_81089aa8609ea439ca988c21b79ff02a
+  bootstrap: registry.npmmirror.com/bootstrap/5.1.1
   hyperscript: registry.nlark.com/hyperscript/2.0.2
   immer: registry.nlark.com/immer/9.0.6
   inversify: registry.nlark.com/inversify/5.1.1
@@ -56,6 +59,7 @@ dependencies:
   monaco-editor-webpack-plugin: registry.nlark.com/monaco-editor-webpack-plugin/4.1.2_monaco-editor@0.27.0
   numeral: registry.nlark.com/numeral/2.0.6
   react: registry.nlark.com/react/17.0.2
+  react-bootstrap: registry.npmmirror.com/react-bootstrap/2.0.0-rc.0_react-dom@17.0.2+react@17.0.2
   react-dnd: registry.nlark.com/react-dnd/14.0.3_4cd822c6044f4c1a7e1f1fea0e728f12
   react-dnd-html5-backend: registry.nlark.com/react-dnd-html5-backend/14.0.1
   react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
@@ -1464,7 +1468,6 @@ packages:
     resolution: {integrity: sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=, tarball: invariant/download/invariant-2.2.4.tgz}
     dependencies:
       loose-envify: registry.nlark.com/loose-envify/1.4.0
-    dev: true
 
   /is-accessor-descriptor/0.1.6:
     resolution: {integrity: sha1-qeEss66Nh2cn7u84Q/igiXtcmNY=, tarball: is-accessor-descriptor/download/is-accessor-descriptor-0.1.6.tgz}
@@ -2571,7 +2574,7 @@ packages:
     dependencies:
       loose-envify: registry.nlark.com/loose-envify/1.4.0
       object-assign: 4.1.1
-      react-is: registry.nlark.com/react-is/16.13.1
+      react-is: registry.npmmirror.com/react-is/16.13.1
 
   /pseudomap/1.0.2:
     resolution: {integrity: sha1-8FKijacOYYkX7wqKw0wa5aaChrM=, tarball: pseudomap/download/pseudomap-1.0.2.tgz}
@@ -2647,7 +2650,6 @@ packages:
 
   /react-lifecycles-compat/3.0.4:
     resolution: {integrity: sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=, tarball: react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz}
-    dev: true
 
   /readable-stream/2.3.7:
     resolution: {integrity: sha1-Hsoc9xGu+BTAT2IlKjamL2yyO1c=, tarball: readable-stream/download/readable-stream-2.3.7.tgz}
@@ -3387,7 +3389,6 @@ packages:
     resolution: {integrity: sha1-Fungd+uKhtavfWSqHgX9hbRnjKM=, tarball: warning/download/warning-4.0.3.tgz}
     dependencies:
       loose-envify: registry.nlark.com/loose-envify/1.4.0
-    dev: true
 
   /webidl-conversions/4.0.2:
     resolution: {integrity: sha1-qFWYCx8LazWbodXZ+zmulB+qY60=, tarball: webidl-conversions/download/webidl-conversions-4.0.2.tgz}
@@ -6220,6 +6221,12 @@ packages:
     version: 2.2.34
     dev: true
 
+  registry.nlark.com/@types/invariant/2.2.35:
+    resolution: {integrity: sha1-zT6/WBplV0UnNWiNjaumzwvVo74=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/invariant/download/@types/invariant-2.2.35.tgz}
+    name: '@types/invariant'
+    version: 2.2.35
+    dev: false
+
   registry.nlark.com/@types/isomorphic-fetch/0.0.35:
     resolution: {integrity: sha1-wcDUAtqsMkWCthhrkfiQU0DqM2E=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/isomorphic-fetch/download/@types/isomorphic-fetch-0.0.35.tgz}
     name: '@types/isomorphic-fetch'
@@ -6425,6 +6432,16 @@ packages:
       '@types/scheduler': registry.nlark.com/@types/scheduler/0.16.2
       csstype: registry.nlark.com/csstype/3.0.8
     dev: true
+
+  registry.nlark.com/@types/react/17.0.24:
+    resolution: {integrity: sha1-fhs/eND8U3glQ/m85tlJlZpYgL0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/react/download/@types/react-17.0.24.tgz}
+    name: '@types/react'
+    version: 17.0.24
+    dependencies:
+      '@types/prop-types': registry.nlark.com/@types/prop-types/15.7.4
+      '@types/scheduler': registry.nlark.com/@types/scheduler/0.16.2
+      csstype: registry.nlark.com/csstype/3.0.9
+    dev: false
 
   registry.nlark.com/@types/scheduler/0.16.2:
     resolution: {integrity: sha1-GmL4lSVyPd4kuhsBsJK/XfitTTk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@types/scheduler/download/@types/scheduler-0.16.2.tgz}
@@ -8551,6 +8568,12 @@ packages:
     name: csstype
     version: 3.0.8
 
+  registry.nlark.com/csstype/3.0.9:
+    resolution: {integrity: sha1-ZBCvMbJr0FIJM9AsvGT86c4/vws=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/csstype/download/csstype-3.0.9.tgz}
+    name: csstype
+    version: 3.0.9
+    dev: false
+
   registry.nlark.com/currently-unhandled/0.4.1:
     resolution: {integrity: sha1-mI3zP+qxke95mmE2nddsF635V+o=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/currently-unhandled/download/currently-unhandled-0.4.1.tgz}
     name: currently-unhandled
@@ -8986,6 +9009,15 @@ packages:
     resolution: {integrity: sha1-D4Fk69DJwhsMeQMQSTzYVYkqzUs=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/dom-align/download/dom-align-1.12.2.tgz}
     name: dom-align
     version: 1.12.2
+
+  registry.nlark.com/dom-helpers/5.2.1:
+    resolution: {integrity: sha1-2UAFNrK/giWtmP4FLgKUUaxA6QI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/dom-helpers/download/dom-helpers-5.2.1.tgz}
+    name: dom-helpers
+    version: 5.2.1
+    dependencies:
+      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.4
+      csstype: registry.nlark.com/csstype/3.0.9
+    dev: false
 
   registry.nlark.com/dom-serializer/0.2.2:
     resolution: {integrity: sha1-GvuB9TNxcXXUeGVd68XjMtn5u1E=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/dom-serializer/download/dom-serializer-0.2.2.tgz}
@@ -14381,6 +14413,23 @@ packages:
       react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
     dev: false
 
+  registry.nlark.com/react-transition-group/4.4.2_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-i1mlbwnO17VcvVPDZ2i5IokNVHA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/react-transition-group/download/react-transition-group-4.4.2.tgz}
+    id: registry.nlark.com/react-transition-group/4.4.2
+    name: react-transition-group
+    version: 4.4.2
+    peerDependencies:
+      react: '>=16.6.0'
+      react-dom: '>=16.6.0'
+    dependencies:
+      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.4
+      dom-helpers: registry.nlark.com/dom-helpers/5.2.1
+      loose-envify: registry.nlark.com/loose-envify/1.4.0
+      prop-types: 15.7.2
+      react: registry.nlark.com/react/17.0.2
+      react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
+    dev: false
+
   registry.nlark.com/react-tween-state/0.1.5:
     resolution: {integrity: sha1-6YsGZVHvuTy5LdG+FJlcLj3q4zk=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/react-tween-state/download/react-tween-state-0.1.5.tgz}
     name: react-tween-state
@@ -16864,4 +16913,165 @@ packages:
     resolution: {integrity: sha1-0R1zgf/tFrdC9q97PyI9XNn+mSA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/zwitch/download/zwitch-1.0.5.tgz?cache=0&sync_timestamp=1619951448421&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fzwitch%2Fdownload%2Fzwitch-1.0.5.tgz}
     name: zwitch
     version: 1.0.5
+    dev: false
+
+  registry.npmmirror.com/@popperjs/core/2.10.1:
+    resolution: {integrity: sha1-co7NlasgequKmk5CHwQi2zKSMr4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@popperjs/core/download/@popperjs/core-2.10.1.tgz}
+    name: '@popperjs/core'
+    version: 2.10.1
+    dev: false
+
+  registry.npmmirror.com/@react-aria/ssr/3.1.0_react@17.0.2:
+    resolution: {integrity: sha1-txY+YiRyXDASGTKo0UIu+R0fqyI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@react-aria/ssr/download/@react-aria/ssr-3.1.0.tgz}
+    id: registry.npmmirror.com/@react-aria/ssr/3.1.0
+    name: '@react-aria/ssr'
+    version: 3.1.0
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.4
+      react: registry.nlark.com/react/17.0.2
+    dev: false
+
+  registry.npmmirror.com/@restart/context/2.1.4_react@17.0.2:
+    resolution: {integrity: sha1-qZ2HwpmjTCi9hbtInLB7/SMUnAI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@restart/context/download/@restart/context-2.1.4.tgz}
+    id: registry.npmmirror.com/@restart/context/2.1.4
+    name: '@restart/context'
+    version: 2.1.4
+    peerDependencies:
+      react: '>=16.3.2'
+    dependencies:
+      react: registry.nlark.com/react/17.0.2
+    dev: false
+
+  registry.npmmirror.com/@restart/hooks/0.3.27_react@17.0.2:
+    resolution: {integrity: sha1-kfNW1m1GmajNiz0AhAJwi2qdxQU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@restart/hooks/download/@restart/hooks-0.3.27.tgz}
+    id: registry.npmmirror.com/@restart/hooks/0.3.27
+    name: '@restart/hooks'
+    version: 0.3.27
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      dequal: registry.nlark.com/dequal/2.0.2
+      react: registry.nlark.com/react/17.0.2
+    dev: false
+
+  registry.npmmirror.com/@restart/hooks/0.4.1_react@17.0.2:
+    resolution: {integrity: sha1-cWsf16Z2UKbU7UQbXXBLT3PKJhI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@restart/hooks/download/@restart/hooks-0.4.1.tgz}
+    id: registry.npmmirror.com/@restart/hooks/0.4.1
+    name: '@restart/hooks'
+    version: 0.4.1
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      dequal: registry.nlark.com/dequal/2.0.2
+      react: registry.nlark.com/react/17.0.2
+    dev: false
+
+  registry.npmmirror.com/@restart/ui/0.2.3_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-i2iqLKB695mmWyiMw8YDmRXEakw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@restart/ui/download/@restart/ui-0.2.3.tgz}
+    id: registry.npmmirror.com/@restart/ui/0.2.3
+    name: '@restart/ui'
+    version: 0.2.3
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.4
+      '@popperjs/core': registry.npmmirror.com/@popperjs/core/2.10.1
+      '@react-aria/ssr': registry.npmmirror.com/@react-aria/ssr/3.1.0_react@17.0.2
+      '@restart/hooks': registry.npmmirror.com/@restart/hooks/0.4.1_react@17.0.2
+      '@types/warning': registry.npmmirror.com/@types/warning/3.0.0
+      dequal: registry.nlark.com/dequal/2.0.2
+      dom-helpers: registry.nlark.com/dom-helpers/5.2.1
+      prop-types: 15.7.2
+      react: registry.nlark.com/react/17.0.2
+      react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
+      uncontrollable: registry.npmmirror.com/uncontrollable/7.2.1_react@17.0.2
+      warning: 4.0.3
+    dev: false
+
+  registry.npmmirror.com/@types/react-transition-group/4.4.3:
+    resolution: {integrity: sha1-sJlNoKcCPWfbtKiRCmIRK8ANVog=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-transition-group/download/@types/react-transition-group-4.4.3.tgz}
+    name: '@types/react-transition-group'
+    version: 4.4.3
+    dependencies:
+      '@types/react': registry.nlark.com/@types/react/17.0.24
+    dev: false
+
+  registry.npmmirror.com/@types/warning/3.0.0:
+    resolution: {integrity: sha1-DSUBJorY+ZYrdA04fEZU9fjiPlI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/warning/download/@types/warning-3.0.0.tgz}
+    name: '@types/warning'
+    version: 3.0.0
+    dev: false
+
+  registry.npmmirror.com/bootstrap/5.1.1:
+    resolution: {integrity: sha1-nW7tgeCP6szt862spR/ktzoocd8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/bootstrap/download/bootstrap-5.1.1.tgz}
+    name: bootstrap
+    version: 5.1.1
+    peerDependencies:
+      '@popperjs/core': ^2.10.1
+    dev: false
+
+  registry.npmmirror.com/prop-types-extra/1.1.1_react@17.0.2:
+    resolution: {integrity: sha1-WMO3TL+7ldMEYll1qi8ISDKaAQs=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/prop-types-extra/download/prop-types-extra-1.1.1.tgz}
+    id: registry.npmmirror.com/prop-types-extra/1.1.1
+    name: prop-types-extra
+    version: 1.1.1
+    peerDependencies:
+      react: '>=0.14.0'
+    dependencies:
+      react: registry.nlark.com/react/17.0.2
+      react-is: registry.npmmirror.com/react-is/16.13.1
+      warning: 4.0.3
+    dev: false
+
+  registry.npmmirror.com/react-bootstrap/2.0.0-rc.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-SQxsfCj9X5TQYGkfCGz2dfdeqi4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-bootstrap/download/react-bootstrap-2.0.0-rc.0.tgz}
+    id: registry.npmmirror.com/react-bootstrap/2.0.0-rc.0
+    name: react-bootstrap
+    version: 2.0.0-rc.0
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.4
+      '@restart/context': registry.npmmirror.com/@restart/context/2.1.4_react@17.0.2
+      '@restart/hooks': registry.npmmirror.com/@restart/hooks/0.3.27_react@17.0.2
+      '@restart/ui': registry.npmmirror.com/@restart/ui/0.2.3_react-dom@17.0.2+react@17.0.2
+      '@types/invariant': registry.nlark.com/@types/invariant/2.2.35
+      '@types/prop-types': registry.nlark.com/@types/prop-types/15.7.4
+      '@types/react': registry.nlark.com/@types/react/17.0.24
+      '@types/react-transition-group': registry.npmmirror.com/@types/react-transition-group/4.4.3
+      '@types/warning': registry.npmmirror.com/@types/warning/3.0.0
+      classnames: 2.3.1
+      dom-helpers: registry.nlark.com/dom-helpers/5.2.1
+      invariant: 2.2.4
+      prop-types: 15.7.2
+      prop-types-extra: registry.npmmirror.com/prop-types-extra/1.1.1_react@17.0.2
+      react: registry.nlark.com/react/17.0.2
+      react-dom: registry.nlark.com/react-dom/17.0.2_react@17.0.2
+      react-transition-group: registry.nlark.com/react-transition-group/4.4.2_react-dom@17.0.2+react@17.0.2
+      uncontrollable: registry.npmmirror.com/uncontrollable/7.2.1_react@17.0.2
+      warning: 4.0.3
+    dev: false
+
+  registry.npmmirror.com/react-is/16.13.1:
+    resolution: {integrity: sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz}
+    name: react-is
+    version: 16.13.1
+
+  registry.npmmirror.com/uncontrollable/7.2.1_react@17.0.2:
+    resolution: {integrity: sha1-H6cLoMV6FNX3iQXVM89jkW3HVzg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uncontrollable/download/uncontrollable-7.2.1.tgz}
+    id: registry.npmmirror.com/uncontrollable/7.2.1
+    name: uncontrollable
+    version: 7.2.1
+    peerDependencies:
+      react: '>=15.0.0'
+    dependencies:
+      '@babel/runtime': registry.nlark.com/@babel/runtime/7.15.4
+      '@types/react': registry.nlark.com/@types/react/17.0.24
+      invariant: 2.2.4
+      react: registry.nlark.com/react/17.0.2
+      react-lifecycles-compat: 3.0.4
     dev: false

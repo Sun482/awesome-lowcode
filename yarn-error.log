@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add prettier
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add react-bootstrap@next bootstrap@5.1.1
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EEXIST: file already exists, mkdir '/Users/apple/Projects/awesome-lowcode/node_modules/@types/vfile-message/node_modules'
+  Error: EINVAL: invalid argument, mkdir '/Users/apple/Projects/awesome-lowcode/node_modules/umi/node_modules/@types'
 
 npm manifest: 
   {
@@ -62,7 +62,7 @@ npm manifest:
       "@umijs/preset-react": "1.x",
       "@umijs/test": "^3.5.17",
       "lint-staged": "^10.0.7",
-      "prettier": "^2.2.0",
+      "prettier": "^2.4.0",
       "typescript": "^4.1.2",
       "yorkie": "^2.0.0"
     }

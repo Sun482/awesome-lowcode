@@ -7,6 +7,7 @@ const handleInjectNode = (propValue: any, node: Node) => {
   // 这里的propValue是object
   Object.assign(node, { style: propValue });
 };
+const justifyContentArr = ["space-around", "space-between", "center"];
 export const FlexSchema: ComponentSchema = {
   type: componentType.Layout,
   name: "Flex",

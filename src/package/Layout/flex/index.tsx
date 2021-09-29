@@ -88,7 +88,15 @@ export const Render: FlexType = memo(
       ) : (
         <div>超过数量限制</div>
       );
-    }, [children, handleClick, root, setEditingInfo, setTree, total]);
+    }, [
+      children,
+      editNodeID,
+      handleClick,
+      root,
+      setEditingInfo,
+      setTree,
+      total
+    ]);
 
     return (
       <div
@@ -103,7 +111,7 @@ export const Render: FlexType = memo(
               }
             : {
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "space-between",
                 ...propStyle
               }
         }

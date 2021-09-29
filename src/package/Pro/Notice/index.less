@@ -1,0 +1,85 @@
+.window-container {
+  display: flex;
+  flex-direction: column;
+
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-weight: bold;
+      font-size: 23px;
+      background-image: -webkit-linear-gradient(right, #009fff, #ec2f4b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-more {
+      color: #bfbfbf;
+    }
+  }
+
+  .list-container {
+    flex-grow: 1;
+    padding: 0px 29px;
+    background: #f5f5f5 !important;
+    border-top: 4px solid;
+    margin-top: 16px;
+    border-image: -webkit-linear-gradient(right, #009fff, #ec2f4b) 30 30;
+    border-top: 4px solid #1f64a9;
+
+    li {
+      list-style: none;
+      padding: 22px 0;
+      border-bottom: 1px solid #dbe0e6;
+
+
+      .list-item {
+        display: flex;
+        align-items: center;
+
+        .item-date {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+
+
+          .date-day {
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            background-color: #1f64a9;
+            width: 62px;
+          }
+
+          .date-year-month {
+            font-size: 14px;
+            color: #000;
+            height: 32px;
+            line-height: 32px;
+            background-color: #fff;
+            width: 62px;
+          }
+        }
+
+        .item-title {
+          margin-left: 15px;
+          color: #1f64a9;
+          font-size: 15px;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          line-height: 26px;
+        }
+      }
+
+
+    }
+
+    // li:first-child {
+    //   margin-top: 10px;
+    // }
+  }
+}

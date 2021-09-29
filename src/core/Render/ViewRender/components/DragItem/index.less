@@ -16,9 +16,20 @@
 }
 
 .mouseHovered {
+  position: relative;
+}
+
+.mouseHovered::before {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  content: '';
   outline-offset: -2px;
   outline: 2px dashed red;
   cursor: pointer;
+  z-index: 100;
 }
 
 .drag-item {}

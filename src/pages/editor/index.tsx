@@ -25,7 +25,6 @@ import { DataTree } from "@/store/tree";
 import { ComponentProp } from "./components/ComponentProp/ComponentProp";
 import { LeftSquareOutlined } from "@ant-design/icons";
 import { editingInfo } from "@/store/node";
-import { useEffect } from ".pnpm/registry.nlark.com+@types+react@16.14.14/node_modules/@types/react";
 
 const IndexPage = () => {
   const [tree, setTree] = useRecoilState(DataTree);
@@ -152,7 +151,8 @@ const IndexPage = () => {
               style={{
                 width: propEditorVisible ? "300px" : "35px",
                 backgroundColor: "white",
-                position: "relative"
+                position: "relative",
+                height: "calc(100vh - 48px)"
               }}
             >
               {propEditorVisible ? (

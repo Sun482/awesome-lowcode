@@ -2,11 +2,13 @@ import { Node } from "@/core/DSL/interface/node";
 import type { ComponentProps } from "@/package/common";
 // import type { CSSProperties } from "react";
 
-export interface NabigationProps {
+export interface NoticeProps {
   height: string; // header标题
-  menuItem: { menuBackground: string; subMenuBackground: string };
+  width: string;
+  title: string;
+  moreText: string;
   node: Node; // render对应的node节点
   [key: string]: any;
 }
 
-export type NavigationType = ComponentProps<NabigationProps>;
+export type NoticeType = ComponentProps<NoticeProps>;
